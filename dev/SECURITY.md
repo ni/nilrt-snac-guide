@@ -1,8 +1,7 @@
-<!-- Begin NI SECURITY.md V1.0 -->
-
 # Security
 
 NI views the security of our software products as an important part of our commitment to our users.  This includes source code repositories managed through the [NI](https://github.com/ni) GitHub organization.
+
 
 ## Reporting Security Issues
 
@@ -10,10 +9,9 @@ We encourage you to report security vulnerabilities to us privately so we can fo
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-Instead, please report them by sending an email to [security@ni.com](mailto:security@ni.com) with sufficient details about the type of issue, the impact of the issue, and how to reproduce the issue.  You may use the [NI PGP key](https://www.ni.com/en/support/security/pgp.html) to encrypt any sensitive communications you send to us. When you notify us of a potential security issue, our remediation process includes acknowledging receipt and coordinating any necessary response activities with you. 
+Instead, please report them by sending an email to [ni-psirt@emerson.com](mailto:ni-psirt@emerson.com) with sufficient details about the type of issue, the impact of the issue, and how to reproduce the issue.  You may use the [NI PGP key](https://www.ni.com/en/support/security/pgp.html) to encrypt any sensitive communications you send to us. When you notify us of a potential security issue, our remediation process includes acknowledging receipt and coordinating any necessary response activities with you. 
+
 
 ## Learn More
 
 To learn more about NI Security, please see [https://ni.com/security](https://ni.com/security)
-
-<!-- End NI SECURITY.md -->
