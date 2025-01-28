@@ -7,12 +7,15 @@ This project builds the configuration guide from source, for use by SNAC system 
 
 # Installation
 
-TODO
+`git clone `
+
+## Install dependencies
+`sudo apt install sphinx texlive texlive-xetex texlive-fonts-extra`
 
 
 # Usage
 
-TODO
+`make latexpdf`
 
 
 # Integration
