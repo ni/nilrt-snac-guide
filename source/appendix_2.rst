@@ -1,0 +1,147 @@
+
+.. _appendix-2--connect-the-labview-host-and-nilrt-system-using-wireguard:
+
+=====================================================================
+Appendix 2: Connect the LabVIEW Host and NILRT System Using WireGuard
+=====================================================================
+
+If you wish to use LabVIEW to run applications on your NILRT system, you
+will need to connect each LV host machine to the device's WireGuard
+network. The WireGuard interface on the NILRT system has been partially
+configured by the nilrt-snac configuration tool. Before proceeding,
+ensure that WireGuard is installed on the Windows host; it may be
+downloaded from https://www.wireguard.com/install/.
+
+The commands in the following instructions make use of the following
+pseudocode variables, which you should replace before entry.
+
+..
+    _In order to make this table fit, we need to make the font smaller and print it in landscape mode.
+
+.. raw:: latex
+
+    \begin{landscape}
+    \scalefont{0.8}
+
+
+.. tabularcolumns:: |\Y{0.2}|\Y{0.2}|\Y{0.2}|\Y{0.4}|
+
++-------------------------+----------------------+--------------------------------+----------------------------------------------+
+| Variable                | Description          | To compute...                  | Sample Value                                 |
++=========================+======================+================================+==============================================+
+| ${windows_private_key}  | WireGuard private    | Open WireGuard application,    |                                              |
+|                         | key of Windows host  | select **Add Tunnel » Create   | YJ0NxsWisQAOFcmojGajYCaHI7GJyT6KC0kEH22VP1o= |
+|                         |                      | New Tunnel...**, and record    |                                              |
+|                         |                      | the value of PrivateKey        |                                              |
++-------------------------+----------------------+--------------------------------+----------------------------------------------+
+| ${windows_public_key}   | WireGuard public key | Record the value of "Public    |                                              |
+|                         | of Windows host      | key" in the Create new tunnel  | OF9sbmVqTsAGv66yjg8pBPN34+jj3CBQl00yRb8I5ng= |
+|                         |                      | dialog above                   |                                              |
++-------------------------+----------------------+--------------------------------+----------------------------------------------+
+|                         | IPv4 address of      | ipconfig                       | 10.0.2.1                                     |
+| ${windows_ipv4_address} | Windows host through |                                |                                              |
+|                         | which RT target is   |                                |                                              |
+|                         | accessible           |                                |                                              |
++-------------------------+----------------------+--------------------------------+----------------------------------------------+
+| ${device_private_key}   | WireGuard private    | wg show wglv0 private-key      |                                              |
+|                         | key of RT target     |                                | SJvSIy5EpovBIH+NBcQCdVEZ5yJ2gVQs7TWh2vkGDn0= |
++-------------------------+----------------------+--------------------------------+----------------------------------------------+
+| ${device_public_key}    | WireGuard public key | wg show wglv0                  |                                              |
+|                         | of RT target         |                                | wGleQMHB6blpPldv00aQaUpdaTLcWHOXIVd8a5lXdkI= |
++-------------------------+----------------------+--------------------------------+----------------------------------------------+
+| ${device_ipv4_address}  | IPv4 address of RT   | ip addr                        | 10.0.2.2                                     |
+|                         | target on local      |                                |                                              |
+|                         | network              |                                |                                              |
++-------------------------+----------------------+--------------------------------+----------------------------------------------+
+| ${windows_wg_address}   | IPv6 address of      | Choose from IPv4 private       | 192.168.94.1                                 |
+|                         | Windows host on      | network ranges, avoiding       |                                              |
+|                         | WireGuard VPN        | networks in use                |                                              |
++-------------------------+----------------------+--------------------------------+----------------------------------------------+
+| ${device_wg_address}    | IPv6 address of RT   | Same                           | 192.168.94.2                                 |
+|                         | target on WireGuard  |                                |                                              |
+|                         | VPN                  |                                |                                              |
++-------------------------+----------------------+--------------------------------+----------------------------------------------+
+
+.. raw:: latex
+
+    \scalefont{1}
+    \end{landscape}
+
+.. _key-setup:
+
+^^^^^^^^^
+Key setup
+^^^^^^^^^
+
+You must possess the public and private keys of both devices
+(${windows_private_key}, ${windows_public_key}, ${device_private_key},
+and ${device_public_key}) before proceeding. To obtain
+${device_private_key} and ${device_public_key}, log into your NILRT
+target and run
+
+`wg show wglv0 # public key`
+
+`wg show wglv0 private-key # private key`
+
+To obtain ${windows_private_key} and ${windows_public_key}, open the
+WireGuard application and click **Add Tunnel»Add empty tunnel...**. The
+public and private keys will be displayed. Keep this dialog open --- it
+will be added to below.
+
+
+.. _nilrt-target-instructions:
+
+^^^^^^^^^^^^^^^^^^^^^^^^^
+NILRT target instructions
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#.  Log into the NILRT system over SSH. Add the windows host as a peer to
+    your device:
+
+    `wg set wglv0 peer ${windows_public_key} endpoint ${windows_ipv4_address}:51820 allowed-ips ${windows_wg_address}/24`
+
+#.  Save your configuration to make it persist across reboots.
+
+    `wg-quick save wglv0`
+
+
+.. _windows-host-instructions:
+
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Windows host instructions
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.  In the "Create new tunnel" dialog, append additional lines after
+    PrivateKey such that the configuration file consists of the
+    following. Note that all key values in this configuration are
+    case-sensitive.
+
+    .. code-block:: ini
+
+        [Interface]
+        PrivateKey = ${windows_private_key}
+        Address = ${windows_wg_address}/24
+        ListenPort = 51820
+        [Peer]
+        PublicKey = ${device_public_key}
+        AllowedIPs = ${device_wg_address}/24
+        Endpoint = ${device_ipv4_address}:51820
+
+    Give the tunnel an appropriate name (e.g. wglv0) and save the tunnel
+    configuration.
+
+#.  Add a firewall rule that permits incoming network traffic to the
+    Wireguard tunnel listening port. This can be accomplished from a
+    command line with Administrator permissions:
+
+    `netsh advfirewall firewall add rule name=nilrt-wireguard dir=inaction=allow protocol=ANY localip=${device_wg_address}/24 profile=any`
+
+#.  In the WireGuard application, click the 'Activate' button on your
+    tunnel's information panel.
+
+Once the Windows-side WireGuard tunnel is activated, you should begin to
+see network traffic reported on the tunnel's status panel. Thereafter,
+you can connect to the device in LabVIEW using its Wireguard IP address
+(${windows_wg_address}, e.g. 172.16.1.1). Additional NILRT devices can
+be attached to the host by performing similar steps but changing each
+new device to a new address on the e.g. 172.16.1.0/24 address space.
