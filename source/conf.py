@@ -8,7 +8,7 @@
 
 project = 'NI Linux RT Security Documentation With SNAC Configuration'
 copyright = '2024-%Y, NI/Emerson'
-author = 'Emerson T&M'
+author = 'Emerson T\&M'
 version = '1.1'
 release = '1.1.0'
 nist_rev = '3'  # NIST 800-171 Revision number
