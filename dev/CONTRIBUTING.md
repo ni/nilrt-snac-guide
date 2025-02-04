@@ -10,12 +10,36 @@ Thanks for taking an interest in the nilrt-snac-guide project!
 
 ## Building the Source
 
-TODO
+These documentation sources can be built locally, using the Python3 Sphinx module and some host tooling.
+
+1. Install host tooling.
+
+**Debian**
+```bash
+apt install \
+	sphinx \
+	texlive \
+	texlive-fonts-extra \
+	texlive-xetex \
+	""
+```
+
+2. Install python module dependencies.
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Build the documentation using GNU `make`.
+
+```bash
+make latexpdf  # output :build/latex/snac.pdf
+```
 
 
 ## Running Tests
 
-TODO
+This project has no automated testing.
 
 
 ## Submitting Changes Upstream

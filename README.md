@@ -4,18 +4,12 @@ A configuration guide for the NI LinuxRT [Secured, Network-Attached Controller](
 
 This project builds the configuration guide from source, for use by SNAC system integrators when designing, developing, and deploying their applications.
 
-
-# Installation
-
-`git clone `
-
-## Install dependencies
-`sudo apt install sphinx texlive texlive-xetex texlive-fonts-extra`
+For **build instructions**, reference the [CONTRIBUTING.md](/dev/CONTRIBUTING.md) document.
 
 
-# Usage
+# Installation and Usage
 
-`make latexpdf`
+This is a static documentation repository. There are no installation or usage steps beyond viewing the output documentation with your preferred viewer.
 
 
 # Integration
