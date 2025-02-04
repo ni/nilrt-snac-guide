@@ -33,7 +33,7 @@ pip install -r requirements.txt
 3. Build the documentation using GNU `make`.
 
 ```bash
-make latexpdf  # output :build/latex/snac.pdf
+make latexpdf  # output :build/latex/SNAC.pdf
 ```
 
 
