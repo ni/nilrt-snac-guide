@@ -17,7 +17,7 @@ These documentation sources can be built locally, using the Python3 Sphinx modul
 **Debian**
 ```bash
 apt install \
-	sphinx \
+	latexmk \
 	texlive \
 	texlive-fonts-extra \
 	texlive-xetex \
