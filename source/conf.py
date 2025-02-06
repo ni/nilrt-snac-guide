@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'NI Linux RT Security Documentation With SNAC Configuration'
-author = 'Emerson T\&M'
+author = r'Emerson T\&M'
 copyright = f'2024-%Y, {author}'
 version = '1.1'
 release = version  # release does not need a patch number for documentation
