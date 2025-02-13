@@ -400,6 +400,69 @@ impressive real-time performance requirements, consider configuring
 syslog-ng to emit logs over the network.
 
 
+.. _configure-remote-logging:
+
+~~~~~~~~~~~~~~~~~~~~~~~~
+Configure Remote Logging
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.  On the remote server, configure the `/etc/syslog-ng/syslog-ng.conf` file. For example, the configuration file may look like this:
+
+    .. code-block:: linuxconfig
+
+        @version: 4.2
+        @include "scl.conf"
+
+        ########################
+        # Sources
+        ########################
+        source s_net { tcp(ip(0.0.0.0) port(514)); udp(); };
+
+        ########################
+        # Destinations
+        ########################
+        # First some standard logfile
+        #
+        destination d_syslog { file("/var/log/remotelogs/syslog"); };
+
+        ########################
+        # Log paths
+        ########################
+        # All messages send to a remote site
+        #
+        log { source(s_net); destination(d_syslog); };
+
+    Where any IP address is able to send logs to the remote server, and the logs will be stored in the `/var/log/remotelogs/syslog` file.
+
+#.  On the target, configure the `/etc/syslog-ng/syslog-ng.conf` file.  For example, the configuration file may look like this: 
+
+    .. code-block:: linuxconfig
+
+        @version: 4.6
+
+        source s_local {
+            system();
+            internal();
+        };
+
+        destination d_remote {
+            syslog("<Remote IP Address>" transport("tcp") port(514));
+        };
+
+        log {
+            source(s_local);
+            destination(d_remote);
+        };
+
+    Where the remote server's IP address is set as the destination for the target's system logs.
+
+#.  Restart syslog-ng on both the target and remote server.
+
+    `/etc/init.d/syslog restart`
+
+    For more information on configuring syslog-ng, refer to the `Syslog-ng Github <https://github.com/syslog-ng/syslog-ng>`_.
+
+
 .. _run-the-nilrt-snac-configuration-tool:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
