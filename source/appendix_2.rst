@@ -74,17 +74,18 @@ Key setup
 ^^^^^^^^^
 
 You must possess the public and private keys of both devices
-(${windows_private_key}, ${windows_public_key}, ${device_private_key},
-and ${device_public_key}) before proceeding. To obtain
-${device_private_key} and ${device_public_key}, log into your NILRT
+(``${windows_private_key}``, ``${windows_public_key}``, ``${device_private_key}``,
+and ``${device_public_key}``) before proceeding. To obtain
+``${device_private_key}`` and ``${device_public_key}``, log into your NILRT
 target and run
 
-`wg show wglv0 # public key`
+.. code-block:: bash
 
-`wg show wglv0 private-key # private key`
+    wg show wglv0 # public key
+    wg show wglv0 private-key # private key
 
-To obtain ${windows_private_key} and ${windows_public_key}, open the
-WireGuard application and click **Add Tunnel»Add empty tunnel...**. The
+To obtain ``${windows_private_key}`` and ``${windows_public_key}``, open the
+WireGuard application and click ``Add Tunnel`` > ``Add empty tunnel...``. The
 public and private keys will be displayed. Keep this dialog open --- it
 will be added to below.
 
@@ -98,11 +99,18 @@ NILRT target instructions
 #.  Log into the NILRT system over SSH. Add the windows host as a peer to
     your device:
 
-    `wg set wglv0 peer ${windows_public_key} endpoint ${windows_ipv4_address}:51820 allowed-ips ${windows_wg_address}/24`
+    .. code-block:: bash
+
+        wg set \
+            wglv0 peer ${windows_public_key} \
+            endpoint ${windows_ipv4_address}:51820 \
+            allowed-ips ${windows_wg_address}/24
 
 #.  Save your configuration to make it persist across reboots.
 
-    `wg-quick save wglv0`
+    .. code-block:: bash
+
+        wg-quick save wglv0
 
 
 .. _windows-host-instructions:
@@ -111,7 +119,7 @@ NILRT target instructions
 Windows host instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.  In the "Create new tunnel" dialog, append additional lines after
+1.  In the ``Create new tunnel`` dialog, append additional lines after
     PrivateKey such that the configuration file consists of the
     following. Note that all key values in this configuration are
     case-sensitive.
@@ -134,14 +142,17 @@ Windows host instructions
     Wireguard tunnel listening port. This can be accomplished from a
     command line with Administrator permissions:
 
-    `netsh advfirewall firewall add rule name=nilrt-wireguard dir=inaction=allow protocol=ANY localip=${device_wg_address}/24 profile=any`
+    .. code-block:: powershell
 
-#.  In the WireGuard application, click the 'Activate' button on your
+        netsh advfirewall `
+            firewall add rule `
+                name=nilrt-wireguard `
+                dir=inaction=allow `
+                protocol=ANY `
+                localip=${device_wg_address}/24 `
+                profile=any
+
+#.  In the WireGuard application, click the ``Activate`` button on your
     tunnel's information panel.
 
-Once the Windows-side WireGuard tunnel is activated, you should begin to
-see network traffic reported on the tunnel's status panel. Thereafter,
-you can connect to the device in LabVIEW using its Wireguard IP address
-(${windows_wg_address}, e.g. 172.16.1.1). Additional NILRT devices can
-be attached to the host by performing similar steps but changing each
-new device to a new address on the e.g. 172.16.1.0/24 address space.
+Once the Windows-side WireGuard tunnel is activated, you should begin to see network traffic reported on the tunnel's status panel. Thereafter, you can connect to the device in LabVIEW using its Wireguard IP address (``${windows_wg_address}``, e.g. ``172.16.1.1``). Additional NILRT devices can be attached to the host by performing similar steps but changing each new device to a new address on the e.g. ``172.16.1.0/24`` address space.
