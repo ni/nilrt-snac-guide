@@ -7,10 +7,10 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'NI Linux RT Security Documentation With SNAC Configuration'
-copyright = '2024-%Y, NI/Emerson'
 author = 'Emerson T\&M'
+copyright = f'2024-%Y, {author}'
 version = '1.1'
-release = '1.1.0'
+release = version  # release does not need a patch number for documentation
 nist_rev = '3'  # NIST 800-171 Revision number
 
 # -- General configuration ---------------------------------------------------
@@ -39,7 +39,7 @@ html_static_path = ['_static']
 latex_engine = 'xelatex'
 
 latex_documents = [
-    ('index', 'SNAC.tex', 'NI Linux RT Security Documentation With SNAC Configuration', 'NI/Emerson', 'manual', False),
+    ('index', 'SNAC.tex', project, author, 'manual', False),
 ]
 
 # Needed so file is copied to build location
