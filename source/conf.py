@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'NI Linux RT Security Documentation With SNAC Configuration'
-author = 'Emerson T\&M'
+author = r'Emerson T\&M'
 copyright = f'2024-%Y, {author}'
 version = '1.1'
 release = version  # release does not need a patch number for documentation
@@ -32,7 +32,7 @@ source_suffix = {
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'alabaster'
-html_static_path = ['_static']
+html_static_path = ['media']
 
 # -- Options for LaTeX/PDF output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-latex-pdf-output
@@ -55,9 +55,6 @@ latex_elements = {
     # Additional stuff for the LaTeX preamble.
     # \setcounter{secnumdepth}{0} Disables section numbering
     'preamble': r'''
-        \usepackage{helvet}
-        \usepackage[defaultsans]{lato}
-        \usepackage{inconsolata}
         \usepackage{lscape}
         \usepackage{scalefnt }
         \setlength{\headheight}{14.5pt}
