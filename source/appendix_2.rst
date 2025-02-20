@@ -17,7 +17,7 @@ pseudocode variables, which you should replace before entry.
 
 .. raw:: latex
 
-    \scalefont{0.66666666}
+    \scalefont{0.8}
 
 
 .. tabularcolumns:: \Y{0.27}\Y{0.25}\Y{0.3}\Y{0.18}
@@ -60,7 +60,7 @@ pseudocode variables, which you should replace before entry.
 
 .. raw:: latex
 
-    \scalefont{1.5}
+    \scalefont{1.25}
 
 .. _key-setup:
 
