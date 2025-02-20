@@ -55,7 +55,6 @@ latex_elements = {
     # Additional stuff for the LaTeX preamble.
     # \setcounter{secnumdepth}{0} Disables section numbering
     'preamble': r'''
-        \usepackage{lscape}
         \usepackage{scalefnt }
         \setlength{\headheight}{14.5pt}
         \setcounter{secnumdepth}{0}

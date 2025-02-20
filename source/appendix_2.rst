@@ -15,26 +15,22 @@ downloaded from https://www.wireguard.com/install/.
 The commands in the following instructions make use of the following
 pseudocode variables, which you should replace before entry.
 
-..
-    _In order to make this table fit, we need to make the font smaller and print it in landscape mode.
-
 .. raw:: latex
 
-    \begin{landscape}
-    \scalefont{0.8}
+    \scalefont{0.66666666}
 
 
-.. tabularcolumns:: |\Y{0.2}|\Y{0.2}|\Y{0.2}|\Y{0.4}|
+.. tabularcolumns:: \Y{0.27}\Y{0.25}\Y{0.3}\Y{0.18}
 
 +---------------------------+----------------------+--------------------------------+---------------+
 | Variable                  | Description          | To compute...                  |Sample Value   |
 +===========================+======================+================================+===============+
-|``${windows_private_key}`` | WireGuard private    | Open WireGuard application,    |               |
+|``${windows_private_key}`` | Private              | Open WireGuard,                |               |
 |                           | key of Windows host  | select **Add Tunnel » Create   |YJ0NxsWisQ...  |
 |                           |                      | New Tunnel...**, and record    |               |
 |                           |                      | the value of PrivateKey        |               |
 +---------------------------+----------------------+--------------------------------+---------------+
-| ``${windows_public_key}`` | WireGuard public key | Record the value of "Public    |               |
+| ``${windows_public_key}`` | Public key           | Record the value of "Public    |               |
 |                           | of Windows host      | key" in the Create new tunnel  |OF9sbmVqTs...  |
 |                           |                      | dialog above                   |               |
 +---------------------------+----------------------+--------------------------------+---------------+
@@ -43,10 +39,10 @@ pseudocode variables, which you should replace before entry.
 |                           | which RT target is   |                                |               |
 |                           | accessible           |                                |               |
 +---------------------------+----------------------+--------------------------------+---------------+
-| ``${device_private_key}`` | WireGuard private    | ``wg show wglv0 private-key``  |               |
+| ``${device_private_key}`` | Private              | ``wg show wglv0 private-key``  |               |
 |                           | key of RT target     |                                |SJvSIy5Epo...  |
 +---------------------------+----------------------+--------------------------------+---------------+
-| ``${device_public_key}``  | WireGuard public key | ``wg show wglv0``              |               |
+| ``${device_public_key}``  | Public key           | ``wg show wglv0``              |               |
 |                           | of RT target         |                                |wGleQMHB6b...  |
 +---------------------------+----------------------+--------------------------------+---------------+
 |``${device_ipv4_address}`` | IPv4 address of RT   | ``ip addr``                    |10.0.2.2       |
@@ -55,17 +51,16 @@ pseudocode variables, which you should replace before entry.
 +---------------------------+----------------------+--------------------------------+---------------+
 | ``${windows_wg_address}`` | IPv6 address of      | Choose from IPv4 private       |192.168.94.1   |
 |                           | Windows host on      | network ranges, avoiding       |               |
-|                           | WireGuard VPN        | networks in use                |               |
+|                           | VPN                  | networks in use                |               |
 +---------------------------+----------------------+--------------------------------+---------------+
 | ``${device_wg_address}``  | IPv6 address of RT   | Same                           |192.168.94.2   |
-|                           | target on WireGuard  |                                |               |
+|                           | target on            |                                |               |
 |                           | VPN                  |                                |               |
 +---------------------------+----------------------+--------------------------------+---------------+
 
 .. raw:: latex
 
-    \scalefont{1}
-    \end{landscape}
+    \scalefont{1.5}
 
 .. _key-setup:
 
