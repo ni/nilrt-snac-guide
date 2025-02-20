@@ -69,8 +69,8 @@ configuration and a working WireGuard connection.
 |                      |                   | 25.0 platform release.    |
 +----------------------+-------------------+---------------------------+
 | System Web Server;   | Disabled          | Uninstalled               |
-| Web Interface        |                   |                           |
-| Framework (WIF)      |                   |                           |
+| Web Based            |                   |                           |
+| Configuration        |                   |                           |
 +----------------------+-------------------+---------------------------+
 | NIAuth               | Disabled          | Uninstalled               |
 +----------------------+-------------------+---------------------------+
