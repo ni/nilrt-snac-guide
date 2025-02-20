@@ -38,13 +38,13 @@ configuration and a working WireGuard connection.
 |                      |                   | salt-master outbound      |
 |                      |                   | traffic permitted         |
 +----------------------+-------------------+---------------------------+
-| SFTP/SSH VIs,        | Partially         | By default, will not work |
-| incoming             | disabled, can be  | across WireGuard (ssh is  |
+| SFTP/SSH VIs         | Partially         | By default, will not work |
+| (incoming)           | disabled, can be  | across WireGuard (ssh is  |
 |                      | enabled by user   | not enabled for the work  |
 |                      |                   | zone)                     |
 +----------------------+-------------------+---------------------------+
-| SFTP/SSH VIs,        | Disabled, can be  | ssh not enabled by        |
-| outgoing             | enabled by user   | default for any outgoing  |
+| SFTP/SSH VIs         | Disabled, can be  | ssh not enabled by        |
+| (outgoing)           | enabled by user   | default for any outgoing  |
 |                      |                   | policy                    |
 +----------------------+-------------------+---------------------------+
 | NI-RIO, bitfile on   | Unsupported       | Untested, but may work.   |
