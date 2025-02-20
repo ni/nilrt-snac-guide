@@ -26,13 +26,13 @@ pseudocode variables, which you should replace before entry.
 | Variable                  | Description          | To compute…                   |Sample Value   |
 +===========================+======================+===============================+===============+
 |``${windows_private_key}`` | Private              | Open WireGuard,               |               |
-|                           | key of Windows host  | select **Add Tunnel » Create  | YJ0NxsWisQ…   |
+|                           | key of Windows host  | select **Add Tunnel»Create    | YJ0NxsWisQ…   |
 |                           |                      | New Tunnel…**, and record     |               |
-|                           |                      | the value of PrivateKey       |               |
+|                           |                      | the value of **PrivateKey**   |               |
 +---------------------------+----------------------+-------------------------------+---------------+
 | ``${windows_public_key}`` | Public key           | Record the value of "Public   |               |
-|                           | of Windows host      | key" in the Create new tunnel | OF9sbmVqTs…   |
-|                           |                      | dialog above                  |               |
+|                           | of Windows host      | key" in the **Create new      | OF9sbmVqTs…   |
+|                           |                      | tunnel** dialog above         |               |
 +---------------------------+----------------------+-------------------------------+---------------+
 |                           | IPv4 address of      | ``ipconfig``                  | 10.0.2.1      |
 |``${windows_ipv4_address}``| Windows host through |                               |               |
@@ -80,7 +80,7 @@ target and run
     wg show wglv0 private-key # private key
 
 To obtain ``${windows_private_key}`` and ``${windows_public_key}``, open the
-WireGuard application and click ``Add Tunnel`` > ``Add empty tunnel…``. The
+WireGuard application and click **Add Tunnel»Add empty tunnel…**. The
 public and private keys will be displayed. Keep this dialog open --- it
 will be added to below.
 
@@ -114,7 +114,7 @@ NILRT target instructions
 Windows host instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.  In the ``Create new tunnel`` dialog, append additional lines after
+1.  In the **Create new tunnel** dialog, append additional lines after
     PrivateKey such that the configuration file consists of the
     following. Note that all key values in this configuration are
     case-sensitive.
@@ -147,7 +147,7 @@ Windows host instructions
                 localip=${device_wg_address}/24 `
                 profile=any
 
-#.  In the WireGuard application, click the ``Activate`` button on your
+#.  In the WireGuard application, click the **Activate** button on your
     tunnel's information panel.
 
-Once the Windows-side WireGuard tunnel is activated, you should begin to see network traffic reported on the tunnel's status panel. Thereafter, you can connect to the device in LabVIEW using its Wireguard IP address (``${windows_wg_address}``, e.g. ``172.16.1.1``). Additional NILRT devices can be attached to the host by performing similar steps but changing each new device to a new address on the e.g. ``172.16.1.0/24`` address space.
+Once the Windows-side WireGuard tunnel is activated, you should begin to see network traffic reported on the tunnel's status panel. Thereafter, you can connect to the device in LabVIEW using its Wireguard IP address (``${windows_wg_address}``, e.g. 172.16.1.1). Additional NILRT devices can be attached to the host by performing similar steps but changing each new device to a new address on the e.g. 172.16.1.0/24 address space.
