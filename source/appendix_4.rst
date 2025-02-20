@@ -9,6 +9,13 @@ The following summarizes the current state of SNAC support for features
 in LabVIEW RT and related NI software in the default firewall
 configuration and a working WireGuard connection.
 
+.. raw:: latex
+
+    \scalefont{0.8}
+
+
+.. tabularcolumns:: \Y{0.35}\Y{0.3}\Y{0.35}
+
 +----------------------+-------------------+---------------------------+
 | Feature              | Status            | Notes                     |
 +======================+===================+===========================+
@@ -78,3 +85,6 @@ configuration and a working WireGuard connection.
 |                      |                   | uninstalled               |
 +----------------------+-------------------+---------------------------+
 
+.. raw:: latex
+
+    \scalefont{1.25}
