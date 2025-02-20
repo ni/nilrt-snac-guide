@@ -150,4 +150,9 @@ Windows host instructions
 #.  In the WireGuard application, click the **Activate** button on your
     tunnel's information panel.
 
-Once the Windows-side WireGuard tunnel is activated, you should begin to see network traffic reported on the tunnel's status panel. Thereafter, you can connect to the device in LabVIEW using its Wireguard IP address (``${windows_wg_address}``, e.g. 172.16.1.1). Additional NILRT devices can be attached to the host by performing similar steps but changing each new device to a new address on the e.g. 172.16.1.0/24 address space.
+Once the Windows-side WireGuard tunnel is activated, you should begin to see
+network traffic reported on the tunnel's status panel. Thereafter, you can
+connect to the device in LabVIEW using its Wireguard IP address
+(``${windows_wg_address}``, e.g. 172.16.1.1). Additional NILRT devices can be
+attached to the host by performing similar steps but changing each new device to
+a new address on the e.g. 172.16.1.0/24 address space.
