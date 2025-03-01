@@ -350,6 +350,72 @@ additional groups.
 
 `usermod -a -G adm $user`
 
+.. _install-and-configure-audit-email-alerts:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Install and Configure Audit Email Alerts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to promptly detect and respond to critical audit events, email alerts are highly recommended.
+
+#.  Install perl-module-net-smtp and audispd-plugins, if it is not already installed.
+
+    `opkg install perl-module-net-smtp audispd-plugins`
+
+#.  Create and configure an email alert perl script. For example, the script may look like this:
+    
+    .. code-block:: perl
+
+        #!/usr/bin/perl
+        use strict;
+        use warnings;
+        use Net::SMTP;
+
+        # Configuration
+        my $smtp_server = 'smtp.yourisp.com';
+        my $smtp_user = 'your_email@domain.com';
+        my $smtp_pass = 'your_password';
+        my $from = 'your_email@domain.com';
+        my $to = '{audit_email}';
+        my $subject = 'Audit Alert';
+        my $body = "A critical audit event has been triggered";
+
+        # Create SMTP object
+        my $smtp = Net::SMTP->new($smtp_server, Timeout => 60)
+            or die "Could not connect to SMTP server: $!";
+
+        # Authenticate
+        $smtp->auth($smtp_user, $smtp_pass)
+            or die "SMTP authentication failed: $!";
+
+        # Send email
+        $smtp->mail($from)
+            or die "Error setting sender: $!";
+        $smtp->to($to)
+            or die "Error setting recipient: $!";
+        $smtp->data()
+            or die "Error starting data: $!";
+        $smtp->datasend("To: $to\\n");
+        $smtp->datasend("From: $from\\n");
+        $smtp->datasend("Subject: $subject\\n");
+        $smtp->datasend("\\n");
+        $smtp->datasend("$body\\n");
+        $smtp->dataend()
+            or die "Error ending data: $!";
+        $smtp->quit;
+
+#.  Create and configure an audit alert configuration in the `/etc/plugins.d/` directory. For example, the configuration file may look like this:
+
+    .. code-block:: linuxconfig
+
+        active = yes
+        direction = out
+        path = /path/to/your/script.pl
+        type = always
+
+#.  Restart the audit daemon.
+
+    `/etc/init.d/auditd restart`
 
 .. _install-system-software-and-deploy-application:
 
@@ -370,7 +436,7 @@ still possible via direct SSH access to the NILRT shell.
 Configure System Logging
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-#.  Install syslog-ng, if it is not already.
+#.  Install syslog-ng, if it is not already installed.
 
     `opkg install syslog-ng`
 
