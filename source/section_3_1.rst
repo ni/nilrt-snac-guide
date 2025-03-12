@@ -999,7 +999,7 @@ organizations.
 --------------------------------------------------------------------
 
 #. Permit authorized individuals to use an external system to access the
-system or to process, store, or transmit CUI only after:
+   system or to process, store, or transmit CUI only after:
 
    #. Implemented controls on the external system as specified in the organization’s security policies and security plans are verified; or
    #. Approved system connection or processing agreements with the organizational entity hosting the external system are retained.

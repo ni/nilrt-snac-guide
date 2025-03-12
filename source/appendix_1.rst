@@ -31,17 +31,17 @@ work only on cRIO x64 and PXIe x64 devices, that support NILRT. The
 sbRIO family of controllers is not included in the supported set.
 
 **Supported NILRT System Images.** The SNAC configuration is supported
-on the NILRT Base System Image 2025.0 and later.
+on the NILRT Base System Image 2025.3 and later.
 
 **Device Configuration Utilities.** The SNAC configuration supports
-device configuration via direct SSH connection or NI MAX. Configuration
+device configuration via direct SSH connection or HWCU. Configuration
 via NI MAX or SystemLink is not supported at this time.
 
 **Supported Software Products.** The SNAC configuration supports the
 deployment of the following NI software products.
 
--  LabVIEW Real-Time 2020-2024
--  NI-DAQmx (PXIe only)
+-  LabVIEW Real-Time 2022-2025
+-  NI-DAQmx
 -  NI-DMM
 -  NI-Scope
 -  NI-DCPower
@@ -204,7 +204,7 @@ System and Communications Protection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Configuration.** NILRT system configuration communications are secured
-by two interfaces. (1) The NI Measurement and Automation eXplorer (MAX)
+by two interfaces. (1) The Hardware Configuration Utility (HWCU)
 is used for system maintenance operations and deployment of the NILRT
 Base System Image. (2) Subsequent runtime administration of the NILRT
 system is performed via SSH access to the system shell. The network
@@ -242,52 +242,17 @@ Install necessary configuration software to the Host Machine
 #. Download and install the `NI Package
    Manager <https://www.ni.com/en/support/downloads/software-products/download.package-manager.html#322516>`__ (NIPM).
 #. Run the NI Package Manager.
-#. Download and install the NI Measurement and Automation eXplorer (MAX) from the latest NI `System Configuration <https://www.ni.com/en/support/downloads/drivers/download.system-configuration.html#544215>`__ installer.
 
-   .. figure:: media/image6.png
-      :alt: A screenshot of a computer Description automatically generated
-      :width: 3.5in
-      :height: 1.57in
-
-#. Install the "NI LinuxRT System Image" version "2025 Q1".
-
-   .. figure:: media/image7.png
-      :alt: A screenshot of a computer Description automatically generated
-      :width: 3.5in
-      :height: 1.57in
-
-#. Install the latest "NI CompactRIO and Drivers" package.
+#. Install the latest "NI CompactRIO and Drivers" package. Be sure to
+   include the optional components "NI Hardware Configuration Utility"
+   (checked by default) and "NI Linux RT System Image" (not checked by
+   default).
 
    .. figure:: media/image8.png
       :alt: A screenshot of a computer Description automatically generated
       :width: 3.5in
       :height: 1.57in
 
-
-.. _deploy-the-latest-firmware-and-nilrt-base-system-image-to-the-nilrt-system:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Deploy the latest Firmware and NILRT Base System Image to the NILRT system
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-On the host system:
-
-#.  Run NI MAX. Connect to the NILRT system.
-    #. Left Tab -> Right click on 'Remote Systems' -> 'Create New'
-    #. Add your hardware by discovery, hostname, or ipv4 address.
-#.  Select your device in the left tab. Update the device's Firmware (Safemode) image.
-    #. Center tab -> 'System Settings' -> Update Firmware.
-    #. Select a firmware image versioned "25.0" or later.
-#.  Reformat the device's Base System Image (Runmode).
-#.  Left tab -> Right-click on your device -> Format Disk
-#.  Install the latest NILRT Base System Image. 
-    #. Left tab -> Extend your device's drop-down -> Software -> Click the Add/Remove Software button in the center tab
-    #. When prompted, choose a Linux RT System Image versioned "2025 Q1".
-    #. When prompted to install software packages, de-select "NI-VISA" and "NI-DAQmx".
-#.  Set the 'admin' account password.
-    #. Select your device in the left tab.
-    #. In the center tab, select Set Permissions from the top ribbon.
-    #. This password will be used by System Maintainers when the device is booted into Safemode, and is not related to the 'root' user account you will configure later.
 
 .. _connect-the-nilrt-device-to-the-internet:
 
@@ -299,6 +264,48 @@ To configure NILRT as a SNAC device, some of the following steps require
 that the device be able to access the NILRT package feeds
 at download.ni.com.
 
+
+.. _deploy-the-latest-firmware-and-nilrt-base-system-image-to-the-nilrt-system:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Deploy the latest Firmware and NILRT Base System Image to the NILRT system
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On the host system:
+
+#.  Run HWCU. Connect to the NILRT system.
+
+    #. Edit menu -> Select 'Add Hardware'.
+    #. Add your hardware by discovery, hostname, or ipv4 address.
+
+#.  Select your device in the drop-down menu.
+#.  Update the device's Firmware (Safemode) image.
+
+    #. Configuration Pane -> Firmware management -> Click 'Update firmware...'.
+    #. Select a firmware image versioned "25.3" or later.
+    #. Click 'Update'.
+
+#.  Format the device (erase existing Runmode).
+
+    #. Skip this step if the Base System Image version is not "2025 Q2". The installing the NILRT Base System Image will format the device.
+    #. Configuration Pane -> Advanced -> Click 'Format disk'.
+    #. Click 'Format'.
+
+#.  Install the latest NILRT Base System Image.
+
+    #. Configuration Pane -> Click 'Manage software...'.
+    #. When prompted, choose a Linux RT System Image versioned "2025 Q2" and click 'OK'.
+
+#.  Set the 'admin' account password. 
+
+    #. When prompted enter a new administrator password.
+    #. This password will be used by System Maintainers when the device is booted into Safemode, and is not related to the 'root' user account you will configure later.
+
+#.  Install software
+
+    #. When prompted, select the programming environment and click 'Next'.
+    #. When prompted to install software packages, de-select "NI-VISA" and click 'Review changes'.
+    #. When prompted, click 'Continue'.
 
 .. _using-ssh--log-in-to-the-nilrt-device-:
 
@@ -423,11 +430,10 @@ In order to promptly detect and respond to critical audit events, email alerts a
 Install System Software and Deploy Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-After running the NILRT-SNAC Configuration Tool in the next step, MAX
-communication to the device will not be possible. This is your last
-opportunity to connect to the system in MAX and install software from
-the package feeds or deploy your application. Later configuration is
-still possible via direct SSH access to the NILRT shell.
+After running the NILRT-SNAC Configuration Tool in the next step, HWCU
+communication to the device will require the root user. This is your
+opportunity to connect to the system in HWCU and install software from
+the package feeds or deploy your application.
 
 
 .. _configure-system-logging:
@@ -548,6 +554,12 @@ Run the nilrt-snac configuration tool
     administrating the system.
 
     `reboot`
+
+#.  Reconnect to the NILRT device in HWCU.
+
+    #. Click 'Reconnect' or select your device in the drop-down menu.
+    #. When prompted, login as 'root' with no password.
+    #. This comfirms the host system is able to still communicate with the NILRT device.
 
 #.  Login as 'root' with no password. 'root' is the new super-user
     account that replaces'admin'.

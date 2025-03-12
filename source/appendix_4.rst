@@ -53,7 +53,7 @@ configuration and a working WireGuard connection.
 | NI-RIO Server        | Unsupported       | Untested and is not       |
 |                      |                   | believed to work.         |
 +----------------------+-------------------+---------------------------+
-| MAX (general use)    | Supported         |                           |
+| MAX (general use)    | Unsupported       |                           |
 +----------------------+-------------------+---------------------------+
 | HWCU (general use)   | Supported         |                           |
 +----------------------+-------------------+---------------------------+
