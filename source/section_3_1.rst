@@ -943,6 +943,16 @@ systems, allowing authorized individuals to:
 b. Prohibit the use of [*Assignment: organizationally-defined types of
 external systems*].
 
+c. Permit authorized individuals to use an external system to access the
+system or to process, store, or transmit CUI only after:
+
+#. Implemented controls on the external system as specified in the organization’s security policies and security plans are verified; or
+#. Approved system connection or processing agreements with the organizational entity hosting the external system are retained.
+
+d. Restrict the use of organization-controlled portable storage devices
+by authorized individuals on external systems as follows: [*Assignment:
+organization-defined usage restrictions*].
+
 **DISCUSSION**
 
 External systems are systems that are used by but are not part of the
@@ -955,7 +965,10 @@ or controlled by nonfederal organizations; and systems managed by
 contractors. Organizations have the option to prohibit the use of any
 type of external system or specified types of external systems, (e.g.,
 prohibit the use of any external system that is not organizationally
-owned or prohibit the use of personally owned systems).
+owned or prohibit the use of personally owned systems). Terms and
+conditions are consistent with the trust relationships established with
+the entities that own, operate, or maintain external systems and include
+descriptions of shared responsibilities.
 
 Authorized individuals include organizational personnel, contractors, or
 other individuals with authorized access to the organizational system
@@ -963,7 +976,9 @@ and over whom organizations have the authority to impose specific rules
 of behavior regarding system access. Restrictions that organizations
 impose on authorized individuals need not be uniform, as the
 restrictions may vary depending on the trust relationships between
-organizations.
+organizations. Organizations need assurance that external systems
+satisfy the necessary security requirements so as not to compromise,
+damage, or harm the system.
 
 +---+---------------------------------+
 |   | Control Summary Information     |
@@ -992,55 +1007,11 @@ organizations.
 
 
 
-.. _3-1-21--external-systems---limits-and-restrictions-on-authorized-use:
+.. _3-1-21--withdrawn--incorporated-into-3-1-20-:
 
 --------------------------------------------------------------------
-3.1.21. External Systems - Limits and Restrictions on Authorized Use
+3.1.21. Withdrawn: Incorporated into 3.1.20.
 --------------------------------------------------------------------
-
-#. Permit authorized individuals to use an external system to access the
-   system or to process, store, or transmit CUI only after:
-
-   #. Implemented controls on the external system as specified in the organization’s security policies and security plans are verified; or
-   #. Approved system connection or processing agreements with the organizational entity hosting the external system are retained.
-
-#. Restrict the use of organization-controlled portable storage devices
-   by authorized individuals on external systems as follows: [*Assignment:
-   organization-defined usage restrictions*].
-
-**DISCUSSION**
-
-Limiting authorized use recognizes circumstances in which individuals
-who use external systems may need to access the organizational system.
-Organizations need assurance that the external systems contain the
-necessary controls so as not to compromise, damage, or otherwise harm
-the system. Verification that the required controls have been
-implemented can be achieved through independent assessments,
-attestations, or other means, depending on the confidence level required
-by the organization. Limits on the use of organization-controlled
-portable storage devices in external systems include restrictions on how
-the devices may be used and under what conditions.
-
-+---+---------------------------------+
-|   | Control Summary Information     |
-+===+=================================+
-|   | Implemented by vendor           |
-+---+---------------------------------+
-|   | Not implemented by vendor       |
-+---+---------------------------------+
-|   | Must be implemented by end user |
-+---+---------------------------------+
-| X | Not applicable                  |
-+---+---------------------------------+
-
-+----------------------------------------------------------------------------------+
-| Solution Implementation                                                          |
-+==================================================================================+
-| The NILRT+SNAC configuration does not support communications with                |
-| extra-organizational devices. System Owners are directed to enforce policies     |
-| against connecting to NILRT systems using personal devices and connecting        |
-| personal storage devices to NILRT systems                                        |
-+----------------------------------------------------------------------------------+
 
 .. raw:: latex
 
