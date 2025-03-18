@@ -182,23 +182,11 @@ failed.
     \newpage
 
 
-.. _3-12-5--independent-assessment:
-
-------------------------------------
-TODO: 3.12.5. Independent Assessment
-------------------------------------
-
-**TODO** This section is listed in the Control Summary but not here
-
 .. _3-12-5--information-exchange:
 
-.. _3-12-6--information-exchange:
-
 ----------------------------------
-TODO: 3.12.5. Information Exchange
+3.12.5. Information Exchange
 ----------------------------------
-
-**TODO** This section is listed in the Control Summary as 3.12.6, not 3.12.5
 
 #. Approve and manage the exchange of CUI between the system and other   systems using [Selection (one or more): interconnection security   agreements; information exchange security agreements; memoranda of   understanding or agreement; service-level agreements; user agreements;   non-disclosure agreements; other types of agreements].
 #. Document interface characteristics, security requirements, and   responsibilities for each system as part of the exchange agreements.
