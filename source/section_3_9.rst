@@ -119,11 +119,3 @@ had access at previous work locations in previous system accounts.
 
     \newpage
 
-
-.. _3-9-3--external-personnel-security:
-
-----------------------------------------
-TODO: 3.9.3. External Personnel Security
-----------------------------------------
-
-*TODO* This section is listed in the Control Summary table but did not exist here
