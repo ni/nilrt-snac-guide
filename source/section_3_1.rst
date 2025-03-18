@@ -912,10 +912,10 @@ selected data structures such as files, records, or fields.
 
 
 
-.. _3-1-19--withdrawn--incorporated-into-3-1-18--451:
+.. _3-1-19--withdrawn--incorporated-into-3-1-18-:
 
 ------------------------------------------------
-3.1.19. Withdrawn: Incorporated into 3.1.18. 451
+3.1.19. Withdrawn: Incorporated into 3.1.18.
 ------------------------------------------------
 
 .. raw:: latex
