@@ -208,3 +208,57 @@ regulations, standards, and guidelines.
 
     \newpage
 
+
+
+.. _3-6-5--incident-response-plan:
+
+---------------------------------
+3.6.5. Incident Response Plan
+---------------------------------
+
+#. Develop an incident response plan that:
+
+   #. Provides the organization with a roadmap for implementing its incident response capability,
+   #. Describes the structure and organization of the incident response capability,
+   #. Provides a high-level approach for how the incident response capability fits into the overall organization,
+   #. Defines reportable incidents,
+   #. Addresses the sharing of incident information, and
+   #. Designates responsibilities to organizational entities, personnel, or roles.
+
+#. Distribute copies of the incident response plan to designated incident response personnel (identified by name and/or by role) and organizational elements.
+#. Update the incident response plan to address system and organizational changes or problems encountered during plan implementation, execution, or testing.
+#. Protect the incident response plan from unauthorized disclosure.
+
+**DISCUSSION**
+
+It is important that organizations develop and implement a coordinated
+approach to incident response. Organizational mission and business
+functions determine the structure of incident response capabilities. As
+part of the incident response capabilities, organizations consider the
+coordination and sharing of information with external organizations,
+including external service providers and other organizations involved in
+the supply chain.
+
++---+---------------------------------+
+|   | Control Summary Information     |
++===+=================================+
+|   | Implemented by vendor           |
++---+---------------------------------+
+|   | Not implemented by vendor       |
++---+---------------------------------+
+|   | Must be implemented by end user |
++---+---------------------------------+
+| X | Not applicable                  |
++---+---------------------------------+
+
++----------------------------------------------------------------------------------+
+| Solution Implementation                                                          |
++==================================================================================+
+| The system owner is responsible to develop and implement an incident response    |
+| plan for the system.                                                             |
++----------------------------------------------------------------------------------+
+
+.. raw:: latex
+
+    \newpage
+
