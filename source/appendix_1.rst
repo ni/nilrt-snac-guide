@@ -115,8 +115,8 @@ standard Linux tools. As a consequence of this reconfiguration:
    custom authentication schemes based on common PAM tooling.
 
 -  System credentials are no longer shared between Safemode and Runmode.
-   The default login user for Safemode will remain admin. Setting
-   the admin account password while in Safemode will not transfer to
+   The default login user for Safemode will remain ``admin``. Setting
+   the ``admin`` account password while in Safemode will not transfer to
    Runmode.
 
 -  MAX connection with the NILRT system will not function once the
@@ -142,21 +142,21 @@ their own right.
 physically manipulating the NILRT device, deploying application
 software, re-imaging the device, and performing remedial recovery
 actions. Maintainers are expected to have constructive access privileges
-to the system, and are directed to use the root login account when
+to the system, and are directed to use the ``root`` login account when
 performing system maintenance operations.
 
 **System Administrators** are individuals responsible for the running
 configuration and operation of the NILRT device. Administrators are
 assigned individual accounts on the NILRT system, and enrolled in
-the sudo group. As members of this group, they are permitted to perform
-privileged operations via the sudo utility.
+the ``sudo`` group. As members of this group, they are permitted to perform
+privileged operations via the sudo utility.
 
 **System Auditors** are individuals responsible for collecting or
 reviewing system logs. Auditors are assigned individual accounts on the
-NILRT system, and enrolled in the adm group. As members of this group,
+NILRT system, and enrolled in the ``adm`` group. As members of this group,
 they are permitted write access to system logs and logging
 configuration. Users should never be a member of both
-the sudo and adm groups, as it would permit that user to both perform
+the ``sudo`` and ``adm`` groups, as it would permit that user to both perform
 privileged operations and remove audit records of their operations.
 
 **System Users** are all other individuals who require limited access to
@@ -173,8 +173,8 @@ Audit and Accountability
 Event and access logging is performed by several services in NI LinuxRT.
 User processes log their actions by registering them with
 the syslog-ng daemon. Kernel processes log actions
-to dmesg (`/var/log/dmesg`) and to the audit subsystem (`/var/log/audit/``).
-PAM authentication logs are written to (`/var/log/auth.log`).
+to dmesg (``/var/log/dmesg``) and to the audit subsystem (``/var/log/audit/``).
+PAM authentication logs are written to (``/var/log/auth.log``).
 
 For information about the default (non-SNAC) logging configuration on
 NILRT, reference the
@@ -188,7 +188,7 @@ Physical Protection
 ~~~~~~~~~~~~~~~~~~~
 
 When attackers gain physical access to a system, they can nearly always
-construct 'root' access. To mitigate against these risks, it is
+construct root access. To mitigate against these risks, it is
 important that Integrators design their deployments to control physical
 access to the NILRT system. Limit personnel access to only System
 Maintainers, for the purpose of changing system configuration. Construct
@@ -228,7 +228,7 @@ SNAC Configuration Instructions
 System maintainers are directed to deploy and configure a NILRT system
 in the SNAC configuration by performing the following actions. All
 action should generally be performed by the System Maintainer, logged
-into the NILRT shell as either admin (safemode) or root (runmode).
+into the NILRT shell as either ``admin`` (safemode) or ``root`` (runmode).
 
 
 .. _install-necessary-configuration-software-to-the-host-machine:
@@ -296,10 +296,10 @@ On the host system:
     #. Configuration Pane -> Click 'Manage software...'.
     #. When prompted, choose a Linux RT System Image versioned "2025 Q2" and click 'OK'.
 
-#.  Set the 'admin' account password. 
+#.  Set the ``admin`` account password. 
 
     #. When prompted enter a new administrator password.
-    #. This password will be used by System Maintainers when the device is booted into Safemode, and is not related to the 'root' user account you will configure later.
+    #. This password will be used by System Maintainers when the device is booted into Safemode, and is not related to the ``root`` user account you will configure later.
 
 #.  Install software
 
@@ -314,7 +314,7 @@ Using SSH, log in to the NILRT device.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. Use an SSH client of your choice to connect to the NILRT device's hostname.
-#. Log in using the 'admin' account and the password you previously configured. e.g. `ssh://admin@$hostname`
+#. Log in using the ``admin`` account and the password you previously configured. e.g. ``ssh://admin@$hostname``
 #. All following steps are performed on the NILRT device, using the SSH shell.
 
 
@@ -330,32 +330,40 @@ prior to running the nilrt-snac configuration tool.
 
 #.  Install the auditd package using opkg.
 
-    `opkg update && opkg install auditd`
+    .. code-block:: bash
 
-#.  Create an account-group (adm) for individuals who require access to system logs. It may
-    already exist.
+        opkg update && opkg install auditd
 
-    `groupadd --system adm`
+#.  Create an account-group (adm) for individuals who require access to system logs. It may already exist.
 
-#.  Configure auditd to create log files with `adm` group ownership permissions. Edit the
-    `/etc/audit/auditd.conf` file to set the `log_group=adm` option.
+    .. code-block:: bash
+    
+        groupadd --system adm
 
-#.  Give the `adm` group ownership of the auditd configuration file.
+#.  Configure auditd to create log files with ``adm`` group ownership permissions. Edit the ``/etc/audit/auditd.conf`` file to set the ``log_group=adm`` option.
 
-    `chgrp adm /etc/audit/auditd.conf`
+#.  Give the ``adm`` group ownership of the auditd configuration file.
+
+    .. code-block:: bash
+
+        chgrp adm /etc/audit/auditd.conf
 
 #.  Restart the audit daemon.
 
-   `/etc/init.d/auditd restart`
+    .. code-block:: bash
 
-Audit logs will be generated within `/var/log/audit/`. Additional auditing
+       /etc/init.d/auditd restart
+
+Audit logs will be generated within ``/var/log/audit/``. Additional auditing
 rules can be defined by adding them to
-the `/etc/audit/rules.d/audit.rules` configuration rule.
+the ``/etc/audit/rules.d/audit.rules`` configuration rule.
 
-Add System Auditors to the `adm` group by modifying their user account's
+Add System Auditors to the ``adm`` group by modifying their user account's
 additional groups.
 
-`usermod -a -G adm $user`
+.. code-block:: bash
+
+    usermod -a -G adm $user
 
 .. _install-and-configure-audit-email-alerts:
 
@@ -367,7 +375,9 @@ In order to promptly detect and respond to critical audit events, email alerts a
 
 #.  Install perl-module-net-smtp and audispd-plugins, if it is not already installed.
 
-    `opkg install perl-module-net-smtp audispd-plugins`
+    .. code-block:: bash
+
+        opkg install perl-module-net-smtp audispd-plugins
 
 #.  Create and configure an email alert perl script. For example, the script may look like this:
     
@@ -411,7 +421,7 @@ In order to promptly detect and respond to critical audit events, email alerts a
             or die "Error ending data: $!";
         $smtp->quit;
 
-#.  Create and configure an audit alert configuration in the `/etc/plugins.d/` directory. For example, the configuration file may look like this:
+#.  Create and configure an audit alert configuration in the ``/etc/plugins.d/`` directory. For example, the configuration file may look like this:
 
     .. code-block:: linuxconfig
 
@@ -422,7 +432,9 @@ In order to promptly detect and respond to critical audit events, email alerts a
 
 #.  Restart the audit daemon.
 
-    `/etc/init.d/auditd restart`
+    .. code-block:: bash
+
+        /etc/init.d/auditd restart
 
 .. _install-system-software-and-deploy-application:
 
@@ -431,7 +443,7 @@ Install System Software and Deploy Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 After running the NILRT-SNAC Configuration Tool in the next step, HWCU
-communication to the device will require the root user. This is your
+communication to the device will require the ``root`` user. This is your
 opportunity to connect to the system in HWCU and install software from
 the package feeds or deploy your application.
 
@@ -444,21 +456,27 @@ Configure System Logging
 
 #.  Install syslog-ng, if it is not already installed.
 
-    `opkg install syslog-ng`
+    .. code-block:: bash
+
+        opkg install syslog-ng
 
 #.  Enable persistent log storage.
 
-    `nirtcfg --set section=SystemSettings,token=PersistentLogs.enabled,value="True"`
+    .. code-block:: bash
+
+        nirtcfg --set section=SystemSettings,token=PersistentLogs.enabled,value="True"
 
 #.  Restart syslog-ng.
 
-    `/etc/init.d/syslog restart`
+    .. code-block:: bash
+
+        /etc/init.d/syslog restart
 
 The default system logging configuration can be extended to meet mission
 requirements by appending configurations to
-the `/etc/syslog-ng/syslog-ng.conf` file.
+the ``/etc/syslog-ng/syslog-ng.conf`` file.
 
-Logs are stored to `/var/log` by default.
+Logs are stored to ``/var/log`` by default.
 
 Note that storing logs persistently may fill up the NILRT system's disk
 space, potentially halting other system operations. Integrators are
@@ -478,7 +496,7 @@ syslog-ng to emit logs over the network.
 Configure Remote Logging
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-1.  On the remote server, configure the `/etc/syslog-ng/syslog-ng.conf` file. For example, the configuration file may look like this:
+1.  On the remote server, configure the ``/etc/syslog-ng/syslog-ng.conf`` file. For example, the configuration file may look like this:
 
     .. code-block:: linuxconfig
 
@@ -504,9 +522,9 @@ Configure Remote Logging
         #
         log { source(s_net); destination(d_syslog); };
 
-    Where any IP address is able to send logs to the remote server, and the logs will be stored in the `/var/log/remotelogs/syslog` file.
+    Where any IP address is able to send logs to the remote server, and the logs will be stored in the ``/var/log/remotelogs/syslog`` file.
 
-#.  On the target, configure the `/etc/syslog-ng/syslog-ng.conf` file.  For example, the configuration file may look like this: 
+#.  On the target, configure the ``/etc/syslog-ng/syslog-ng.conf`` file.  For example, the configuration file may look like this: 
 
     .. code-block:: linuxconfig
 
@@ -530,7 +548,9 @@ Configure Remote Logging
 
 #.  Restart syslog-ng on both the target and remote server.
 
-    `/etc/init.d/syslog restart`
+    .. code-block:: bash
+
+        /etc/init.d/syslog restart
 
     For more information on configuring syslog-ng, refer to the `Syslog-ng Github <https://github.com/syslog-ng/syslog-ng>`_.
 
@@ -543,30 +563,37 @@ Run the nilrt-snac configuration tool
 
 #.  Install the configuration tool using opkg.
 
-    `opkg install nilrt-snac`
+    .. code-block:: bash
+
+        opkg install nilrt-snac
 
 #.  Run the nilrt-snac tool.
 
-    `nilrt-snac configure`
+    .. code-block:: bash
+
+        nilrt-snac configure
 
 #.  Reboot the system. Note that after rebooting the system, serial
     console will be disabled. SSH is the preferred mechanism to continue
     administrating the system.
 
-    `reboot`
+    .. code-block:: bash
+
+        reboot
 
 #.  Reconnect to the NILRT device in HWCU.
 
     #. Click 'Reconnect' or select your device in the drop-down menu.
-    #. When prompted, login as 'root' with no password.
+    #. When prompted, login as ``root`` with no password.
     #. This comfirms the host system is able to still communicate with the NILRT device.
 
-#.  Login as 'root' with no password. 'root' is the new super-user
-    account that replaces'admin'.
+#.  Login as ``root`` with no password. ``root`` is the new super-user account that replaces ``admin``.
 
-#.  Change the root account password.
+#.  Change the ``root`` account password.
 
-    `passwd root`
+    .. code-block:: bash
+
+        passwd root
 
 
 .. _configure-privileged-operations-via-sudo:
@@ -583,7 +610,9 @@ ability to execute privileged functions using sudo.
 Add system administrators' user account is added to the group with
 the usermod command.
 
-`usermod -a -G sudo $user`
+    .. code-block:: bash
+
+        usermod -a -G sudo $user
 
 By default, a log of all sudo commands will be written
-to `/var/log/auth.log`.
+to ``/var/log/auth.log``.
