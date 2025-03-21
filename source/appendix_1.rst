@@ -26,18 +26,18 @@ Design Constraints
 When designing a deployment using the SNAC configuration, consider the
 following support constraints.
 
-**Supported Hardware Devices.** The SNAC configuration is verified to
+**Supported Hardware Devices.** The SNAC configuration is verified to
 work only on cRIO x64 and PXIe x64 devices, that support NILRT. The
 sbRIO family of controllers is not included in the supported set.
 
-**Supported NILRT System Images.** The SNAC configuration is supported
+**Supported NILRT System Images.** The SNAC configuration is supported
 on the NILRT Base System Image 2025.3 and later.
 
-**Device Configuration Utilities.** The SNAC configuration supports
+**Device Configuration Utilities.** The SNAC configuration supports
 device configuration via direct SSH connection or HWCU. Configuration
 via NI MAX or SystemLink is not supported at this time.
 
-**Supported Software Products.** The SNAC configuration supports the
+**Supported Software Products.** The SNAC configuration supports the
 deployment of the following NI software products.
 
 -  LabVIEW Real-Time 2022-2025
@@ -48,26 +48,26 @@ deployment of the following NI software products.
 -  NI-Switch
 -  NI-FGEN
 
-**Runtime Software Installation.** While in the SNAC configuration,
+**Runtime Software Installation.** While in the SNAC configuration,
 software installation to the NILRT system is only permitted from:
-the `NI.com <http://ni.com/>`__ core package feed, the NI Offline Feed
+the `NI.com <http://ni.com/>`__ core package feed, the NI Offline Feed
 Installation tool, or from software sources that have been independently
 validated and are controlled by the Integrator. The SNAC configuration
 will automatically disable the
-noncompliant `NI.com <http://ni.com/>`__ "extra" package feed.
+noncompliant `NI.com <http://ni.com/>`__ "extra" package feed.
 
-**Connected Machines.** If your application design includes a
+**Connected Machines.** If your application design includes a
 network-connected Windows or Linux system that receives data from the
 NILRT device (via LabVIEW or otherwise), it must be configured with
-a `Wireguard <https://www.wireguard.com/>`__ interface.
+a `Wireguard <https://www.wireguard.com/>`__ interface.
 
-**Physical Security.** The SNAC configuration is not intended for use in
+**Physical Security.** The SNAC configuration is not intended for use in
 system designs which allow unauthorized users physical access the NILRT
 system. Integrators are directed to design their application to limit
 physical access to the NILRT device's IO to only permitted system
 administrators and system maintainers.
 
-**Safemode.** NILRT systems have the ability to boot into a temporary
+**Safemode.** NILRT systems have the ability to boot into a temporary
 "Safemode" of operation, where Base System Image and system software
 configuration changes can be made. Because this boot configuration is
 not secured to the same standards as SNAC, unprivileged users and system
@@ -76,12 +76,12 @@ Safemode as a part of normal operations. System maintainers are still
 expected to use Safemode to affect deployment of the NILRT Base System
 Image, software installation, and system recovery operations.
 
-**Graphical UI.** Normal NILRT configurations support an optional
+**Graphical UI.** Normal NILRT configurations support an optional
 graphical desktop interface based on XFCE. This graphical UI is not
 intended for use in the SNAC configuration. Integrators are directed to
 forbid system administrators from enabling this interface, by policy.
 
-**Application Web Server.** After applying the SNAC configuration, the
+**Application Web Server.** After applying the SNAC configuration, the
 LabVIEW Application Web Server will cease to function.
 
 
@@ -133,25 +133,25 @@ Roles, Users, and Groups
 The NILRT SNAC configuration recognizes that individuals accessing the
 system can be broadly divided into one or more roles.
 
-**System Integrators** are engineering organizations who design hardware
+**System Integrators** are engineering organizations who design hardware
 and software solutions using NI LinuxRT devices. Integrating
 organizatons may be the solutions end-user or an upstream vendor in
 their own right.
 
-**System Maintainers** are individuals who are responsible for
+**System Maintainers** are individuals who are responsible for
 physically manipulating the NILRT device, deploying application
 software, re-imaging the device, and performing remedial recovery
 actions. Maintainers are expected to have constructive access privileges
 to the system, and are directed to use the ``root`` login account when
 performing system maintenance operations.
 
-**System Administrators** are individuals responsible for the running
+**System Administrators** are individuals responsible for the running
 configuration and operation of the NILRT device. Administrators are
 assigned individual accounts on the NILRT system, and enrolled in
 the ``sudo`` group. As members of this group, they are permitted to perform
 privileged operations via the sudo utility.
 
-**System Auditors** are individuals responsible for collecting or
+**System Auditors** are individuals responsible for collecting or
 reviewing system logs. Auditors are assigned individual accounts on the
 NILRT system, and enrolled in the ``adm`` group. As members of this group,
 they are permitted write access to system logs and logging
@@ -159,7 +159,7 @@ configuration. Users should never be a member of both
 the ``sudo`` and ``adm`` groups, as it would permit that user to both perform
 privileged operations and remove audit records of their operations.
 
-**System Users** are all other individuals who require limited access to
+**System Users** are all other individuals who require limited access to
 a NILRT system to perform their assigned tasks. These users are
 generally unprivileged, and forbidden from being members of any of the
 prior access groups.
