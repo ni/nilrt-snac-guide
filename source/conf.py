@@ -9,7 +9,7 @@
 project = 'NI Linux RT Security Documentation With SNAC Configuration'
 author = r'Emerson T\&M'
 copyright = f'2024-%Y, {author}'
-version = '1.1'
+version = '2.0'
 release = version  # release does not need a patch number for documentation
 nist_rev = '3'  # NIST 800-171 Revision number
 
