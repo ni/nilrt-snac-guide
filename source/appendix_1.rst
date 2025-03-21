@@ -119,10 +119,6 @@ standard Linux tools. As a consequence of this reconfiguration:
    the ``admin`` account password while in Safemode will not transfer to
    Runmode.
 
--  HWCU connection with the NILRT system will not function once the
-   system is in SNAC configuration. Software installation and LV project
-   deployment should occur prior to entering the SNAC configuration.
-
 
 .. _roles--users--and-groups:
 
@@ -214,13 +210,11 @@ actions.
 System and Communications Protection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Configuration.** NILRT system configuration communications are secured
-by two interfaces. (1) The Hardware Configuration Utility (HWCU)
-is used for system maintenance operations and deployment of the NILRT
-Base System Image. (2) Subsequent runtime administration of the NILRT
-system is performed via SSH access to the system shell. The network
-traffic of both interfaces are secured by the NILRT device's OpenSSH
-server.
+**Configuration.** NILRT system configuration operations are performed via two remote, encrypted paths and one local path.
+
+1. (Remote) The NI HardWare Configuration Utility (HWCU) can be used for system maintenance and deployment of the NILRT Base System Image.
+2. (Remote) The NILRT Base System Image supports Secure SHell (SSH) connections to its OpenSSH server instance, which can be used for subsequent manual configuration.
+3. (Local) System users can connect the NILRT device to a graphical display and gain access to the system shell using a keyboard.
 
 **Application.** System applications employ protection strategies that
 are necessarily unique to their mission. For LabVIEW communications,
@@ -266,9 +260,9 @@ Install necessary configuration software to the Host Machine
 Connect the NILRT device to the internet
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To configure NILRT as a SNAC device, some of the following steps require
-that the device be able to access the NILRT package feeds
-at download.ni.com.
+To configure NILRT as a SNAC device, some of the following steps require that the device be able to access the NILRT package feeds at *download.ni.com*.
+
+When deploying a system on an isolated network, the `Offline Feeds Installer <https://www.ni.com/en/support/downloads/software-products/download.ni-linux-real-time-offline-installation-support.html>`__ utility can be used to setup a bespoke feed server on a Windows host on the same isolated network.
 
 
 .. _deploy-the-latest-firmware-and-nilrt-base-system-image-to-the-nilrt-system:
@@ -325,16 +319,67 @@ Using SSH, log in to the NILRT device.
 #. All following steps are performed on the NILRT device, using the SSH shell.
 
 
-.. _install-system-software-and-deploy-application:
+.. _run-the-nilrt-snac-configuration-tool:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Install System Software and Deploy Application
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Run the nilrt-snac configuration tool
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-After running the NILRT-SNAC Configuration Tool in the next step, HWCU
-communication to the device will require the ``root`` user. This is your
-opportunity to connect to the system in HWCU and install software from
-the package feeds or deploy your application.
+#.  Install the configuration tool using opkg.
+
+    .. code-block:: bash
+
+        opkg install nilrt-snac
+
+#.  Run the nilrt-snac tool.
+
+    .. code-block:: bash
+
+        nilrt-snac configure
+
+#.  Reboot the system. Note that after rebooting the system, serial
+    console will be disabled. SSH is the preferred mechanism to continue
+    administrating the system.
+
+    .. code-block:: bash
+
+        reboot
+
+#.  Reconnect to the NILRT device in HWCU.
+
+    #. Click 'Reconnect' or select your device in the drop-down menu.
+    #. When prompted, login as ``root`` with no password.
+    #. This comfirms the host system is able to still communicate with the NILRT device.
+
+#.  Login as ``root`` with no password. ``root`` is the new super-user account that replaces ``admin``.
+
+#.  Change the ``root`` account password.
+
+    .. code-block:: bash
+
+        passwd root
+
+
+.. _configure-privileged-operations-via-sudo:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configure Privileged Operations via Sudo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The NILRT Base System Image includes the sudo utility: a service to
+temporarily escalate user privileges. In the SNAC configuration, system
+administrators should be given unprivileged user accounts and the
+ability to execute privileged functions using sudo.
+
+Add system administrators' user account is added to the group with
+the usermod command.
+
+    .. code-block:: bash
+
+        usermod -a -G sudo $user
+
+By default, a log of all sudo commands will be written
+to ``/var/log/auth.log``.
 
 
 .. _configure-remote-logging:
@@ -400,66 +445,3 @@ Configure Remote Logging
         /etc/init.d/syslog restart
 
     For more information on configuring syslog-ng, refer to the `Syslog-ng Github <https://github.com/syslog-ng/syslog-ng>`_.
-
-
-.. _run-the-nilrt-snac-configuration-tool:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Run the nilrt-snac configuration tool
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#.  Install the configuration tool using opkg.
-
-    .. code-block:: bash
-
-        opkg install nilrt-snac
-
-#.  Run the nilrt-snac tool.
-
-    .. code-block:: bash
-
-        nilrt-snac configure
-
-#.  Reboot the system. Note that after rebooting the system, serial
-    console will be disabled. SSH is the preferred mechanism to continue
-    administrating the system.
-
-    .. code-block:: bash
-
-        reboot
-
-#.  Reconnect to the NILRT device in HWCU.
-
-    #. Click 'Reconnect' or select your device in the drop-down menu.
-    #. When prompted, login as ``root`` with no password.
-    #. This comfirms the host system is able to still communicate with the NILRT device.
-
-#.  Login as ``root`` with no password. ``root`` is the new super-user account that replaces ``admin``.
-
-#.  Change the ``root`` account password.
-
-    .. code-block:: bash
-
-        passwd root
-
-
-.. _configure-privileged-operations-via-sudo:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Configure Privileged Operations via Sudo
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The NILRT Base System Image includes the sudo utility: a service to
-temporarily escalate user privileges. In the SNAC configuration, system
-administrators should be given unprivileged user accounts and the
-ability to execute privileged functions using sudo.
-
-Add system administrators' user account is added to the group with
-the usermod command.
-
-    .. code-block:: bash
-
-        usermod -a -G sudo $user
-
-By default, a log of all sudo commands will be written
-to ``/var/log/auth.log``.
