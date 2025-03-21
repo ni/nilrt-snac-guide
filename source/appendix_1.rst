@@ -367,9 +367,9 @@ additional groups.
 
 .. _install-and-configure-audit-email-alerts:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Install and Configure Audit Email Alerts
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to promptly detect and respond to critical audit events, email alerts are highly recommended.
 
