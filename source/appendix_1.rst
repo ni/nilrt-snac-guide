@@ -1,9 +1,9 @@
 
 .. _appendix-1--nilrt-configuration-guide-for-800-171-compliance--v1-0-:
 
-===================================================================
-Appendix 1: NILRT Configuration Guide for 800-171 Compliance (v1.0)
-===================================================================
+============================================================
+Appendix 1: NILRT Configuration Guide for 800-171 Compliance
+============================================================
 
 NI Linux RT (NILRT) is an embedded, general-purpose operating system
 based on the Linux kernel and OpenEmebedded package distribution. The
