@@ -275,25 +275,25 @@ On the host system:
 
 #.  Run HWCU. Connect to the NILRT system.
 
-    #. Edit menu -> Select 'Add Hardware'.
+    #. Open the 'Edit' menu and select 'Add Hardware'.
     #. Add your hardware by discovery, hostname, or ipv4 address.
 
 #.  Select your device in the drop-down menu.
 #.  Update the device's Firmware (Safemode) image.
 
-    #. Configuration Pane -> Firmware management -> Click 'Update firmware...'.
+    #. In the 'Configuration' pane » Firmware management, click 'Update firmware...'.
     #. Select a firmware image versioned "25.3" or later.
     #. Click 'Update'.
 
 #.  Format the device (erase existing Runmode).
+    Skip this step if the Base System Image version is not "2025 Q2". The installing the NILRT Base System Image will format the device.
 
-    #. Skip this step if the Base System Image version is not "2025 Q2". The installing the NILRT Base System Image will format the device.
-    #. Configuration Pane -> Advanced -> Click 'Format disk'.
+    #. In the 'Configuration' pane » 'Advanced', click 'Format disk'.
     #. Click 'Format'.
 
 #.  Install the latest NILRT Base System Image.
 
-    #. Configuration Pane -> Click 'Manage software...'.
+    #. In the 'Configuration' pane, click 'Manage software...'.
     #. When prompted, choose a Linux RT System Image versioned "2025 Q2" and click 'OK'.
 
 #.  Set the ``admin`` account password. 
