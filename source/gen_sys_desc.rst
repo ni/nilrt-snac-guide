@@ -125,7 +125,7 @@ user.
 the vendor.
 
 **Must be implemented by end user** - The requirement may be met by the
-product, but meeting the re­quirement depends on configuration or
+product, but meeting the requirement depends on configuration or
 deployment actions by the end user.
 
 **Not applicable** - The requirement does not apply to the NI Linux
