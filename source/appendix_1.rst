@@ -119,7 +119,7 @@ standard Linux tools. As a consequence of this reconfiguration:
    the ``admin`` account password while in Safemode will not transfer to
    Runmode.
 
--  MAX connection with the NILRT system will not function once the
+-  HWCU connection with the NILRT system will not function once the
    system is in SNAC configuration. Software installation and LV project
    deployment should occur prior to entering the SNAC configuration.
 
@@ -248,21 +248,16 @@ into the NILRT shell as either ``admin`` (safemode) or ``root`` (runmode).
 Install necessary configuration software to the Host Machine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Choose a network-connected Windows or Linux desktop machine to use as
-   the LabVIEW and configuration host.
-#. Download and install the `NI Package
-   Manager <https://www.ni.com/en/support/downloads/software-products/download.package-manager.html#322516>`__ (NIPM).
+#. Choose a network-connected Windows or Linux desktop machine to use as the LabVIEW and configuration host.
+#. Download and install the `NI Package Manager <https://www.ni.com/en/support/downloads/software-products/download.package-manager.html#322516>`__ (NIPM).
 #. Run the NI Package Manager.
 
-#. Install the latest "NI CompactRIO and Drivers" package. Be sure to
-   include the optional components "NI Hardware Configuration Utility"
-   (checked by default) and "NI Linux RT System Image" (not checked by
-   default).
+#. Install the latest "NI CompactRIO and Drivers" package. Be sure to include the optional components "NI Hardware Configuration Utility" (checked by default) and "NI Linux RT System Image" (not checked by default).
 
-   .. figure:: media/image8.png
-      :alt: A screenshot of a computer Description automatically generated
-      :width: 3.5in
-      :height: 1.57in
+    .. figure:: media/image8.png
+        :alt: A screenshot of a computer Description automatically generated
+        :width: 3.5in
+        :height: 1.57in
 
 
 .. _connect-the-nilrt-device-to-the-internet:
