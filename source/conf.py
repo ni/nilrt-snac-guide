@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'NI Linux RT Security Documentation With SNAC Configuration'
+project = 'NI Linux RT SNAC Configuration Guide'
 author = r'Emerson T\&M'
 copyright = f'2024-%Y, {author}'
 version = '2.0'
