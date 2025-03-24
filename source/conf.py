@@ -77,5 +77,8 @@ latex_elements = {
             \vspace*{2cm}
             \includegraphics[width=0.25\textwidth]{logo.png}
         \end{titlepage}
-    ''' % (project, nist_rev, author, release)
+    ''' % (project, nist_rev, author, release),
+
+    # openany: tells latex to allow Chapter breaks on *any* page, instead of forcing them onto the even-numbered page and inserting a blank page.
+    'classoptions': ',openany',
 }
