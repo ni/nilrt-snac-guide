@@ -58,10 +58,14 @@ latex_elements = {
         \usepackage{scalefnt }
         \setlength{\headheight}{14.5pt}
         \setcounter{secnumdepth}{0}
+        \usepackage{bookmark}
+        \usepackage{hyperref}
     ''',
 
     # Custom title page
     'maketitle': r'''
+        \hypertarget{TitlePage}{}
+        \bookmark[dest=TitlePage]{Title Page}
         \begin{titlepage}
             \centering
             \vspace*{2cm}
