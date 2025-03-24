@@ -141,12 +141,12 @@ Methodology
 
 Each of the following controls contains the following sections:
 
-**Requirement number and title** - As listed in NIST 800-171 Rev 3.
-Numbering is maintained from NIST 800-171.
+**Requirement number and title** - As listed in NIST SP 800-171 Rev 3.
+Numbering is maintained from NIST SP 800-171.
 
-**Control Descriptions** - With text directly from NIST 800-171 Rev 3.
+**Control Descriptions** - With text directly from NIST SP 800-171 Rev 3.
 
-**Discussion** - With text directly from NIST 800-171 Rev 3.
+**Discussion** - With text directly from NIST SP 800-171 Rev 3.
 
 **Implementation Status** - How NILRT SNAC configuration meets the
 control.
@@ -155,12 +155,13 @@ control.
 for the control, with information relevant to the end user related to
 the control.
 
-NIST 800-171 Rev 3 is available at
+NIST SP 800-171 Rev 3 is available at
 https://csrc.nist.gov/pubs/sp/800/171/r3/final.
 
-=====================
-NIST 800-171 Controls
-=====================
+
+========================
+NIST SP 800-171 Controls
+========================
 
 
 .. _controls-summary:
@@ -169,7 +170,7 @@ NIST 800-171 Controls
 Controls Summary
 ----------------
 
-This table lists the compliance of NI Linux RT to the NIST 800-171
+This table lists the compliance of NI Linux RT to the NIST SP 800-171
 controls. This table lists only those controls which have not been
 withdrawn.
 

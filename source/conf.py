@@ -11,7 +11,7 @@ author = r'Emerson T\&M'
 copyright = f'2024-%Y, {author}'
 version = '2.0'
 release = version  # release does not need a patch number for documentation
-nist_rev = '3'  # NIST 800-171 Revision number
+nist_rev = '3'  # NIST SP 800-171 Revision number
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -71,7 +71,7 @@ latex_elements = {
             \vspace*{2cm}
             {\Huge \textbf{%s}\par}
             \vspace{1.5cm}
-            {\Large \textbf{Based on NIST 800-171 Rev%s}\par}
+            {\Large \textbf{Based on NIST SP 800-171 Rev%s}\par}
             \vspace{1.5cm}
             {\Large \textbf{%s}\par}
             \vspace{1.5cm}
