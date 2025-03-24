@@ -85,4 +85,10 @@ latex_elements = {
 
     # openany: tells latex to allow Chapter breaks on *any* page, instead of forcing them onto the even-numbered page and inserting a blank page.
     'classoptions': ',openany',
+
+    'tableofcontents': r'''
+        \hypertarget{TOC}{}
+        \bookmark[dest=TOC]{Contents}
+        \sphinxtableofcontents
+    ''',
 }
