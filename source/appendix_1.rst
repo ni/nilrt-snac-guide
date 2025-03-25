@@ -67,10 +67,10 @@ Safemode as a part of normal operations. System maintainers are still
 expected to use Safemode to affect deployment of the NILRT Base System
 Image, software installation, and system recovery operations.
 
-**Graphical UI.** Normal NILRT configurations support an optional
-graphical desktop interface based on XFCE. This graphical UI is not
-intended for use in the SNAC configuration. Integrators are directed to
-forbid system administrators from enabling this interface, by policy.
+**Graphical UI.**
+Normal NILRT configurations support an optional graphical desktop interface based on the XFCE desktop environment.
+This graphical UI is not intended for use in high-security environments and is disabled as a part of the SNAC configuration.
+Integrators are directed to forbid system administrators from reinstalling or enabling the graphical UI.
 
 **Application Web Server.** After applying the SNAC configuration, the
 LabVIEW Application Web Server will cease to function.
