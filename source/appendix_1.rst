@@ -39,13 +39,12 @@ deployment of the following NI software products.
 -  NI-Switch
 -  NI-FGEN
 
-**Runtime Software Installation.** While in the SNAC configuration,
-software installation to the NILRT system is only permitted from:
-the `NI.com <http://ni.com/>`__ core package feed, the NI Offline Feed
-Installation tool, or from software sources that have been independently
-validated and are controlled by the Integrator. The SNAC configuration
-will automatically disable the
-noncompliant `NI.com <http://ni.com/>`__ "extra" package feed.
+**Runtime Software Installation.**
+While in the SNAC configuration, software installation to the NILRT system is only permitted from:
+
+1. the NI vendor `package feeds <https://download.ni.com/ni-linux-rt/feeds/>`__ (configured by default).
+2. the `NI Linux Real-Time Offline Feed <https://knowledge.ni.com/KnowledgeArticleDetails?id=kA03q000000YGDsCAO>`__.
+3. software sources that have been validated-by and which are controlled by the system Integrator.
 
 **Connected Machines.** If your application design includes a
 network-connected Windows or Linux system that receives data from the
