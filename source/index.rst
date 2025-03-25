@@ -8,6 +8,7 @@
     info_sys_desc
     snac_config
     gen_sys_desc
+    nist_controls
     section_3_1
     section_3_2
     section_3_3
