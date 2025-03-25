@@ -1,21 +1,12 @@
 
-.. _appendix-1--nilrt-configuration-guide-for-800-171-compliance--v1-0-:
+.. _appendix-1:
 
-============================================================
-Appendix 1: NILRT Configuration Guide for 800-171 Compliance
-============================================================
+=======================================================
+Appendix 1: The Secured, Network-Attached Configuration
+=======================================================
 
-NI Linux RT (NILRT) is an embedded, general-purpose operating system
-based on the Linux kernel and OpenEmebedded package distribution. The
-system kernel is enhanced for better real-time scheduling performance in
-high-precision IO applications. And both the kernel and distribution are
-specialized for use with NI compact RIO (cRIO) and PXIe devices.
-
-This document describes the use of NILRT in the Secured,
-Network-Attached Controller (SNAC) configuration: a domain-specific
-configuration for high-security environments where compliance to NIST SP
-800-171 or similar security standards is required.
-
+This chapter describes the use of NI Linux RT (NILRT) in the Secured, Network-Attached Controller (SNAC) configuration.
+SNAC is a domain-specific configuration for high-security environments, where compliance to NIST SP 800-171 or other NIST SP 800-53-derived security standards is required.
 
 .. _design-constraints:
 
