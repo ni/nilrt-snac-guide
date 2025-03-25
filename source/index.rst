@@ -7,7 +7,6 @@
     document_metadata
     info_sys_desc
     snac_config
-    info_sys_cat
     gen_sys_desc
     section_3_1
     section_3_2
