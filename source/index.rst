@@ -6,7 +6,6 @@
 
     document_metadata
     introduction
-    snac_config
     gen_sys_desc
     nist_controls
     section_3_1
