@@ -79,7 +79,7 @@ latex_elements = {
             \vfill
             {\Large \today\par}
             \vspace*{2cm}
-            \includegraphics[]{logo.png}
+            \includegraphics[height=1in]{logo.png}
         \end{titlepage}
     ''' % (project, nist_rev, author, release),
 
