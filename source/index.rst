@@ -5,7 +5,7 @@
     :caption: Contents:
 
     document_metadata
-    info_sys_desc
+    introduction
     snac_config
     gen_sys_desc
     nist_controls
