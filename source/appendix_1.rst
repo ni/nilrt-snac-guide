@@ -122,7 +122,7 @@ system can be broadly divided into one or more roles.
 
 **System Integrators** are engineering organizations who design hardware
 and software solutions using NI LinuxRT devices. Integrating
-organizatons may be the solutions end-user or an upstream vendor in
+organizations may be the solutions end-user or an upstream vendor in
 their own right.
 
 **System Maintainers** are individuals who are responsible for
@@ -171,7 +171,7 @@ logging.
 
 The default system logging configuration can be extended to meet mission requirements by appending configurations to the ``/etc/syslog-ng/syslog-ng.conf`` file.
 
-The SNAC configuraton enables *persistent log storage*.
+The SNAC configuration enables *persistent log storage*.
 Storing logs persistently may fill up the NILRT system's disk space, potentially halting other system operations.
 Integrators are directed to periodically retrieve NILRT system logs, store them on another system, and then clean the logs on the NILRT system.
 
@@ -340,7 +340,7 @@ Run the nilrt-snac configuration tool
 
     #. Click 'Reconnect' or select your device in the drop-down menu.
     #. When prompted, login as ``root`` with no password.
-    #. This comfirms the host system is able to still communicate with the NILRT device.
+    #. This confirms the host system is able to still communicate with the NILRT device.
 
 #.  Login as ``root`` with no password. ``root`` is the new super-user account that replaces ``admin``.
 
@@ -363,7 +363,7 @@ administrators should be given unprivileged user accounts and the
 ability to execute privileged functions using sudo.
 
 Add system administrators' user account is added to the group with
-the usermod command.
+the ``usermod`` command.
 
     .. code-block:: bash
 
