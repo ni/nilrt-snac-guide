@@ -42,9 +42,9 @@ deployment of the following NI software products.
 **Runtime Software Installation.**
 While in the SNAC configuration, software installation to the NILRT system is only permitted from:
 
-1. the NI vendor `package feeds <https://download.ni.com/ni-linux-rt/feeds/>`__ (configured by default).
-2. the `NI Linux Real-Time Offline Feed <https://knowledge.ni.com/KnowledgeArticleDetails?id=kA03q000000YGDsCAO>`__.
-3. software sources that have been validated-by and which are controlled by the system Integrator.
+#. the NI vendor `package feeds <https://download.ni.com/ni-linux-rt/feeds/>`__ (configured by default).
+#. the `NI Linux Real-Time Offline Feed <https://knowledge.ni.com/KnowledgeArticleDetails?id=kA03q000000YGDsCAO>`__.
+#. software sources that have been validated-by and which are controlled by the system Integrator.
 
 **Connected Machines.** If your application design includes a
 network-connected Windows or Linux system that receives data from the
@@ -202,9 +202,9 @@ System and Communications Protection
 
 **Configuration.** NILRT system configuration operations are performed via two remote, encrypted paths and one local path.
 
-1. (Remote) The NI HardWare Configuration Utility (HWCU) can be used for system maintenance and deployment of the NILRT Base System Image.
-2. (Remote) The NILRT Base System Image supports Secure SHell (SSH) connections to its OpenSSH server instance, which can be used for subsequent manual configuration.
-3. (Local) System users can connect the NILRT device to a graphical display and gain access to the system shell using a keyboard.
+#. (Remote) The NI HardWare Configuration Utility (HWCU) can be used for system maintenance and deployment of the NILRT Base System Image.
+#. (Remote) The NILRT Base System Image supports Secure SHell (SSH) connections to its OpenSSH server instance, which can be used for subsequent manual configuration.
+#. (Local) System users can connect the NILRT device to a graphical display and gain access to the system shell using a keyboard.
 
 **Application.** System applications employ protection strategies that
 are necessarily unique to their mission. For LabVIEW communications,
