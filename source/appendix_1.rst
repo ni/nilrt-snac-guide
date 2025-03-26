@@ -81,11 +81,9 @@ LabVIEW Application Web Server will cease to function.
 Design Overview
 ---------------
 
-The NILRT SNAC configuration is a supported set of runtime configuration
-changes to the normal NILRT Base System Image (sometimes called
-"Runmode"), to increase system compatibility with NIST SP 800-171
-security controls. The configuration: replaces the legacy proprietary
-authentication framework with standard Linux tooling, disables the
+The NILRT SNAC configuration is a supported set of runtime configuration changes to the normal NILRT Base System Image ("Runmode").
+This section describes the major differences between the factory NILRT configuration and NILRT+SNAC.
+
 
 .. _access-control:
 
