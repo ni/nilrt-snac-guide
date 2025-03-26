@@ -274,7 +274,6 @@ On the host system:
     #. Click 'Update'.
 
 #.  Format the device (erase existing Runmode).
-    Skip this step if the Base System Image version is not "2025 Q2". The installing the NILRT Base System Image will format the device.
 
     #. In the 'Configuration' pane » 'Advanced', click 'Format disk'.
     #. Click 'Format'.
