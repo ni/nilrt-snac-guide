@@ -260,15 +260,20 @@ information.
 |   | Not applicable                  |
 +---+---------------------------------+
 
-+----------------------------------------------------------------------------------+
-| Solution Implementation                                                          |
-+==================================================================================+
-| CUI in transit can be secured in LabVIEW over the TLS, SFTP, SSH, and            |
-| WebDAV+HTTPS protocols without additional software installation. CUI in storage  |
-| can be manually encrypted/decrypted by running command-line utilities through    |
-| System Exec, e.g. openssl, gnupg, etc. The use of VPNs allows unsecured          |
-| protocols to be used in a secure manner.                                         |
-+----------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
+| Solution Implementation                                                                         |
++=================================================================================================+
+| CUI in transit can be secured in LabVIEW over the TLS, SFTP, SSH, and WebDAV+HTTPS protocols    |
+| without additional software installation. Non-LabVIEW applications should use TLS or DTLS.      |
++-------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
+| CUI in storage should either be stored in encrypted forms and only decrypted into memory using  |
+| the included `gnupg` and `openssl` utilties, or stored in a block-encrypted partition or        | 
+| removable storage device. For more information about how to setup an encrypted data             |
+| partition, see the                                                                              |
+| `Non-Runtime Partition Encryption <appendix_1.rst#non-runtime-partition-encryption>`_ section   |
+| in Appendix 1.                                                                                  |
++-------------------------------------------------------------------------------------------------+
 
 .. raw:: latex
 
