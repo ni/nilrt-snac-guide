@@ -432,3 +432,67 @@ Configure Remote Logging
         /etc/init.d/syslog restart
 
     For more information on configuring syslog-ng, refer to the `Syslog-ng Github <https://github.com/syslog-ng/syslog-ng>`_.
+
+
+
+.. _optional-snac-configuration-instructions:
+
+----------------------------------------
+Optional SNAC Configuration Instructions
+----------------------------------------
+
+The following instructions outline additional configuration steps that may be performed at the discretion of the system maintainers. 
+These steps are not mandatory but can enhance the functionality or performance of the NILRT system. 
+System maintainers should evaluate their specific needs and decide whether to implement these configurations.
+
+.. _non-runtime-partition-encryption:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Non-Runtime Partition Encryption
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+System maintainers should consider encrypting partitions on designs that store controlled data on 
+removable devices or non-runtime partitions to protect sensitive information.
+
+#.  Install the `cryptsetup` tool using `opkg`.
+
+    .. code-block:: bash
+
+        opkg install cryptsetup
+
+#.  Create a non-runtime partition (if needed) using the following commmands:
+
+    .. code-block:: bash
+
+        dd if=/dev/zero of=/tmp/test_partition bs=1M count=32
+        mkdir /mnt/test_partition
+    Note: Replace `/tmp/test_partition` with the desired file path and size for your partition.
+
+#.  Encrypt the partition.
+
+    .. code-block:: bash
+
+        cryptsetup luksFormat /tmp/test_partition
+    Note: You will be prompted to enter a secure passphrase.
+
+#.  Open the encrypted partition.
+
+    .. code-block:: bash
+    
+        cryptsetup luksOpen /tmp/test_partition test_partition
+
+#.  Format the encrypted partition.
+
+    .. code-block:: bash
+    
+        mkfs.ext4 /dev/mapper/test_partition_crypt
+
+#.  Mount the encrypted partition.
+
+    .. code-block:: bash
+
+        mount /dev/mapper/test_partition_crypt /mnt/test_partition
+
+After mounting the encrypted partition, you can use it just like any other filesystem.
+For additional encryption options or configurations using `cryptsetup`, refer to the `Cryptsetup Documentation <https://www.man7.org/linux/man-pages/man8/cryptsetup.8.html>`_.
+Please be aware that root partition encryption is not supported.
