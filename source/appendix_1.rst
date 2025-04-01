@@ -385,7 +385,7 @@ Configure Remote Logging
         ########################
         # Sources
         ########################
-        source s_net { tcp(ip(0.0.0.0) port(514)); udp(); };
+        source s_net { tcp(); udp(ip(0.0.0.0) port(514)); };
 
         ########################
         # Destinations
@@ -415,7 +415,7 @@ Configure Remote Logging
         };
 
         destination d_remote {
-            syslog("<Remote IP Address>" transport("tcp") port(514));
+            syslog("<Remote IP Address>" transport("udp") port(514));
         };
 
         log {
