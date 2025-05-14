@@ -142,7 +142,8 @@ Windows host instructions
         netsh advfirewall `
             firewall add rule `
                 name=nilrt-wireguard `
-                dir=inaction=allow `
+                dir=in `
+                action=allow `
                 protocol=ANY `
                 localip=${device_wg_address}/24 `
                 profile=any
