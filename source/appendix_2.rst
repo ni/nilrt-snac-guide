@@ -49,11 +49,11 @@ pseudocode variables, which you should replace before entry.
 |                           | target on local      |                               |               |
 |                           | network              |                               |               |
 +---------------------------+----------------------+-------------------------------+---------------+
-| ``${windows_wg_address}`` | IPv6 address of      | Choose from IPv4 private      | 192.168.94.1  |
+| ``${windows_wg_address}`` | IPv4 address of      | Choose from IPv4 private      | 192.168.94.1  |
 |                           | Windows host on      | network ranges, avoiding      |               |
 |                           | VPN                  | networks in use               |               |
 +---------------------------+----------------------+-------------------------------+---------------+
-| ``${device_wg_address}``  | IPv6 address of RT   | Same                          | 192.168.94.2  |
+| ``${device_wg_address}``  | IPv4 address of RT   | Same                          | 192.168.94.2  |
 |                           | target on            |                               |               |
 |                           | VPN                  |                               |               |
 +---------------------------+----------------------+-------------------------------+---------------+
