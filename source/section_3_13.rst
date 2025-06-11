@@ -268,10 +268,10 @@ information.
 +-------------------------------------------------------------------------------------------------+
 +-------------------------------------------------------------------------------------------------+
 | CUI in storage should either be stored in encrypted forms and only decrypted into memory using  |
-| the included `gnupg` and `openssl` utilties, or stored in a block-encrypted partition or        | 
+| the included ``gnupg`` and ``openssl`` utilities, or stored in a block-encrypted partition or   | 
 | removable storage device. For more information about how to setup an encrypted data             |
 | partition, see the                                                                              |
-| `Non-Runtime Partition Encryption <appendix_1.rst#non-runtime-partition-encryption>`_ section   |
+| :ref:`Non-Runtime Partition Encryption<non-runtime-partition-encryption>` section               |
 | in Appendix 1.                                                                                  |
 +-------------------------------------------------------------------------------------------------+
 
