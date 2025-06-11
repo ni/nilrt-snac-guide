@@ -4,6 +4,7 @@
     This header is necessary to keep latex from messing up the next document's headers.
     But it is nonprinting and does not generate a PDF bookmark.
     No idea why either of those is true.
+
 =================
 Document Metadata
 =================

@@ -466,6 +466,7 @@ removable devices or non-runtime partitions to protect sensitive information.
 
         dd if=/dev/zero of=/tmp/test_partition bs=1M count=32
         mkdir /mnt/test_partition
+
     Note: Replace `/tmp/test_partition` with the desired file path and size for your partition.
 
 #.  Encrypt the partition.
@@ -473,6 +474,7 @@ removable devices or non-runtime partitions to protect sensitive information.
     .. code-block:: bash
 
         cryptsetup luksFormat /tmp/test_partition
+
     Note: You will be prompted to enter a secure passphrase.
 
 #.  Open the encrypted partition.
