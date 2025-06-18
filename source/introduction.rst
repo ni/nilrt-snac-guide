@@ -32,7 +32,7 @@ The remainder of this document is organized as follows.
 
 * **Chapter 2** provides a general overview of NI Linux RT and the cRIO and PXIe platforms.
 * **Chapters 3 - 20** provide an enumeration of the total controls defined by NIST SP 800-171r3, and a summary of how the SNAC configuration satisfies the control, or what should be satisfied by implementing organizations.
-* **Appendix 1** provides a detail description of the SNAC design, discusses application considerations, and provides instructions on how to deploy an NILRT cRIO/PXIe into the SNAC configuration.
-* **Appendix 2** provides detail instructions of how to configure a Windows LabVIEW host to connect to a SNAC-configured NILRT device using the Wireguard VPN utility.
+* **Appendix 1** provides a detailed description of the SNAC design, discusses application considerations, and provides instructions on how to deploy an NILRT cRIO/PXIe system into the SNAC configuration.
+* **Appendix 2** provides detailed instructions on how to configure a Windows LabVIEW host to connect to a SNAC-configured NILRT device using the Wireguard VPN utility.
 * **Appendix 3** provides an administrative guide to configuring the NILRT firewall daemon to suit your application.
 * **Appendix 4** summarizes LabVIEW Real-Time feature support status in the SNAC configuration.
