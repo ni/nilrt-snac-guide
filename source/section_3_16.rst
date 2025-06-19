@@ -138,7 +138,7 @@ implementing other forms of isolation.
 | Solution Implementation                                                          |
 +==================================================================================+
 | NILRT uses third-party components, including open source components. These       |
-| components are managed and tracked. With each release of a NILRT component,      |
+| components are managed and tracked. With each release of an NILRT component,     |
 | developers review the list of components for support.                            |
 +----------------------------------------------------------------------------------+
 +----------------------------------------------------------------------------------+

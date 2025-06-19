@@ -902,7 +902,7 @@ selected data structures such as files, records, or fields.
 | Solution Implementation                                                          |
 +==================================================================================+
 | The NILRT+SNAC configuration does not support connection to mobile devices.      |
-| System owners are directed to enforce policies against connecting to a NILRT     |
+| System owners are directed to enforce policies against connecting to an NILRT    |
 | system from a mobile device.                                                     |
 +----------------------------------------------------------------------------------+
 
