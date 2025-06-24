@@ -11,14 +11,10 @@ Document Metadata
 
 **Prepared By**
 
-.. list-table::
-
-    * - Organization Name
-      - NI
-    * - Address
-      - 11500 N Mopac Expwy
-    * - City, State, Zip
-      - Austin, TX 78759
+| `security@ni.com <mailto:security@ni.com>`__
+| NI (Emerson)
+| 11500 N Mopac Expwy
+| Austin, TX 78759
 
 
 .. _revision-history:
@@ -40,8 +36,3 @@ Document Metadata
     * - 03/21/2025
       - 2.0
       - Updated for SNAC v2.0.0 Release.
-
-
-**How to Contact Us**
-
-For questions about this document, contact `security@ni.com <mailto:security@ni.com>`__.
