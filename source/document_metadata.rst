@@ -11,31 +11,35 @@ Document Metadata
 
 **Prepared By**
 
-+-----------------------------------+-----------------------------------+
-| Identification of Organization    |                                   |
-| that Prepared this Document       |                                   |
-+===================================+===================================+
-| Organization Name                 | NI                                |
-+-----------------------------------+-----------------------------------+
-| Address                           | 11500 N Mopac Expwy               |
-+-----------------------------------+-----------------------------------+
-| City, State, Zip                  | Austin TX 78759                   |
-+-----------------------------------+-----------------------------------+
+.. list-table::
+
+    * - Organization Name
+      - NI
+    * - Address
+      - 11500 N Mopac Expwy
+    * - City, State, Zip
+      - Austin, TX 78759
 
 
 .. _revision-history:
 
 **Revision History**
 
-+----------------+-----------------+-----------------------------------+
-| Date           | Version         | Description                       |
-+================+=================+===================================+
-| 9/13/2024      | 1.0             | Original Publication              |
-+----------------+-----------------+-----------------------------------+
-| 12/30/2024     | 1.1             | Updated for SNAC v1.0 Release.    |
-+----------------+-----------------+-----------------------------------+
-| 03/21/2025     | 2.0             | Updated for SNAC v2.0.0 Release.  |
-+----------------+-----------------+-----------------------------------+
+.. list-table::
+    :header-rows: 1
+
+    * - Date
+      - Version
+      - Description
+    * - 9/13/2024
+      - 1.0
+      - Original Publication
+    * - 12/30/2024
+      - 1.1
+      - Updated for SNAC v1.0 Release.
+    * - 03/21/2025
+      - 2.0
+      - Updated for SNAC v2.0.0 Release.
 
 
 **How to Contact Us**
