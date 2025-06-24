@@ -9,6 +9,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [2.1.0] - 2025-06-24
+
+Minor update to represent changes that have gone into the SNAC v2.1 release (NILRT 11.2, LV 2025Q3).
+
+Representing github changes through PR 31.
+
+
+### Added
+* Added optional instructions giving guidance on using `cryptsetup` to encrypt non-runtime partitions. (#24)
+* Added support for EAPOL authentication of systems using `wpa_supplicant`. (#27)
+	* Upgraded 03.05.02 compliance to USER. (#27)
+
+### Changed
+* Updated the 03.13.08 solution. (#24)
+* Changed the remote syslog configuration instructions to use UDP, instead of TCP. (#25)
+
+### Fixed
+* Fixed typographical errors in the firewall configuration instructions. (#26)
+* Fixed a broken hyperlink in control 03.13.08. (#29)
+
+
 ## [2.0.0] - 2025-03-26
 
 First github release based on the new documentation build process. Corresponds to nilrt-snac v2.0.0, LV 2025Q2, and NILRT 11.1.
