@@ -61,7 +61,7 @@ administrators and system maintainers.
 "Safemode" of operation, where Base System Image and system software
 configuration changes can be made. Because this boot configuration is
 not secured to the same standards as SNAC, unprivileged users and system
-administrators should never direct a NILRT device to reboot into
+administrators should never direct an NILRT device to reboot into
 Safemode as a part of normal operations. System maintainers are still
 expected to use Safemode to affect deployment of the NILRT Base System
 Image, software installation, and system recovery operations.
@@ -144,7 +144,7 @@ the ``sudo`` and ``adm`` groups, as it would permit that user to both perform
 privileged operations and remove audit records of their operations.
 
 **System Users** are all other individuals who require limited access to
-a NILRT system to perform their assigned tasks. These users are
+an NILRT system to perform their assigned tasks. These users are
 generally unprivileged, and forbidden from being members of any of the
 prior access groups.
 
@@ -218,7 +218,7 @@ application-level encryption strategy of their own design.
 SNAC Configuration Instructions
 -------------------------------
 
-System maintainers are directed to deploy and configure a NILRT system
+System maintainers are directed to deploy and configure an NILRT system
 in the SNAC configuration by performing the following actions. All
 action should generally be performed by the System Maintainer, logged
 into the NILRT shell as either ``admin`` (safemode) or ``root`` (runmode).
