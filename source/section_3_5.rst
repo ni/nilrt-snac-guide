@@ -97,7 +97,7 @@ networks.
 +==================================================================================+
 | NILRT supports 802.1X authentication on the network. Refer to the nilrt-docs     |
 | `documentation <https://nilrt-docs.ni.com/eapol/eapol.html>`__ at                |
-| *nilrt-docs.ni.com* for tutorials on how to configure an NILRT device to         |
+| *nilrt-docs.ni.com* for tutorials on how to configure a NILRT device to          |
 | authenticate to an 802.1X-enabled network. The system owner can use this         |
 | solution to identify and authenticate NILRT devices before establishing          |
 | a network connection.                                                            |
