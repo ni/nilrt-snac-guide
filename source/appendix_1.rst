@@ -21,6 +21,41 @@ following support constraints.
 work only on cRIO x64 and PXIe x64 devices, that support NILRT. The
 sbRIO family of controllers is not included in the supported set.
 
+The supported cRIO x64 controllers include the following:
+
+-  cRIO-9030
+-  cRIO-9031
+-  cRIO-9033
+-  cRIO-9034
+-  cRIO-9035
+-  cRIO-9036
+-  cRIO-9038
+-  cRIO-9039
+-  cRIO-9040
+-  cRIO-9041
+-  cRIO-9042
+-  cRIO-9043
+-  cRIO-9045
+-  cRIO-9046
+-  cRIO-9047
+-  cRIO-9048
+-  cRIO-9049
+-  cRIO-9053
+-  cRIO-9054
+-  cRIO-9055
+-  cRIO-9056
+-  cRIO-9057
+-  cRIO-9058
+
+The following cRIO ARM controllers are **NOT** supported:
+
+-  cRIO-9063
+-  cRIO-9064
+-  cRIO-9065
+-  cRIO-9066
+-  cRIO-9067
+-  cRIO-9068
+
 **Supported NILRT System Images.** The SNAC configuration is supported
 on the NILRT Base System Image 2025.3 and later.
 
@@ -29,7 +64,7 @@ device configuration via direct SSH connection or HWCU. Configuration
 via NI MAX or SystemLink is not supported at this time.
 
 **Supported Software Products.** The SNAC configuration supports the
-deployment of the following NI software products.
+deployment of the following NI software products:
 
 -  LabVIEW Real-Time 2022-2025
 -  NI-DAQmx
