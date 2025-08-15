@@ -17,7 +17,7 @@ SPHINXBUILD   ?= $(PYTHON) -m sphinx
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
-% : Makefile
+% : Makefile fetch-usbguard-doc
 	$(SPHINXBUILD) -M $@ "$(srcdir)" "$(builddir)" $(SPHINXOPTS) $(O)
 
 
@@ -29,6 +29,16 @@ SPHINXBUILD   ?= $(PYTHON) -m sphinx
 all : latexpdf
 .PHONY : all
 
+USBGUARD_DOC_REPO = https://github.com/ni/nilrt-docs
+USBGUARD_DOC_PATH = docs/source/usbguard/usbguard.rst
+USBGUARD_DOC_BRANCH_OR_COMMIT ?= 4daf8c90d493a4be340b9ac6e03bb6a1a5e757b0
+USBGUARD_DOC_DEST = $(builddir)/nilrt-docs/usbguard.rst
+
+.PHONY : fetch-usbguard-doc
+fetch-usbguard-doc :
+	@mkdir -p $(builddir)/nilrt-docs
+	curl -sSL "$(USBGUARD_DOC_REPO)/raw/$(USBGUARD_DOC_BRANCH_OR_COMMIT)/$(USBGUARD_DOC_PATH)" -o $(USBGUARD_DOC_DEST)
+	@echo "Downloaded usbguard.rst from branch '$(USBGUARD_DOC_BRANCH_OR_COMMIT)' to $(USBGUARD_DOC_DEST)"
 
 clean :
 	@rm -Rf $(builddir)
