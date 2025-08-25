@@ -147,6 +147,16 @@ Windows host instructions
                 localip=${device_wg_address}/24 `
                 profile=any
 
+#.  Change the Wireguard network connection profile from "Public" to "Private" to
+    ensure that certain LabVIEW networking features function correctly. This can
+    also be accomplished from a command line with Administrator permissions:
+
+    .. code-block:: powershell
+
+        Get-NetConnectionProfile `
+            | Where-Object { $_.IPv4Address -eq "${windows_wg_address}" } `
+            | Set-NetConnectionProfile -NetworkCategory Private
+
 #.  In the WireGuard application, click the **Activate** button on your
     tunnel's information panel.
 
