@@ -57,7 +57,7 @@ NI Linux Real-Time
 
 NI Linux Real-Time (NILRT) is an embedded, general-purpose operating system based on the Linux kernel and OpenEmbedded package distribution.
 The system kernel is enhanced for better real-time scheduling performance in high-precision IO applications.
-Both the kernel and distribution are specialized for use with NI compact RIO (cRIO) and PXIe devices.
+Both the kernel and distribution are specialized for use with NI CompactRIO (cRIO) and PXIe devices.
 
 Documentation for the generic use and administration of NILRT can be found at `ni.com <https://ni.com>`__ or on the `nilrt-docs <https://nilrt-docs.ni.com>`__ supplemental NILRT documentation site.
 The source code for the open-source portions of the distribution and for the Linux kernel are available from the official NI github repositories `ni/nilrt <https://github.com/ni/nilrt>`__ and `ni/linux <https://github.com/ni/linux>`__ respectively.

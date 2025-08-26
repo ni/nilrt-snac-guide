@@ -23,7 +23,8 @@ This process should only be performed by a repo maintainer.
 
    ``` bash
    gpg --list-keys \<$(git config --get user.email)\>  # Copy public key ID from output
-   git config user.signingkey=$pubkey
+   git config user.signingkey $pubkey
+   git config core.commentchar ';'
    ```
 
 1. Review PRs since the last release. Ensure that all notable changes are represented in the CHANGELOG.
@@ -37,13 +38,13 @@ This process should only be performed by a repo maintainer.
 1. Tag and sign the HEAD.
 
    ```bash
-   git tag --sign v${major}.${minor}
+   git tag --sign v${major}.${minor}.0
    ```
 
 1. Push the tag to github.
 
    ```bash
-   git push origin v${major}.${minor}
+   git push origin v${major}.${minor}.0
    ```
 
 1. Create a [new release](https://github.com/ni/nilrt-snac-guide/releases/new) in Github, attached to the tag you just pushed.

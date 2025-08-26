@@ -48,9 +48,9 @@ of increased risk despite contract security provisions.
 +---+---------------------------------+
 |   | Not implemented by vendor       |
 +---+---------------------------------+
-|   | Must be implemented by end user |
+| X | Must be implemented by end user |
 +---+---------------------------------+
-| X | Not applicable                  |
+|   | Not applicable                  |
 +---+---------------------------------+
 
 +----------------------------------------------------------------------------------+
@@ -59,7 +59,10 @@ of increased risk despite contract security provisions.
 | System communication boundaries are defined across fixed-function networking     |
 | devices like routers and firewalls, and VPNs and related tunnel technologies.    |
 | Customers retain all responsibility for configuration and maintenance of these   |
-| devices.                                                                         |
+| devices. NILRT+SNAC devices are equipped with a software firewall -              |
+| ``firewalld`` - that provides protection to the device and the network.          |
+| Additional configuration of ``firewalld`` can be performed by system             |
+| administrators using the ``firewall-cmd`` utility.                               |
 +----------------------------------------------------------------------------------+
 
 .. raw:: latex
@@ -268,10 +271,10 @@ information.
 +-------------------------------------------------------------------------------------------------+
 +-------------------------------------------------------------------------------------------------+
 | CUI in storage should either be stored in encrypted forms and only decrypted into memory using  |
-| the included `gnupg` and `openssl` utilties, or stored in a block-encrypted partition or        | 
+| the included ``gnupg`` and ``openssl`` utilities, or stored in a block-encrypted partition or   | 
 | removable storage device. For more information about how to setup an encrypted data             |
 | partition, see the                                                                              |
-| `Non-Runtime Partition Encryption <appendix_1.rst#non-runtime-partition-encryption>`_ section   |
+| :ref:`Non-Runtime Partition Encryption<non-runtime-partition-encryption>` section               |
 | in Appendix 1.                                                                                  |
 +-------------------------------------------------------------------------------------------------+
 
