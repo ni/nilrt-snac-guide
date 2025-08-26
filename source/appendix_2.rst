@@ -22,41 +22,45 @@ pseudocode variables, which you should replace before entry.
 
 .. tabularcolumns:: \Y{0.27}\Y{0.25}\Y{0.3}\Y{0.18}
 
-+---------------------------+----------------------+-------------------------------+---------------+
-| Variable                  | Description          | To compute…                   |Sample Value   |
-+===========================+======================+===============================+===============+
-|``${windows_private_key}`` | Private              | Open WireGuard,               |               |
-|                           | key of Windows host  | select **Add Tunnel»Create    | YJ0NxsWisQ…   |
-|                           |                      | New Tunnel…**, and record     |               |
-|                           |                      | the value of **PrivateKey**   |               |
-+---------------------------+----------------------+-------------------------------+---------------+
-| ``${windows_public_key}`` | Public key           | Record the value of "Public   |               |
-|                           | of Windows host      | key" in the **Create new      | OF9sbmVqTs…   |
-|                           |                      | tunnel** dialog above         |               |
-+---------------------------+----------------------+-------------------------------+---------------+
-|                           | IPv4 address of      | ``ipconfig``                  | 10.0.2.1      |
-|``${windows_ipv4_address}``| Windows host through |                               |               |
-|                           | which RT target is   |                               |               |
-|                           | accessible           |                               |               |
-+---------------------------+----------------------+-------------------------------+---------------+
-| ``${device_private_key}`` | Private              | ``wg show wglv0 private-key`` |               |
-|                           | key of RT target     |                               | SJvSIy5Epo…   |
-+---------------------------+----------------------+-------------------------------+---------------+
-| ``${device_public_key}``  | Public key           | ``wg show wglv0``             |               |
-|                           | of RT target         |                               | wGleQMHB6b…   |
-+---------------------------+----------------------+-------------------------------+---------------+
-|``${device_ipv4_address}`` | IPv4 address of RT   | ``ip addr``                   | 10.0.2.2      |
-|                           | target on local      |                               |               |
-|                           | network              |                               |               |
-+---------------------------+----------------------+-------------------------------+---------------+
-| ``${windows_wg_address}`` | IPv4 address of      | Choose from IPv4 private      | 192.168.94.1  |
-|                           | Windows host on      | network ranges, avoiding      |               |
-|                           | VPN                  | networks in use               |               |
-+---------------------------+----------------------+-------------------------------+---------------+
-| ``${device_wg_address}``  | IPv4 address of RT   | Same                          | 192.168.94.2  |
-|                           | target on            |                               |               |
-|                           | VPN                  |                               |               |
-+---------------------------+----------------------+-------------------------------+---------------+
++-----------------------------+----------------------+-------------------------------+---------------+
+| Variable                    | Description          | To compute…                   |Sample Value   |
++=============================+======================+===============================+===============+
+| ``${windows_private_key}``  | Private              | Open WireGuard,               |               |
+|                             | key of Windows host  | select **Add Tunnel»Create    | YJ0NxsWisQ…   |
+|                             |                      | New Tunnel…**, and record     |               |
+|                             |                      | the value of **PrivateKey**   |               |
++-----------------------------+----------------------+-------------------------------+---------------+
+|  ``${windows_public_key}``  | Public key           | Record the value of "Public   |               |
+|                             | of Windows host      | key" in the **Create new      | OF9sbmVqTs…   |
+|                             |                      | tunnel** dialog above         |               |
++-----------------------------+----------------------+-------------------------------+---------------+
+|                             | IPv4 address of      | ``ipconfig``                  | 10.0.2.1      |
+| ``${windows_ipv4_address}`` | Windows host through |                               |               |
+|                             | which RT target is   |                               |               |
+|                             | accessible           |                               |               |
++-----------------------------+----------------------+-------------------------------+---------------+
+|  ``${device_private_key}``  | Private              | ``wg show wglv0 private-key`` |               |
+|                             | key of RT target     |                               | SJvSIy5Epo…   |
++-----------------------------+----------------------+-------------------------------+---------------+
+|  ``${device_public_key}``   | Public key           | ``wg show wglv0``             |               |
+|                             | of RT target         |                               | wGleQMHB6b…   |
++-----------------------------+----------------------+-------------------------------+---------------+
+| ``${device_ipv4_address}``  | IPv4 address of RT   | ``ip addr``                   | 10.0.2.2      |
+|                             | target on local      |                               |               |
+|                             | network              |                               |               |
++-----------------------------+----------------------+-------------------------------+---------------+
+|  ``${windows_wg_address}``  | IPv4 address of      | Choose from IPv4 private      | 172.16.1.2    |
+|                             | Windows host on      | network ranges, avoiding      |               |
+|                             | VPN                  | networks in use               |               |
++-----------------------------+----------------------+-------------------------------+---------------+
+|  ``${device_wg_address}``   | IPv4 address of RT   | Same                          | 172.16.1.1    |
+|                             | target on            |                               |               |
+|                             | VPN                  |                               |               |
++-----------------------------+----------------------+-------------------------------+---------------+
+|``${windows_wg_tunnel_name}``| Name of the          | User defined                  | wglv0         |
+|                             | WireGuard tunnel     |                               |               |
+|                             | on Windows           |                               |               |
++-----------------------------+----------------------+-------------------------------+---------------+
 
 .. raw:: latex
 
@@ -131,7 +135,7 @@ Windows host instructions
         Endpoint = ${device_ipv4_address}:51820
 
     Give the tunnel an appropriate name (e.g. wglv0) and save the tunnel
-    configuration.
+    configuration. This name is the ``{windows_wg_tunnel_name}``.
 
 #.  Add a firewall rule that permits incoming network traffic to the
     Wireguard tunnel listening port. This can be accomplished from a
@@ -148,12 +152,22 @@ Windows host instructions
                 localip=${device_wg_address}/24 `
                 profile=any
 
+#.  Change the Wireguard network connection profile from "Public" to "Private" to
+    ensure that certain LabVIEW networking features function correctly. This can
+    also be accomplished from a command line with Administrator permissions:
+
+    .. code-block:: powershell
+
+        Get-NetConnectionProfile `
+            | Where-Object { $_.Name -eq "${windows_wg_tunnel_name}" } `
+            | Set-NetConnectionProfile -NetworkCategory Private
+
 #.  In the WireGuard application, click the **Activate** button on your
     tunnel's information panel.
 
 Once the Windows-side WireGuard tunnel is activated, you should begin to see
 network traffic reported on the tunnel's status panel. Thereafter, you can
 connect to the device in LabVIEW using its Wireguard IP address
-(``${windows_wg_address}``, e.g. 172.16.1.1). Additional NILRT devices can be
+(``${device_wg_address}``, e.g. 172.16.1.1). Additional NILRT devices can be
 attached to the host by performing similar steps but changing each new device to
 a new address on the e.g. 172.16.1.0/24 address space.
