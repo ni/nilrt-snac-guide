@@ -308,16 +308,18 @@ malicious code).
 +---+---------------------------------+
 |   | Not implemented by vendor       |
 +---+---------------------------------+
-|   | Must be implemented by end user |
+| X | Must be implemented by end user |
 +---+---------------------------------+
-| X | Not applicable                  |
+|   | Not applicable                  |
 +---+---------------------------------+
 
 +----------------------------------------------------------------------------------+
 | Solution Implementation                                                          |
 +==================================================================================+
-| It is the responsibility of the system owner to create a plan for managing media |
-| used with the system.                                                            |
+| To restrict or prohibit the use of removable media, system owners should develop |
+| a media management plan and consider technical controls such as USBGuard.        |
+| For details on configuring USBGuard, see                                         |
+| :ref:`Appendix 5 <appendix-5>`                                                   |
 +----------------------------------------------------------------------------------+
 
 .. raw:: latex
