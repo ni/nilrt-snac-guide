@@ -57,8 +57,13 @@ configuration and a working WireGuard connection.
 +----------------------+-------------------+---------------------------+
 | HWCU (general use)   | Supported         |                           |
 +----------------------+-------------------+---------------------------+
-| Network Shared       | Supported         |                           |
-| Variables            |                   |                           |
+| Network Shared       | Supported         | For variables hosted on   |
+| Variables            |                   | the desktop, enable       |
+|                      |                   | 'Specify custom address'  |
+|                      |                   | and enter the WireGuard   |
+|                      |                   | address on the General    |
+|                      |                   | page of the My Computer   |
+|                      |                   | Properties dialog.        |
 +----------------------+-------------------+---------------------------+
 | Network Streams      | Supported         |                           |
 +----------------------+-------------------+---------------------------+
