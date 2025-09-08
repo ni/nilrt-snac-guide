@@ -57,8 +57,9 @@ configuration and a working WireGuard connection.
 +----------------------+-------------------+---------------------------+
 | HWCU (general use)   | Supported         |                           |
 +----------------------+-------------------+---------------------------+
-| Network Shared       | Supported         | See note below.           |
-| Variables            |                   |                           |
+| Network Shared       | Supported         | See the *Hosting Network* |
+| Variables            |                   | *Shared Variables*        |
+|                      |                   | section below.            |
 +----------------------+-------------------+---------------------------+
 | Network Streams      | Supported         |                           |
 +----------------------+-------------------+---------------------------+
@@ -89,11 +90,11 @@ configuration and a working WireGuard connection.
 
     \scalefont{1.25}
 
-.. _hosting-shared-variables-on-my-computer:
+.. _hosting-network-shared-variables:
 
----------------------------------------
-Hosting Shared Variables on My Computer
----------------------------------------
+--------------------------------
+Hosting Network Shared Variables
+--------------------------------
 
 To access shared variables hosted on My Computer from your RT target,
 update the My Computer alias to point to the WireGuard address. To do
