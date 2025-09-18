@@ -2,6 +2,7 @@
 
 This document contains information about project governance and maintenance processes.
 
+
 ## Maintainers
 
 The following individuals have generously donated their time to maintaining this project.
@@ -9,9 +10,11 @@ The following individuals have generously donated their time to maintaining this
 * Alex Stewart <alex.stewart@emerson.com> - Active. Lead Maintainer.
 * Mark Silva <mark.silva@emerson.com> - Active. Cooperating Maintainer.
 
+
 ## Versioning Policy
 
 This project uses [semantic versioning](https://semver.org/spec/v2.0.0.html), without release candidates. "Release" commits are tagged like `v${major}.${minor}`
+
 
 ## Release Process
 
@@ -33,7 +36,9 @@ This process should only be performed by a repo maintainer.
 
 1. Ensure the information in `conf.py` matches the releasing version.
 
-   1. Commit any changes required.
+1. Update the document version table in `document_metadata.py`.
+
+1. Commit any changes required.
 
 1. Tag and sign the HEAD.
 
