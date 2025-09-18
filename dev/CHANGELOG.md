@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [3.0.0] - 2025-09-18
+
+Document updates to represent changes that have gone into the SNAC v3.0.0 release (NILRT 11.3, LV 2025Q4).
+
+Representing github changes through PR #37.
+
+
+### Added
+* Added an explicit list of supported cRIO and sbRIO devices to Appendix 1. (#34, #35)
+
+### Changed
+* Disposition for NIST control 03.13.01 changes from 'Not Applicable' to 'Must be implemented by end user' to better reflect that end users should utilize the `firewalld` daemon to control boundary access to NILRT devices. (#33)
+* Changed disposition for NIST control 03.08.07 Media Use to "Must be implemented by end user" to reflect that USBGuard is now provided in the NILRT package feeds and can be used by integrators to control USB peripheral connections to the device. (#36)
+
+### Fixed
+* Minor grammar, syntax, and style adjustments throughout. (#31, #32)
+* Fixed an issue in the Appendix 2 wireguard configuration instructions where the Windows-side wireguard network interface would default to 'Public' firewall policies, blocking inbound traffic from the NILRT device. Added a step to the configuration instructions to set the network to 'Private'. (#37)
+
+
 ## [2.1.0] - 2025-06-24
 
 Minor update to represent changes that have gone into the SNAC v2.1 release (NILRT 11.2, LV 2025Q3).
