@@ -57,8 +57,9 @@ configuration and a working WireGuard connection.
 +----------------------+-------------------+---------------------------+
 | HWCU (general use)   | Supported         |                           |
 +----------------------+-------------------+---------------------------+
-| Network Shared       | Supported         |                           |
-| Variables            |                   |                           |
+| Network Shared       | Supported         | See the *Hosting Network* |
+| Variables            |                   | *Shared Variables*        |
+|                      |                   | section below.            |
 +----------------------+-------------------+---------------------------+
 | Network Streams      | Supported         |                           |
 +----------------------+-------------------+---------------------------+
@@ -88,3 +89,13 @@ configuration and a working WireGuard connection.
 .. raw:: latex
 
     \scalefont{1.25}
+
+.. _hosting-network-shared-variables:
+
+--------------------------------
+Hosting Network Shared Variables
+--------------------------------
+
+To access shared variables hosted on My Computer from your RT target,
+update the My Computer alias to point to the WireGuard address. To do
+this, specify a custom address on the My Computer item's `General page <https://www.ni.com/docs/en-US/bundle/labview-api-ref/page/resource/framework/providers/lvdesktop-llb/prefpage-mycomputer.html>`__.
