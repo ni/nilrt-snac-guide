@@ -306,6 +306,102 @@ Using SSH, log in to the NILRT device.
 #. All following steps are performed on the NILRT device, using the SSH shell.
 
 
+.. _snac-configuration-file:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+SNAC Configuration File
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``nilrt-snac`` tool reads its settings from ``/etc/snac/snac.conf``.
+Edit this file as the ``admin`` user (``root`` if already in SNAC mode) to control which configuration 
+modules are applied during ``configure`` and which checks are executed during ``verify``.
+
+Modules
+^^^^^^^
+
+The configuration file contains a ``[modules]`` section where each module is configured individually using the form:
+
+``<module_name> = enabled|disabled``
+
+Behavior:
+
+- ``enabled`` — the module will be processed by ``nilrt-snac configure`` and checked by ``nilrt-snac verify``.
+- ``disabled`` — the module will be skipped by both commands.
+- If the ``[modules]`` section is omitted or left empty, all modules are processed.
+- Any module not explicitly set to ``disabled`` is treated as ``enabled`` by default.
+
+Examples
+^^^^^^^^
+
+Enable common modules and disable GUI/Web Server:
+
+.. code-block:: ini
+
+    [modules]
+    access-control = enabled
+    audit          = enabled
+    logging        = enabled
+    sudo           = enabled
+    ssh            = enabled
+    gui            = disabled
+    app-webserver  = disabled
+
+Disable a single module and leave the rest at defaults (enabled):
+
+.. code-block:: ini
+
+    [modules]
+    gui = disabled
+
+After editing ``/etc/snac/snac.conf``, re-run the tool to apply or check the selected modules:
+
+.. code-block:: bash
+
+    nilrt-snac configure
+    nilrt-snac verify
+
+.. list-table:: Available SNAC Modules
+   :header-rows: 1
+
+   * - **Module Name**
+     - **Description**
+   * - ntp
+     - NTP time synchronization
+   * - opkg
+     - OPKG package manager
+   * - wireguard
+     - WireGuard VPN
+   * - cryptsetup
+     - Disk encryption (cryptsetup)
+   * - niauth
+     - NIAuth authentication modules
+   * - wifi
+     - WiFi support
+   * - faillock
+     - PAM faillock for login security
+   * - graphical
+     - Graphical UI components
+   * - console
+     - Console access
+   * - sysapi
+     - NI SysAPI SSH CLI
+   * - tmux
+     - tmux session manager
+   * - pwquality
+     - Password quality enforcement
+   * - ssh
+     - SSH server settings
+   * - sudo
+     - Sudoers security
+   * - firewall
+     - System firewall
+   * - auditd
+     - Auditd system auditing
+   * - syslog
+     - syslog-ng logging
+   * - usbguard
+     - USBGuard device control (verification only)
+
 .. _run-the-nilrt-snac-configuration-tool:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
