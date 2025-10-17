@@ -420,6 +420,11 @@ Run the nilrt-snac configuration tool
 
         nilrt-snac configure
 
+    .. note::
+
+        All output is logged to ``/var/log/snac/`` with the filename in the form of
+        ``configure-<timestamp>.log`` or ``verify-<timestamp>.log``.
+
 #.  Reboot the system. Note that after rebooting the system, serial
     console will be disabled. SSH is the preferred mechanism to continue
     administrating the system.
