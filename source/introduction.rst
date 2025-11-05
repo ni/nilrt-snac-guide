@@ -36,4 +36,4 @@ The remainder of this document is organized as follows.
 * **Appendix 2** provides detailed instructions on how to configure a Windows LabVIEW host to connect to a SNAC-configured NILRT device using the Wireguard VPN utility.
 * **Appendix 3** provides an administrative guide to configuring the NILRT firewall daemon to suit your application.
 * **Appendix 4** summarizes LabVIEW Real-Time feature support status in the SNAC configuration.
-* **Appendix 5** provides instructions for USBGuard installation and configuration in the SNAC configuration.
+* **Appendix 5** provides instructions for additional security and system tools including USBGuard and ClamAV installation and configuration in the SNAC configuration.
