@@ -113,9 +113,9 @@ when attempting to open or execute files.
 +===+=================================+
 |   | Implemented by vendor           |
 +---+---------------------------------+
-| X | Not implemented by vendor       |
+|   | Not implemented by vendor       |
 +---+---------------------------------+
-|   | Must be implemented by end user |
+| X | Must be implemented by end user |
 +---+---------------------------------+
 |   | Not applicable                  |
 +---+---------------------------------+
@@ -123,8 +123,11 @@ when attempting to open or execute files.
 +----------------------------------------------------------------------------------+
 | Solution Implementation                                                          |
 +==================================================================================+
-| NILRT provides no malicious code scanning. The system owner is responsible to    |
-| identify and test available Linux scanning programs.                             |
+| NILRT provides ClamAV as the malicious code scanning solution. It is the         |
+| responsibility of the system owner to configure and use ClamAV to scan for       |
+| malicious code.                                                                  |
+| For details on configuring and using ClamAV, refer to the                        |
+| :ref:`Appendix 5 <appendix-5>`                                                   |
 +----------------------------------------------------------------------------------+
 
 .. raw:: latex
