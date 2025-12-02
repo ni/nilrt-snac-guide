@@ -18,12 +18,15 @@ NILRT_DOC_BRANCH_OR_COMMIT ?= 4daf8c90d493a4be340b9ac6e03bb6a1a5e757b0
 USBGUARD_DOC_PATH = docs/source/usbguard/usbguard.rst
 USBGUARD_DOC_DEST = $(downloadedsrcdir)/usbguard.rst
 
+CLAMAV_DOC_PATH = docs/source/clamav/clamav.rst
+CLAMAV_DOC_DEST = $(downloadedsrcdir)/clamav.rst
+
 # REAL TARGETS #
 ################
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
-% : Makefile $(USBGUARD_DOC_DEST)
+% : Makefile $(USBGUARD_DOC_DEST) $(CLAMAV_DOC_DEST)
 	$(SPHINXBUILD) -M $@ "$(srcdir)" "$(builddir)" $(SPHINXOPTS) $(O)
 
 
@@ -39,6 +42,11 @@ $(USBGUARD_DOC_DEST) :
 	@mkdir -p $(downloadedsrcdir)
 	curl -sSL "$(NILRT_DOC_REPO)/raw/$(NILRT_DOC_BRANCH_OR_COMMIT)/$(USBGUARD_DOC_PATH)" -o $(USBGUARD_DOC_DEST)
 	@echo "Downloaded usbguard.rst from branch '$(NILRT_DOC_BRANCH_OR_COMMIT)' to $(USBGUARD_DOC_DEST)"
+
+$(CLAMAV_DOC_DEST) :
+	@mkdir -p $(downloadedsrcdir)
+	curl -sSL "$(NILRT_DOC_REPO)/raw/$(NILRT_DOC_BRANCH_OR_COMMIT)/$(CLAMAV_DOC_PATH)" -o $(CLAMAV_DOC_DEST)
+	@echo "Downloaded clamav.rst from branch '$(NILRT_DOC_BRANCH_OR_COMMIT)' to $(CLAMAV_DOC_DEST)"
 
 clean :
 	@rm -Rf $(builddir)

@@ -445,6 +445,8 @@ After editing ``/etc/snac/snac.conf``, re-run the tool to apply or check the sel
      - syslog-ng logging
    * - usbguard
      - USBGuard device control (verification only)
+   * - clamav
+     - ClamAV antivirus scanning (verification only)
 
 .. _run-the-nilrt-snac-configuration-tool:
 
