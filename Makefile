@@ -13,7 +13,7 @@ SPHINXOPTS    ?=
 SPHINXBUILD   ?= $(PYTHON) -m sphinx
 
 NILRT_DOC_REPO = https://github.com/ni/nilrt-docs
-NILRT_DOC_BRANCH_OR_COMMIT ?= 4daf8c90d493a4be340b9ac6e03bb6a1a5e757b0
+NILRT_DOC_BRANCH_OR_COMMIT ?= 280feea40740423ef894c8bcad848a0910a00abb
 
 USBGUARD_DOC_PATH = docs/source/usbguard/usbguard.rst
 USBGUARD_DOC_DEST = $(downloadedsrcdir)/usbguard.rst
