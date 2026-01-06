@@ -9,6 +9,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [3.1.0] - 2026-01-05
+
+Document updates to represent changes that have gone into the SNAC v3.1.0 release (NILRT 11.4, LV 2026Q1).
+
+Representing github changes through PR #41.
+
+
+### Added
+
+* Added guidance on how to host network shared variables from LabVIEW over the wireguard connection. (#38)
+* Added a new section to Appendix 1, describing how to use `snac.conf`. (#39)
+* Added information to Appendix 1 about how SNAC configuration tool output is logged. (#40)
+* Added Appendix 5 administrative guidance for using ClamAV on NILRT. (#41, #42)
+
+
+## Changed
+
+* Updated NIST control disposition 3.14.2. "Malicious Code Protection" from not-implemented to user-implemented, via the installation and configuration of `ClamAV`. (#41)
+
+
 ## [3.0.0] - 2025-09-18
 
 Document updates to represent changes that have gone into the SNAC v3.0.0 release (NILRT 11.3, LV 2025Q4).
