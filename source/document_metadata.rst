@@ -42,3 +42,6 @@ Document Metadata
     * - 09/30/2025
       - 3.0
       - Updated for SNAC v3.0.0 Release.
+    * - 01/05/2026
+      - 3.1
+      - Updated for SNAC v3.1.0 Release.
