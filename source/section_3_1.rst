@@ -233,7 +233,7 @@ labels.
 ---------------------------
 
 #. Identify the duties of individuals requiring separation.
-#. Define system access authorizations to support separation of   duties.
+#. Define system access authorizations to support separation of duties.
 
 **DISCUSSION**
 
@@ -265,12 +265,12 @@ duties.
 +----------------------------------------------------------------------------------+
 | Solution Implementation                                                          |
 +==================================================================================+
-| NILRT+SNAC uses a single account for maintenance duties (root), a user account   |
-| for LabVIEW processes (lvuser), and segregated system service accounts based on  |
-| their domain of responsibility. Individuals who require administrative or        |
-| auditing permissions should have user accounts created for them using the        |
-| \`useradd\` command, and be given membership in the \`sudo\` or \`adm\` group    |
-| respectively.                                                                    |
+| The NILRT SNAC configuration uses a single account for maintenance duties        |
+| (``root``), a user account for LabVIEW processes (``lvuser``), and segregated    |
+| system service accounts based on their domain of responsibility. Individuals who |
+| require administrative or auditing permissions should have user accounts created |
+| for them using the ``useradd`` command, and be given membership in the ``sudo``  |
+| or ``adm`` group respectively.                                                   |
 +----------------------------------------------------------------------------------+
 +----------------------------------------------------------------------------------+
 | Individuals whose roles require them to use deployed LabVIEW applications should |
@@ -279,12 +279,16 @@ duties.
 | and decrypt LabVIEW network traffic to which their role requires they have       |
 | access.                                                                          |
 +----------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------+
+| Integrating organizations can modify which users and groups are permitted to     |
+| perform privileged Hardware Configuration Utility actions by changing the        |
+| access control values in the ``/etc/nisysapid.conf`` file.                       |
++----------------------------------------------------------------------------------+
+
 
 .. raw:: latex
 
     \newpage
-
-
 
 .. _3-1-5--least-privilege:
 
