@@ -8,12 +8,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.1] - 2026-05-01
+
+Document updates to represent changes that have gone into the SNAC v3.1.0 release (NILRT 11.4, LV 2026Q1).
+
+Representing github changes through PR #45
+
+
+### Changed
+
+* Modified guidance to NIST control 3.1.4 "Separation of Duties" to include information about customizing sysapi daemon user permissions. (#45)
+
 
 ## [3.1.0] - 2026-01-05
 
 Document updates to represent changes that have gone into the SNAC v3.1.0 release (NILRT 11.4, LV 2026Q1).
 
-Representing github changes through PR #41.
+Representing github changes through PR #43.
 
 
 ### Added
