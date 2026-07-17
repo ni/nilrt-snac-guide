@@ -10,7 +10,8 @@ downloadedsrcdir = $(srcdir)/nilrt-docs
 PYTHON ?= python3
 
 SPHINXOPTS    ?=
-SPHINXBUILD   ?= $(PYTHON) -m sphinx
+SPHINXBUILD   ?= $(PYTHON) -m sphinx $(SPHINXOPTS)
+export SPHINXOPTS ?= --fail-on-warning --keep-going
 
 NILRT_DOC_REPO = https://github.com/ni/nilrt-docs
 NILRT_DOC_BRANCH_OR_COMMIT ?= 1615e865748379298bd65ceba723aa0d3ff99aa3
