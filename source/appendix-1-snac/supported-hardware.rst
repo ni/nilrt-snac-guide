@@ -34,6 +34,8 @@ The following devices are **supported**.
 - PXIe-8842
 - PXIe-8861
 - PXIe-8862
+- PXIe-8880
+- PXIe-8881
 - sbRIO-9603
 - sbRIO-9608
 - sbRIO-9609
