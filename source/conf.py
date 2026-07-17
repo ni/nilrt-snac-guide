@@ -60,6 +60,9 @@ latex_elements = {
         \setcounter{secnumdepth}{0}
         \usepackage{bookmark}
         \usepackage{hyperref}
+
+        \hyphenpenalty=7500
+        \emergencystretch=2em
     ''',
 
     # Custom title page
