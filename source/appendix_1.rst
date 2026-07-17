@@ -8,80 +8,24 @@ Appendix 1: The Secured, Network-Attached Configuration
 This chapter describes the use of NI Linux RT (NILRT) in the Secured, Network-Attached Controller (SNAC) configuration.
 SNAC is a domain-specific configuration for high-security environments, where compliance to NIST SP 800-171 or other NIST SP 800-53-derived security standards is required.
 
+
+.. include:: appendix-1-snac/supported-hardware.rst
+
+
+.. include:: appendix-1-snac/supported-software.rst
+
+
 .. _design-constraints:
 
 ------------------
 Design Constraints
 ------------------
 
-When designing a deployment using the SNAC configuration, consider the
-following support constraints.
-
-**Supported Hardware Devices.** The SNAC configuration is verified to
-work only on CompactRIO x64 and PXIe x64 devices, that support NILRT.
-
-The supported CompactRIO x64 controllers include the following:
-
--  cRIO-9030
--  cRIO-9031
--  cRIO-9033
--  cRIO-9034
--  cRIO-9035
--  cRIO-9036
--  cRIO-9038
--  cRIO-9039
--  cRIO-9040
--  cRIO-9041
--  cRIO-9042
--  cRIO-9043
--  cRIO-9045
--  cRIO-9046
--  cRIO-9047
--  cRIO-9048
--  cRIO-9049
--  cRIO-9053
--  cRIO-9054
--  cRIO-9055
--  cRIO-9056
--  cRIO-9057
--  cRIO-9058
--  sbRIO-9603
--  sbRIO-9608
--  sbRIO-9609
--  sbRIO-9628
--  sbRIO-9629
--  sbRIO-9638
-
-The following CompactRIO ARM controllers are **NOT** supported:
-
--  cRIO-9063
--  cRIO-9064
--  cRIO-9065
--  cRIO-9066
--  cRIO-9067
--  cRIO-9068
--  sbRIO-9607
--  sbRIO-9627
--  sbRIO-9637
--  sbRIO-9651
-
-**Supported NILRT System Images.** The SNAC configuration is supported
-on the NILRT Base System Image 2025.3 and later.
+In addition to the hardware and software support constraints described in the previous sections, there are additional design constraints that should be considered when deploying a NILRT system in the SNAC configuration.
 
 **Device Configuration Utilities.** The SNAC configuration supports
 device configuration via direct SSH connection or HWCU. Configuration
 via NI MAX or SystemLink is not supported at this time.
-
-**Supported Software Products.** The SNAC configuration supports the
-deployment of the following NI software products:
-
--  LabVIEW Real-Time 2022-2025
--  NI-DAQmx
--  NI-DMM
--  NI-Scope
--  NI-DCPower
--  NI-Switch
--  NI-FGEN
 
 **Runtime Software Installation.**
 While in the SNAC configuration, software installation to the NILRT system is only permitted from:
