@@ -1,5 +1,3 @@
-.. _appendix-1-supported-software:
-
 ------------------
 Supported Software
 ------------------

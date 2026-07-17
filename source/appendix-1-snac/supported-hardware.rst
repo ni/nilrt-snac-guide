@@ -1,10 +1,8 @@
-.. _appendix-1-supported-hardware:
-
 ------------------
 Supported Hardware
 ------------------
 
-The SNAC configuration is verified to work only on CompactRIO x64 and PXIe x64 devices, that support NILRT.
+The SNAC configuration is verified to work only on x64 architecture CompactRIO, sbRIO, and PXIe.
 The following devices are **supported**.
 
 - cRIO-9030

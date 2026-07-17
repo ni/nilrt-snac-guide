@@ -9,7 +9,13 @@ This chapter describes the use of NI Linux RT (NILRT) in the Secured, Network-At
 SNAC is a domain-specific configuration for high-security environments, where compliance to NIST SP 800-171 or other NIST SP 800-53-derived security standards is required.
 
 
+.. _appendix-1-supported-hardware:
+
+
 .. include:: appendix-1-snac/supported-hardware.rst
+
+
+.. _appendix-1-supported-software:
 
 
 .. include:: appendix-1-snac/supported-software.rst
