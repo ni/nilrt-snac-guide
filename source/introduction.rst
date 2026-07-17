@@ -13,14 +13,14 @@ Purpose and Scope
 NIST SP 800-171 is a publication from the National Institute of Standards and Technology (NIST) that provides a set of security requirements for protecting Controlled Unclassified Information (CUI) in non-federal systems and organizations.
 Its recommendations are the basis for several other cybersecurity standards sets, including the Cybersecurity Maturity Model Certification (CMMC) and the Defense Federal Acquisition Regulation Supplement (DFARS).
 
-This document provides a review of the security controls listed in NIST SP 800-171 Rev. 3, and how they can be satisfied by an NI LinuxRT (NILRT) system configured with the Secured, Network-Attached Controller (SNAC) configuration described in :ref:`appendix-1`.
+This document provides a review of the security controls listed in NIST SP 800-171 Rev. 3, and how they can be satisfied by an NI Linux RT (NILRT) system configured with the Secured, Network-Attached Controller (SNAC) configuration described in :ref:`appendix-1`.
 
 
 -----
 Scope
 -----
 
-This document applies only to the operating system on the controllers in these platforms.
+This document applies only to the operating system software on NI controllers.
 It does not discuss the process to secure individual hardware drivers or application software that might be used to interact with the supported platforms.
 Contact your NI sales representative to inquire if there are cooperative secure configuration guides for your desired NI driver or Application Software.
 
