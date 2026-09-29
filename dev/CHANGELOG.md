@@ -8,6 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [3.2.0] - 2026-09-29
+
+Document updates to represent changes that have gone into the SNAC v3.2.0 release (NILRT 11.7, LV 2026Q3).
+
+Represents github changes through PR #47.
+
+
+### Changed
+
+* The Introduction section now references a single-source of truth Appendix 1 for the list of supported hardware and software. (#46)
+
+
+
 ## [3.1.1] - 2026-05-01
 
 Document updates to represent changes that have gone into the SNAC v3.1.0 release (NILRT 11.4, LV 2026Q1).
