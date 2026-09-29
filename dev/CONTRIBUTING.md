@@ -39,7 +39,8 @@ make  # output :build/latex/SNAC.pdf
 
 ## Running Tests
 
-This project has no automated testing.
+This project uses github-action based PR testing.
+The logic is stored in the [.github](/.github) directory.
 
 
 ## Submitting Changes Upstream
