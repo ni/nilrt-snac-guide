@@ -1,0 +1,34 @@
+3.5.1:
+  status: not_implemented
+  disposition:
+  - NI Linux RT runs software including LabVIEW RT on fixed system accounts and does not support integration with external authentication solutions.
+3.5.2:
+  status: end_user
+  disposition:
+  - NILRT supports 802.1X authentication on the network. Refer to the nilrt-docs `documentation <https://nilrt-docs.ni.com/eapol/eapol.html>`__ at *nilrt-docs.ni.com* for tutorials on how to configure a NILRT device to authenticate to an 802.1X-enabled network. The system owner can use this solution to identify and authenticate NILRT devices before establishing a network connection.
+3.5.3:
+  status: not_applicable
+  disposition:
+  - The SNAC configuration uses the PAM-based Linux authentication framework to authentication system access and enforce access control policies, but it does not include a Multi-factor Authentication schema by default. System owners are directed to consider PAM-compatible MFA implementations that may be appropriate for the system's operating environment, and to implement those solutions.
+3.5.4:
+  status: not_implemented
+  disposition:
+  - NILRT does not provide protection from replay attacks. The system owner must provide protection from these attacks.
+3.5.5:
+  status: not_applicable
+  disposition:
+  - Device identification controls are defined at the organization level; individualized users (when they exist) must be managed manually.
+3.5.7:
+  status: implemented
+  disposition:
+  - The NILRT+SNAC configuration uses the PAM pwquality module to enforce password quality limitations. The PWQuality configuration is defined and configurable via the ``/etc/security/pwquality.conf`` file. Passwords are also checked against a dictionary of common words, and agains the cracklib compromised password database. Password quality limitations are not enforced for the ``root`` account.
+  - Passwords are stored internally in a hashed form, controlled by PAM. The ``root`` account password is automatically coordinated between Safemode and Runmode boots.
+  - System administrators can reset user passwords using the ``passwd`` utility and set the password lifetime to expire immediately, forcing users to enter a new password after logging in with a temporary password.
+3.5.11:
+  status: implemented
+  disposition:
+  - All password handling tools installed with NILRT + SNAC obscure passwords during entry.
+3.5.12:
+  status: implemented
+  disposition:
+  - PAM natively supports password expiration and first-login password expiration; the remaining controls are organization-centric.

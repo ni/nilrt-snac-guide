@@ -1,0 +1,13 @@
+3.17.1:
+  status: implemented
+  disposition:
+  - NI has a supply chain management system to reduce supply chain risk and to ensure no counterfeit parts enter the devices used to run NILRT
+  - As an internally-developed solution, NILRT does not have a software supply chain outside of NI. Any future components purchased for NILRT support would comply with the NI SCRM plan.
+3.17.2:
+  status: implemented
+  disposition:
+  - NI has a supply chain management system to reduce supply chain risk and to ensure no counterfeit parts enter NI products.
+3.17.3:
+  status: implemented
+  disposition:
+  - NI has a supply chain management system to reduce supply chain risk and to ensure no counterfeit parts enter NI products.

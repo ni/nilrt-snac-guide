@@ -1,0 +1,68 @@
+3.1.1:
+  status: end_user
+  disposition:
+  - NILRT SNAC implements a Linux Pluggable Authentication Module (PAM) authentication scheme using standard Linux tools for account management. With these libraries, the NILRT system owner can enable account management with methods such as local passwords or LDAP.
+  - The system is configured with a privileged ``root`` account for maintenance and administration, and other system accounts for use by services on the system. System owners are directed to define a schema of access roles that are appropriate for the system's mission. System administrators are directed to implement that role schema on the NILRT device, via the shell, using the included standard linux account management utilities (passwd, useradd, groupadd, etc.). System owners should define policies that govern how these accounts are monitored and how privileges are revoked, in accordance with NIST SP 800-171 requirement 3.1.1.
+3.1.2:
+  status: end_user
+  disposition:
+  - NILRT segregates access to resource domains by user and group account, and restricts process' access to privileged kernel operations through explicitly-assigned 'capabilities'. CUI domains are not implemented in the NILRT OS design by default. System owners whose applications store, manipulate, or transmit CUI data should implement access control policies specific to their design.
+3.1.3:
+  status: not_applicable
+  disposition:
+  - NILRT and operating systems generically do not have domain knowledge about organizational boundaries. CUI flow enforcement between connected systems is best implemented by dedicated network equipment that can enforce domain boundaries on the network.
+3.1.4:
+  status: end_user
+  disposition:
+  - The NILRT SNAC configuration uses a single account for maintenance duties (``root``), a user account for LabVIEW processes (``lvuser``), and segregated system service accounts based on their domain of responsibility. Individuals who require administrative or auditing permissions should have user accounts created for them using the ``useradd`` command, and be given membership in the ``sudo`` or ``adm`` group respectively.
+  - Individuals whose roles require them to use deployed LabVIEW applications should be authorized at a network-connected Windows host machine. The user's application design should only permit those authorized Windows users to receive and decrypt LabVIEW network traffic to which their role requires they have access.
+  - Integrating organizations can modify which users and groups are permitted to perform privileged NI Hardware Manager (NIHM) actions by changing the access control values in the ``/etc/nisysapid.conf`` file.
+3.1.5:
+  status: not_implemented
+  disposition:
+  - NILRT device configuration and LabVIEW deployment workflows require the use of the ``root`` account and ``lvuser``, respectively. Both accounts have over-broad permissions for their duties. Integrators can mitigate attacks against these accounts by enforcing policy limitations on who has networked and physical access to the NILRT device.
+3.1.6:
+  status: end_user
+  disposition:
+  - System owners are directed to define and enforce policies that restrict credentialed access to administrative accounts to only personnel whose roles require that access. System administrators should use the ``useradd`` command to create non-privileged user accounts for use when performing non-privileged operations on the device.
+3.1.7:
+  status: implemented
+  disposition:
+  - NILRT restricts privileged function execution to the ``root`` maintenance account and members of the ``sudo`` group. Privileged function execution is logged by the audit subsystem and the sudo service to ``/var/log/audit/`` and ``/var/log/auth.log`` respectively. System owners are directed to enforce policies whereby non-privileged actions are performed on less-privileged user accounts.
+3.1.8:
+  status: implemented
+  disposition:
+  - The SNAC configuration uses the PAM faillock module to lock user accounts after 3 authentication failures within a 15 minute time period.
+3.1.9:
+  status: end_user
+  disposition:
+  - NILRT displays notification messages to the user prior to login via the ``issue`` banner system. System owners are directed to prepare a compliant text banner that gives privacy and security notice to users, and to insert that banner message into the ``/etc/issue`` and ``/etc/issue.net`` files.
+3.1.10:
+  status: implemented
+  disposition:
+  - The SNAC configuration includes a terminal locking utility called ``vlock``, which allows users to lock their terminal sessions by either calling it with the ``vlock`` command. Users must resubmit their login credentials to unlock the screen. After 900 seconds of inactivity, the NILRT TMUX shell is configured to automatically lock the console. Note that ``vlock`` cannot obscure terminal history in remote SSH clients; organization clients should be configured to not retain history.
+3.1.11:
+  status: implemented
+  disposition:
+  - Interactive user sessions are automatically terminated after 600 seconds of inactivity, via the TMOUT environment variable. Users are required to re-enter their credentials to regain access to a login session. This value is adjustable by modifying the ``/etc/profile.d/tmout.conf`` file.
+3.1.12:
+  status: not_applicable
+  disposition:
+  - The NILRT+SNAC configuration does not support device configuration or communication through extra-organizational networks.
+  - System owners are directed to only use NILRT systems on networks which are logically segregated from external networks by dedicated network hardware.
+3.1.16:
+  status: not_applicable
+  disposition:
+  - The NILRT+SNAC configuration does not support wireless interfaces. System owners are directed not to attach wireless network adapters to a NILRT system as a part of their design, nor to wirelessly bridge network communications to or from the NILRT system.
+3.1.18:
+  status: not_applicable
+  disposition:
+  - The NILRT+SNAC configuration does not support connection to mobile devices. System owners are directed to enforce policies against connecting to a NILRT system from a mobile device.
+3.1.20:
+  status: not_applicable
+  disposition:
+  - The NILRT+SNAC configuration does not support communications with extra-organizational devices. System Owners are directed to enforce policies against connecting to NILRT systems using personal devices and connecting personal storage devices to NILRT systems.
+3.1.22:
+  status: not_applicable
+  disposition:
+  - NI LinuxRT does not publish CUI data by default. Integrating organizations should develop their own policies and training for handling publicly-accessible CUI data.

@@ -1,0 +1,43 @@
+3.4.1:
+  status: end_user
+  disposition:
+  - The NILRT Base System Image plus the SNAC Configuration Tool defines the initial system state.
+  - Application and driver configuration is built into IPKs using LabVIEW Application Builder. System owners can define a script to install these IPKs.
+3.4.2:
+  status: implemented
+  disposition:
+  - NILRT + SNAC defines a configuration baseline. Organizations are free to apply their own configuration changes on top of SNAC, and define their own processes for managing those changes.
+3.4.3:
+  status: not_applicable
+  disposition:
+  - Secure configuration management is responsibility of the system owner.
+3.4.4:
+  status: not_applicable
+  disposition:
+  - The system owner is responsible to create and utilize an impact analysis process.
+3.4.5:
+  status: not_applicable
+  disposition:
+  - System Integrators are directed to implement policies which restrict physical access to NILRT systems only to authorized System Maintainers for the purpose of making hardware changes.
+3.4.6:
+  status: end_user
+  disposition:
+  - NILRT + SNAC defines the minimal set of services necessary for system operation
+  - NI publishes a list of ports used by its drivers and protocols ("`Configuring Software and Hardware Firewalls to Support NI Products <https://www.ni.com/en/support/security/configuring-software-and-hardware- firewalls-to-support-national-.html>`__"), system owners can configure the system firewall to let through the ports/traffic needed for specific applications.
+3.4.8:
+  status: end_user
+  disposition:
+  - NI Linux RT only allows package installation by superusers. Package installations are restricted to the NILRT feed, but additional packages can be installed by the user by building code packages within the NILRT environment.
+3.4.10:
+  status: implemented
+  disposition:
+  - NI System Configuration can be used as a data source for inventory of NI hardware.
+  - SBOMs are available from ``security@ni.com`` and, in combination with package management, can provide inventory information for software.
+3.4.11:
+  status: end_user
+  disposition:
+  - NILRT does not provide software or hardware features for constraining the location of CUI to any finer granularity than the controller as a whole. System-wide management of information location is conducted at the discretion of the system owner.
+3.4.12:
+  status: not_applicable
+  disposition:
+  - The system owner is responsible to secure the system when it is transported to high-risk areas.

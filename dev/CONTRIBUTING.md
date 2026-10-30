@@ -24,20 +24,61 @@ apt install \
 	""
 ```
 
-2. Install python module dependencies.
+2. Create a Python virtual environment and install the pinned module dependencies.
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
 3. Build the documentation using GNU `make`.
 
 ```bash
-make  # output :build/latex/SNAC.pdf
+make                     # output :build/latex/SNAC.pdf
+make html                # output :build/html
+make generate-sections   # regenerate only the Section 3 sources
+make update-nist-data    # refresh the NIST SP 800-171 data (review and commit the diff)
+make check               # run the generator unit tests
+make clean               # remove build output and generated sources
 ```
 
 
+## Authoring Section 3 Dispositions
+
+The Section 3 chapters (NIST SP 800-171 controls) and the Controls Summary table are **generated** at build time into `source/generated/` (git-ignored).
+Do not edit them, and do not write reStructuredText tables by hand.
+Instead, edit the YAML file for the control's family in [/dispositions](/dispositions) (e.g. `dispositions/3.1.yml`):
+
+```yaml
+3.1.1:
+  status: end_user
+  disposition:
+    - First paragraph. Inline reStructuredText such as ``code`` or :ref:`links <appendix-5>` is allowed.
+    - Second paragraph, rendered as its own cell.
+```
+
+* `status` is exactly one of `implemented`, `not_implemented`, `end_user`, `not_applicable`.
+* Mapping keys must be unique strings, not YAML sequences or mappings (e.g. use `3.1.1:`, not `[3.1.1]:`).
+  Invalid YAML keys are reported with the disposition file path and source location.
+* `disposition` is a list of paragraphs; each becomes a row in the "Solution Implementation" table.
+  A paragraph containing a line break is used verbatim (for lists or literal blocks).
+* Every active (non-withdrawn) NIST control must have an entry and no other controls may. The build fails otherwise.
+  Withdrawn controls are rendered automatically from the NIST data.
+* Adding or deleting a disposition file triggers regeneration on the next build,
+  so removed dispositions cannot silently leave stale generated content.
+
+The NIST text (requirements, discussion, withdrawn status) comes from the committed [/tools/data/nist_sp_800_171r3.json](/tools/data/nist_sp_800_171r3.json).
+To refresh it from the NIST CPRT, run `make update-nist-data` and commit the reviewed diff.
+Run `make generate-sections` to regenerate only the Section 3 sources.
+Unchanged generated files retain their timestamps for incremental Sphinx builds.
+Make records successful generation in `source/generated/.section3.stamp` so
+input changes that do not affect rendered content do not cause repeated generation.
+
+
 ## Running Tests
+
+Generator unit tests: `make check`.
 
 This project uses github-action based PR testing.
 The logic is stored in the [.github](/.github) directory.

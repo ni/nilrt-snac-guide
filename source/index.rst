@@ -8,23 +8,23 @@
     introduction
     gen_sys_desc
     nist_controls
-    section_3_1
-    section_3_2
-    section_3_3
-    section_3_4
-    section_3_5
-    section_3_6
-    section_3_7
-    section_3_8
-    section_3_9
-    section_3_10
-    section_3_11
-    section_3_12
-    section_3_13
-    section_3_14
-    section_3_15
-    section_3_16
-    section_3_17
+    generated/section_3_1
+    generated/section_3_2
+    generated/section_3_3
+    generated/section_3_4
+    generated/section_3_5
+    generated/section_3_6
+    generated/section_3_7
+    generated/section_3_8
+    generated/section_3_9
+    generated/section_3_10
+    generated/section_3_11
+    generated/section_3_12
+    generated/section_3_13
+    generated/section_3_14
+    generated/section_3_15
+    generated/section_3_16
+    generated/section_3_17
     appendix_1
     appendix_2
     appendix_3
