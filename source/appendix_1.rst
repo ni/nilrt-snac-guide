@@ -364,8 +364,6 @@ After editing ``/etc/snac/snac.conf``, re-run the tool to apply or check the sel
      - WireGuard VPN
    * - cryptsetup
      - Disk encryption (cryptsetup)
-   * - niauth
-     - NIAuth authentication modules
    * - wifi
      - WiFi support
    * - faillock
