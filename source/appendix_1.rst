@@ -233,22 +233,27 @@ Install necessary configuration software to the Host Machine
         :height: 1.57in
 
 
-.. _connect-the-nilrt-device-to-the-internet:
+.. _perform-first-time-setup-of-nilrt-device:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Connect the NILRT device to the internet
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Perform first-time setup of the NILRT device on an isolated network segment.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To configure NILRT as a SNAC device, some of the following steps require that the device be able to access the NILRT package feeds at *download.ni.com*.
+NI LinuxRT devices are always configured to expose an SSH server on port 22.
+This service is used by NI hardware configuration tools to securely communicate with the NILRT device, when it is in safemode and runmode.
+The SSH service allows authenticaiton to the ``root`` user account.
 
-When deploying a system on an isolated network, the `Offline Feeds Installer <https://www.ni.com/en/support/downloads/software-products/download.ni-linux-real-time-offline-installation-support.html>`__ utility can be used to setup a bespoke feed server on a Windows host on the same isolated network.
+From inventory, the device will not have a password configured for the ``root`` account.
+You will be directed to set the password the first time you connect to the device from NI Hardware Manager or directly through SSH.
 
+It is crucial that you not place the device onto an uncontrolled network segment prior to setting the ``root`` account password.
+An attacker with access to the segment could hijack the device and compromise its security.
+Device Maintainers (only) should follow these steps to securely set up the NILRT device.
 
-.. _deploy-the-latest-firmware-and-nilrt-base-system-image-to-the-nilrt-system:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Deploy the latest Firmware and NILRT Base System Image to the NILRT system
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#. Build a network segment where all endpoints are controlled my your device maintainers.
+   Ensure that the network is isolated from any uncontrolled networks, including the internet.
+#. Connect a host machine with NI Hardware Manager installed to the isolated network segment.
+#. Physically remove the device from inventory and connect it to the segment.
 
 On the host system:
 
@@ -265,6 +270,36 @@ On the host system:
     #. Select a firmware image versioned "25.3" or later.
     #. Click 'Update'.
 
+
+The NILRT device can now be disconnected from the segment and installed to its intended operational environment.
+It is now also considered safe for handling by personnel who are not device maintainers.
+
+
+.. _connect-the-nilrt-device-to-the-internet:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Connect the NILRT device to the internet.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To configure NILRT as a SNAC device, some of the following steps require that the device be able to access the NILRT package feeds at *download.ni.com*.
+
+When deploying a system on an isolated network, the `Offline Feeds Installer <https://www.ni.com/en/support/downloads/software-products/download.ni-linux-real-time-offline-installation-support.html>`__ utility can be used to setup a bespoke feed server on a Windows host on the same isolated network.
+
+
+.. _deploy-the-latest-firmware-and-nilrt-base-system-image-to-the-nilrt-system:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Deploy the latest NILRT Base System Image to the NILRT system.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On the host system:
+
+#.  Run NIHM. Connect to the NILRT system.
+
+    #. Open the 'Edit' menu and select 'Add Hardware'.
+    #. Add your hardware by discovery, hostname, or ipv4 address.
+
+#.  Select your device in the drop-down menu.
 #.  Format the device (erase existing Runmode).
 
     #. In the 'Configuration' pane » 'Advanced', click 'Format disk'.
@@ -274,11 +309,6 @@ On the host system:
 
     #. In the 'Configuration' pane, click 'Manage software...'.
     #. When prompted, choose a Linux RT System Image versioned "2025 Q2" and click 'OK'.
-
-#.  Set the ``root`` account password.
-
-    #. When prompted enter a new administrator password.
-    #. This password will be used by System Maintainers and is automatically coordinated between Safemode and Runmode boots.
 
 #.  Install software
 
