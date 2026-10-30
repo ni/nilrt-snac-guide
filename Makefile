@@ -55,7 +55,6 @@ $(SECTION_INPUTS) : ;
 $(SECTION_OUTPUTS) &: $(SECTION_INPUTS)
 	$(PYTHON) tools/generate_section3.py --output $(generateddir)
 
-
 # ==============================================================================
 # PHONY TARGETS
 # ==============================================================================
@@ -76,6 +75,9 @@ clean :
 	@rm -Rf $(generateddir)
 	@rm -Rf $(downloadedsrcdir)
 .PHONY : clean
+
+generate-sections : $(SECTION_OUTPUTS)
+.PHONY : generate-sections
 
 help :
 	@$(SPHINXBUILD) -M help "$(srcdir)" "$(builddir)" $(SPHINXOPTS) $(O)
