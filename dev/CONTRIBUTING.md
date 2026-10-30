@@ -65,6 +65,8 @@ Instead, edit the YAML file for the control's family in [/dispositions](/disposi
   A paragraph containing a line break is used verbatim (for lists or literal blocks).
 * Every active (non-withdrawn) NIST control must have an entry and no other controls may. The build fails otherwise.
   Withdrawn controls are rendered automatically from the NIST data.
+* Adding or deleting a disposition file triggers regeneration on the next build,
+  so removed dispositions cannot silently leave stale generated content.
 
 The NIST text (requirements, discussion, withdrawn status) comes from the committed [/tools/data/nist_sp_800_171r3.json](/tools/data/nist_sp_800_171r3.json).
 To refresh it from the NIST CPRT, run `make update-nist-data` and commit the reviewed diff.
