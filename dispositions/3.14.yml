@@ -2,11 +2,11 @@
   status: end_user
   disposition:
   - System owners can report any system flaws related to NILRT to NI by emailing
-    security@ni.com.
+    ``security@ni.com``.
   - NI tests NILRT prior to release to customers. System owners are responsible
     to test updates to NILRT components on the deployed system prior to installation
     of updates, as some local configuration settings may have unintended effects.
-  - NI announces security updates and publishes updates to ni.com/security. The
+  - NI announces security updates and publishes updates to `ni.com/security <https://ni.com/security>`__. The
     system owner is encouraged to enroll in the security notification system at
     that site. The system owner is responsible to evaluate and install security
     updates in a timely manner.
@@ -15,13 +15,13 @@
   disposition:
   - NILRT provides ClamAV as the malicious code scanning solution. It is the responsibility
     of the system owner to configure and use ClamAV to scan for malicious code.
-    For details on configuring and using ClamAV, refer to the :ref:`Appendix 5 <appendix-5>`
+    For details on configuring and using ClamAV, refer to the :ref:`Appendix 5 <appendix-5>`.
 3.14.3:
   status: end_user
   disposition:
   - NI monitors major security alert systems and reacts to relevant alerts. Notifications
     that are relevant to NILRT will be published through the security update system.
-  - NI announces security updates and publishes updates to ni.com/security. The
+  - NI announces security updates and publishes updates to `ni.com/security <https://ni.com/security>`__. The
     system owner is responsible to enroll in the security notification system at
     that site and to enroll in public notification systems for monitoring.
 3.14.6:

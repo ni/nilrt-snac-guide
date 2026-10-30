@@ -21,10 +21,10 @@
   status: implemented
   disposition:
   - Network communications to and from the NILRT+SNAC system are controlled by the
-    'firewalld' firewall daemon. By default, all communications which are not strictly
+    ``firewalld`` firewall daemon. By default, all communications which are not strictly
     necessary for system configuration and administration or which are legitimate
     NI software communications, are denied. Runtime reconfiguration of firewalld
-    by system administrators is possible using the 'firewall-cmd' utility.
+    by system administrators is possible using the ``firewall-cmd`` utility.
 3.13.8:
   status: end_user
   disposition:
@@ -41,7 +41,7 @@
   disposition:
   - The SSH daemon is configured to terminate inactive network sessions after a
     60 second period of inactivity. This value is configurable by system administrators
-    by modifying the 'ClientAlive' settings in the ' /etc/ssh/sshd_config' file.
+    by modifying the ``ClientAlive`` settings in the ``/etc/ssh/sshd_config`` file.
   - System owners create programs to connect and send data from the NILRT device.
     It is the responsibility of the system owner to ensure that all open connections
     in these programs are terminated properly.
