@@ -59,6 +59,8 @@ Instead, edit the YAML file for the control's family in [/dispositions](/disposi
 ```
 
 * `status` is exactly one of `implemented`, `not_implemented`, `end_user`, `not_applicable`.
+* Mapping keys must be unique strings, not YAML sequences or mappings (e.g. use `3.1.1:`, not `[3.1.1]:`).
+  Invalid YAML keys are reported with the disposition file path and source location.
 * `disposition` is a list of paragraphs; each becomes a row in the "Solution Implementation" table.
   A paragraph containing a line break is used verbatim (for lists or literal blocks).
 * Every active (non-withdrawn) NIST control must have an entry and no other controls may. The build fails otherwise.
