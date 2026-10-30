@@ -10,7 +10,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from snac_docs import dispositions, nist, render  # noqa: E402
 
-
 SUMMARY_TABLE = "controls_summary_table.inc"
 
 
@@ -33,6 +32,7 @@ def generate(nist_data, controls, output):
 
 
 def main(argv=None):
+    """Generate the Section 3 source files."""
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--nist-data", type=Path, default=nist.DATA_FILE)
     parser.add_argument("--dispositions", type=Path, default=ROOT / "dispositions")

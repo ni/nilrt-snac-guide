@@ -39,6 +39,7 @@ class GenerationError(Exception):
     """Raised with every problem found, one per line."""
 
     def __init__(self, problems):
+        """Store validation problems and format the exception message."""
         self.problems = list(problems)
         super().__init__("\n".join(self.problems))
 
@@ -108,9 +109,15 @@ def check_coverage(nist_data, controls):
     for family in nist_data["families"]:
         for req in family["requirements"]:
             (withdrawn if "withdrawn" in req else required).add(req["id"])
-    problems = [f"{cid}: no disposition defined" for cid in sorted(required - set(controls), key=_key)]
+    problems = [
+        f"{cid}: no disposition defined" for cid in sorted(required - set(controls), key=_key)
+    ]
     for cid in sorted(set(controls) - required, key=_key):
-        reason = "is withdrawn in NIST SP 800-171" if cid in withdrawn else "is not a NIST SP 800-171 control"
+        reason = (
+            "is withdrawn in NIST SP 800-171"
+            if cid in withdrawn
+            else "is not a NIST SP 800-171 control"
+        )
         problems.append(f"{cid}: disposition defined but control {reason}")
     if problems:
         raise GenerationError(problems)

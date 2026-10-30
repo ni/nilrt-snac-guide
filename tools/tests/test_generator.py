@@ -1,19 +1,26 @@
+"""Tests for Section 3 data processing and source generation."""
+
 import json
 import sys
 from pathlib import Path
 
-import pytest
-
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
 
-from snac_docs import dispositions, nist, render  # noqa: E402
 import generate_section3  # noqa: E402
+import pytest  # noqa: E402
+from snac_docs import dispositions, nist, render  # noqa: E402
 
 
 def element(kind, ident, text="", title=""):
-    return {"element_type": kind, "element_identifier": ident, "title": title,
-            "text": text, "doc_identifier": "DOC"}
+    """Build a CPRT element fixture."""
+    return {
+        "element_type": kind,
+        "element_identifier": ident,
+        "title": title,
+        "text": text,
+        "doc_identifier": "DOC",
+    }
 
 
 RAW = {
@@ -26,8 +33,9 @@ RAW = {
         element("security_requirement", "SR-03.01.01.a", "Define accounts."),
         element("security_requirement", "SR-03.01.01.b.02", "Second"),
         element("security_requirement", "SR-03.01.01.b.01", "First"),
-        element("discussion", "D-03.01.01",
-                'See <a href="#x?element=03.01.02">03.01.02</a> &amp; more.'),
+        element(
+            "discussion", "D-03.01.01", 'See <a href="#x?element=03.01.02">03.01.02</a> &amp; more.'
+        ),
         element("odp", "A.03.01.01.ODP[01]", "should be dropped"),
         element("requirement", "03.01.02", title=""),
         element("withdraw_reason", "WR-03.01.02", "Incorporated into 03.01.01."),
@@ -37,10 +45,12 @@ RAW = {
 
 @pytest.fixture
 def data():
+    """Return preprocessed fixture data."""
     return nist.preprocess(RAW)
 
 
 def test_preprocess_structure(data):
+    """Preprocessing builds the expected nested control structure."""
     family = data["families"][0]
     assert family["id"] == "3.1"
     active, withdrawn = family["requirements"]
@@ -54,6 +64,7 @@ def test_preprocess_structure(data):
 
 
 def test_render_requirement(data):
+    """Requirement rendering includes content and correctly sized tables."""
     req = data["families"][0]["requirements"][0]
     text = render.render_requirement(
         req, {"status": "end_user", "disposition": ["First ``cell``.", "Second cell."]}
@@ -64,11 +75,16 @@ def test_render_requirement(data):
     assert text.count("| X |") == 1
     assert "| First ``cell``." in text and "| Second cell." in text
     assert "\\newpage" in text
-    widths = {len(line) for line in text.splitlines() if line.startswith(("+--", "+==", "| Sol", "| First"))}
+    widths = {
+        len(line)
+        for line in text.splitlines()
+        if line.startswith(("+--", "+==", "| Sol", "| First"))
+    }
     assert len(widths) <= 2
 
 
 def test_render_withdrawn(data):
+    """Withdrawn controls render without dispositions."""
     req = data["families"][0]["requirements"][1]
     text = render.render_requirement(req, None)
     assert ".. _3-1-2--withdrawn--incorporated-into-3-1-1-:" in text
@@ -76,9 +92,17 @@ def test_render_withdrawn(data):
 
 
 def test_summary_table(data):
+    """The summary table links active controls and omits withdrawn ones."""
     table = render.render_summary_table(
-        {"families": [{"id": "3.1", "title": "Access Control",
-                       "requirements": data["families"][0]["requirements"]}]},
+        {
+            "families": [
+                {
+                    "id": "3.1",
+                    "title": "Access Control",
+                    "requirements": data["families"][0]["requirements"],
+                }
+            ]
+        },
         {"3.1.1": {"status": "implemented", "disposition": ["x"]}},
     )
     assert ":ref:`3.1. <3-1--access-control>`" in table
@@ -89,6 +113,7 @@ def test_summary_table(data):
 
 
 def write(tmp_path, name, content):
+    """Write UTF-8 test input under a temporary directory."""
     (tmp_path / name).write_text(content, encoding="utf-8")
 
 
@@ -96,21 +121,29 @@ GOOD = "3.1.1:\n  status: end_user\n  disposition:\n    - Text.\n"
 
 
 def test_load_and_coverage(tmp_path, data):
+    """Valid dispositions pass schema validation and coverage checks."""
     write(tmp_path, "3.1.yml", GOOD)
     controls = dispositions.load_dispositions(tmp_path)
     dispositions.check_coverage(data, controls)
 
 
-@pytest.mark.parametrize("content, expected", [
-    ("3.1.1:\n  status: bogus\n  disposition: [x]\n", "bogus"),
-    ("3.1.1:\n  status: implemented\n", "disposition"),
-    ("3.1.1:\n  status: implemented\n  disposition: []\n", "disposition"),
-    ("3.1.1:\n  status: implemented\n  disposition: [x]\n  extra: 1\n", "extra"),
-    ("3.1.1:\n  status: implemented\n  disposition: [x]\n3.1.1:\n  status: implemented\n  disposition: [x]\n", "duplicate"),
-    ("3.2.1:\n  status: implemented\n  disposition: [x]\n", "does not belong"),
-    ("a: [\n", "invalid YAML"),
-])
+@pytest.mark.parametrize(
+    "content, expected",
+    [
+        ("3.1.1:\n  status: bogus\n  disposition: [x]\n", "bogus"),
+        ("3.1.1:\n  status: implemented\n", "disposition"),
+        ("3.1.1:\n  status: implemented\n  disposition: []\n", "disposition"),
+        ("3.1.1:\n  status: implemented\n  disposition: [x]\n  extra: 1\n", "extra"),
+        (
+            "3.1.1:\n  status: implemented\n  disposition: [x]\n3.1.1:\n  status: implemented\n  disposition: [x]\n",
+            "duplicate",
+        ),
+        ("3.2.1:\n  status: implemented\n  disposition: [x]\n", "does not belong"),
+        ("a: [\n", "invalid YAML"),
+    ],
+)
 def test_invalid_yaml_reports_file(tmp_path, content, expected):
+    """Invalid disposition files report their path and validation issue."""
     write(tmp_path, "3.1.yml", content)
     with pytest.raises(dispositions.GenerationError) as exc:
         dispositions.load_dispositions(tmp_path)
@@ -118,7 +151,12 @@ def test_invalid_yaml_reports_file(tmp_path, content, expected):
 
 
 def test_missing_and_extra_controls(tmp_path, data):
-    write(tmp_path, "3.1.yml", "3.1.2:\n  status: implemented\n  disposition: [x]\n3.1.9:\n  status: implemented\n  disposition: [x]\n")
+    """Coverage errors identify both missing and unexpected controls."""
+    write(
+        tmp_path,
+        "3.1.yml",
+        "3.1.2:\n  status: implemented\n  disposition: [x]\n3.1.9:\n  status: implemented\n  disposition: [x]\n",
+    )
     controls = dispositions.load_dispositions(tmp_path)
     with pytest.raises(dispositions.GenerationError) as exc:
         dispositions.check_coverage(data, controls)
@@ -129,6 +167,7 @@ def test_missing_and_extra_controls(tmp_path, data):
 
 
 def test_cli(tmp_path, data, capsys):
+    """The CLI writes generated sources and reports invalid dispositions."""
     nist_file = tmp_path / "nist.json"
     nist.write_data(data, nist_file)
     disp = tmp_path / "d"
@@ -145,6 +184,7 @@ def test_cli(tmp_path, data, capsys):
 
 
 def test_committed_data_is_consistent():
+    """Committed NIST data has dispositions for every active control."""
     committed = nist.load_data()
     controls = dispositions.load_dispositions(TOOLS.parent / "dispositions")
     dispositions.check_coverage(committed, controls)
