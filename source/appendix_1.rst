@@ -96,10 +96,7 @@ standard Linux tools. As a consequence of this reconfiguration:
    similar to other Linux desktop distributions - aiding the design of
    custom authentication schemes based on common PAM tooling.
 
--  System credentials are no longer shared between Safemode and Runmode.
-   The default login user for Safemode will remain ``admin``. Setting
-   the ``admin`` account password while in Safemode will not transfer to
-   Runmode.
+-  The default login user for Safemode is ``root``. The ``root`` account password is automatically coordinated between Safemode and Runmode boots.
 
 
 .. _roles--users--and-groups:
@@ -215,7 +212,7 @@ SNAC Configuration Instructions
 System maintainers are directed to deploy and configure a NILRT system
 in the SNAC configuration by performing the following actions. All
 action should generally be performed by the System Maintainer, logged
-into the NILRT shell as either ``admin`` (safemode) or ``root`` (runmode).
+into the NILRT shell as ``root`` in either Safemode or Runmode.
 
 
 .. _install-necessary-configuration-software-to-the-host-machine:
@@ -277,10 +274,10 @@ On the host system:
     #. In the 'Configuration' pane, click 'Manage software...'.
     #. When prompted, choose a Linux RT System Image versioned "2025 Q2" and click 'OK'.
 
-#.  Set the ``admin`` account password. 
+#.  Set the ``root`` account password.
 
     #. When prompted enter a new administrator password.
-    #. This password will be used by System Maintainers when the device is booted into Safemode, and is not related to the ``root`` user account you will configure later.
+    #. This password will be used by System Maintainers and is automatically coordinated between Safemode and Runmode boots.
 
 #.  Install software
 
@@ -296,7 +293,7 @@ Using SSH, log in to the NILRT device.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. Use an SSH client of your choice to connect to the NILRT device's hostname.
-#. Log in using the ``admin`` account and the password you previously configured. e.g. ``ssh://admin@$hostname``
+#. Log in using the ``root`` account and the password you previously configured. e.g. ``ssh://root@$hostname``
 #. All following steps are performed on the NILRT device, using the SSH shell.
 
 
@@ -307,7 +304,7 @@ SNAC Configuration File
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``nilrt-snac`` tool reads its settings from ``/etc/snac/snac.conf``.
-Edit this file as the ``admin`` user (``root`` if already in SNAC mode) to control which configuration 
+Edit this file as the ``root`` user to control which configuration
 modules are applied during ``configure`` and which checks are executed during ``verify``.
 
 Modules
@@ -432,10 +429,10 @@ Run the nilrt-snac configuration tool
 #.  Reconnect to the NILRT device in HWCU.
 
     #. Click 'Reconnect' or select your device in the drop-down menu.
-    #. When prompted, login as ``root`` with no password.
+    #. When prompted, login as ``root`` with the password you previously configured.
     #. This confirms the host system is able to still communicate with the NILRT device.
 
-#.  Login as ``root`` with no password. ``root`` is the new super-user account that replaces ``admin``.
+#.  Login as ``root`` with the password you previously configured.
 
 #.  Change the ``root`` account password.
 

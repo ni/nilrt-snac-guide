@@ -320,6 +320,8 @@ reduces the susceptibility to authenticator compromises.
 +----------------------------------------------------------------------------------+
 +----------------------------------------------------------------------------------+
 | Passwords are stored internally in a hashed form, controlled by PAM.             |
+| The ``root`` account password is automatically coordinated between Safemode and  |
+| Runmode boots.                                                                   |
 +----------------------------------------------------------------------------------+
 +----------------------------------------------------------------------------------+
 | System administrators can reset user passwords using the 'passwd' utility and    |
