@@ -34,12 +34,12 @@
   disposition:
   - The NILRT+SNAC configuration uses the PAM pwquality module to enforce password
     quality limitations. The PWQuality configuration is defined and configurable
-    via the '/etc/sec urity/pwquality.conf' file. Passwords are also checked against
+    via the ``/etc/security/pwquality.conf`` file. Passwords are also checked against
     a dictionary of common words, and agains the cracklib compromised password database.
-    Password quality limitations are not enforced for the 'root' account.
+    Password quality limitations are not enforced for the ``root`` account.
   - Passwords are stored internally in a hashed form, controlled by PAM. The ``root``
     account password is automatically coordinated between Safemode and Runmode boots.
-  - System administrators can reset user passwords using the 'passwd' utility and
+  - System administrators can reset user passwords using the ``passwd`` utility and
     set the password lifetime to expire immediately, forcing users to enter a new
     password after logging in with a temporary password.
 3.5.11:

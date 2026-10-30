@@ -3,7 +3,7 @@
   disposition:
   - NI LinuxRT event logging is handled by syslog-ng. By default, syslog is setup
     to harvest any log configuration files for other programs that introduce logging
-    as long as they install conf files to '/etc/syslog-ng.d/'.
+    as long as they install conf files to ``/etc/syslog-ng.d/``.
 3.3.2:
   status: implemented
   disposition:
@@ -19,7 +19,7 @@
   status: end_user
   disposition:
   - System owners can configure auditd to send an email when there is a logging
-    failure by setting 'action_mail_acct' in '/e tc/audit/auditd.conf' to a valid
+    failure by setting ``action_mail_acct`` in ``/etc/audit/auditd.conf`` to a valid
     e-mail address and defining which alerts to send e-mails for in the audit.rules.
     User must define the response policy to these alerts.
 3.3.5:
@@ -39,5 +39,5 @@
   status: implemented
   disposition:
   - The NILRT SNAC configuration restricts write access to system logs to System
-    Maintainers (via the \`root\` account), and System Auditors via membership in
-    the \`adm\` group.
+    Maintainers (via the ``root`` account), and System Auditors via membership in
+    the ``adm`` group.

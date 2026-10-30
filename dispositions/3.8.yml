@@ -17,7 +17,7 @@
   - NILRT runs on devices with local memory. Letters of Volatility are available
     from NI for these devices including clearing information for these memory locations.
     The system owner is responsible to sanitize data from these devices.
-  - 'NI LOVs are located here: https://ni.com/ letters-of-volatility'
+  - 'NI LOVs are located here: https://ni.com/letters-of-volatility'
 3.8.4:
   status: not_applicable
   disposition:

@@ -30,7 +30,7 @@
   disposition:
   - NILRT + SNAC defines the minimal set of services necessary for system operation
   - NI publishes a list of ports used by its drivers and protocols ("`Configuring
-    Software and Hardware Firewalls to Support NI Products <https://ww w.ni.com/en/support/security/configuring-software-and-hardware-
+    Software and Hardware Firewalls to Support NI Products <https://www.ni.com/en/support/security/configuring-software-and-hardware-
     firewalls-to-support-national-.html>`__"), system owners can configure the system
     firewall to let through the ports/traffic needed for specific applications.
 3.4.8:
@@ -43,7 +43,7 @@
   status: implemented
   disposition:
   - NI System Configuration can be used as a data source for inventory of NI hardware.
-  - SBOMs are available from security@ni.com and, in combination with package management,
+  - SBOMs are available from ``security@ni.com`` and, in combination with package management,
     can provide inventory information for software.
 3.4.11:
   status: end_user

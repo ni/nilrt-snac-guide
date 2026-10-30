@@ -5,7 +5,7 @@
     scheme using standard Linux tools for account management. With these libraries,
     the NILRT system owner can enable account management with methods such as local
     passwords or LDAP.
-  - The system is configured with a privileged 'root' account for maintenance and
+  - The system is configured with a privileged ``root`` account for maintenance and
     administration, and other system accounts for use by services on the system.
     System owners are directed to define a schema of access roles that are appropriate
     for the system's mission. System administrators are directed to implement that
@@ -47,7 +47,7 @@
   status: not_implemented
   disposition:
   - NILRT device configuration and LabVIEW deployment workflows require the use
-    of the 'root' account and 'lvuser', respectively. Both accounts have over-broad
+    of the ``root`` account and ``lvuser``, respectively. Both accounts have over-broad
     permissions for their duties. Integrators can mitigate attacks against these
     accounts by enforcing policy limitations on who has networked and physical access
     to the NILRT device.
@@ -56,14 +56,14 @@
   disposition:
   - System owners are directed to define and enforce policies that restrict credentialed
     access to administrative accounts to only personnel whose roles require that
-    access. System administrators should use the 'useradd' command to create non-privileged
+    access. System administrators should use the ``useradd`` command to create non-privileged
     user accounts for use when performing non-privileged operations on the device.
 3.1.7:
   status: implemented
   disposition:
-  - NILRT restricts privileged function execution to the 'root' maintenance account
-    and members of the 'sudo' group. Privileged function execution is logged by
-    the audit subsystem and the sudo service to '/var/log/audit/' and '/var/log/auth.log'
+  - NILRT restricts privileged function execution to the ``root`` maintenance account
+    and members of the ``sudo`` group. Privileged function execution is logged by
+    the audit subsystem and the sudo service to ``/var/log/audit/`` and ``/var/log/auth.log``
     respectively. System owners are directed to enforce policies whereby non-privileged
     actions are performed on less-privileged user accounts.
 3.1.8:
@@ -74,18 +74,18 @@
 3.1.9:
   status: end_user
   disposition:
-  - NILRT displays notification messages to the user prior to login via the 'issue'
+  - NILRT displays notification messages to the user prior to login via the ``issue``
     banner system. System owners are directed to prepare a compliant text banner
     that gives privacy and security notice to users, and to insert that banner message
-    into the \`/etc/issue\` and \`/etc/issue.net\` files.
+    into the ``/etc/issue`` and ``/etc/issue.net`` files.
 3.1.10:
   status: implemented
   disposition:
-  - The SNAC configuration includes a terminal locking utility called vlock, which
-    allows users to lock their terminal sessions by either calling it with the 'vlock'
+  - The SNAC configuration includes a terminal locking utility called ``vlock``, which
+    allows users to lock their terminal sessions by either calling it with the ``vlock``
     command. Users must resubmit their login credentials to unlock the screen. After
     900 seconds of inactivity, the NILRT TMUX shell is configured to automatically
-    lock the console. Note that vlock cannot obscure terminal history in remote
+    lock the console. Note that ``vlock`` cannot obscure terminal history in remote
     SSH clients; organization clients should be configured to not retain history.
 3.1.11:
   status: implemented
@@ -93,7 +93,7 @@
   - Interactive user sessions are automatically terminated after 600 seconds of
     inactivity, via the TMOUT environment variable. Users are required to re-enter
     their credentials to regain access to a login session. This value is adjustable
-    by modifying the '/etc/ profile.d/tmout.conf' file.
+    by modifying the ``/etc/profile.d/tmout.conf`` file.
 3.1.12:
   status: not_applicable
   disposition:
