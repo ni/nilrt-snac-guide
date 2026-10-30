@@ -272,7 +272,7 @@ On the host system:
 
 
 The NILRT device can now be disconnected from the segment and installed to its intended operational environment.
-It is now also considered safe for handling by personnel who are not device maintainers.
+Physical access must remain restricted to authorized System Maintainers, as described in :ref:`physical-protection`.
 
 
 .. _connect-the-nilrt-device-to-the-internet:
