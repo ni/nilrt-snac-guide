@@ -243,3 +243,32 @@ def test_make_disposition_directory_changes(tmp_path, change):
     assert result.returncode != 0
     assert "Section 3 generation failed:" in result.stderr
     assert expected in result.stderr
+
+
+def test_make_generate_sections(tmp_path):
+    """The generation-only target creates all outputs without Sphinx or downloads."""
+    shutil.copy2(TOOLS.parent / "Makefile", tmp_path / "Makefile")
+    shutil.copytree(TOOLS, tmp_path / "tools")
+    shutil.copytree(TOOLS.parent / "dispositions", tmp_path / "dispositions")
+    command = ["make", f"PYTHON={sys.executable}", "SPHINXBUILD=false", "generate-sections"]
+    preview = subprocess.run(
+        [*command, "--dry-run"], cwd=tmp_path, capture_output=True, text=True, check=False
+    )
+    assert preview.returncode == 0, preview.stdout + preview.stderr
+    assert "curl" not in preview.stdout
+    assert "false -M" not in preview.stdout
+
+    result = subprocess.run(command, cwd=tmp_path, capture_output=True, text=True, check=False)
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert result.stdout.count("Generated 18 files") == 1
+    output = tmp_path / "source/generated"
+    assert {path.name for path in output.iterdir()} == {
+        *(f"section_3_{family}.rst" for family in range(1, 18)),
+        "controls_summary_table.inc",
+    }
+    assert not (tmp_path / "source/nilrt-docs").exists()
+    assert not (tmp_path / "build").exists()
+
+    result = subprocess.run(command, cwd=tmp_path, capture_output=True, text=True, check=False)
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "Generated" not in result.stdout
