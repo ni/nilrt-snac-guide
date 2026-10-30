@@ -1,6 +1,9 @@
 """Tests for Section 3 data processing and source generation."""
 
 import json
+import os
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -202,3 +205,41 @@ def test_committed_data_is_consistent():
     committed = nist.load_data()
     controls = dispositions.load_dispositions(TOOLS.parent / "dispositions")
     dispositions.check_coverage(committed, controls)
+
+
+@pytest.mark.parametrize("change", ["add", "delete"])
+def test_make_disposition_directory_changes(tmp_path, change):
+    """Directory changes rerun generation even when no input file is newer."""
+    shutil.copy2(TOOLS.parent / "Makefile", tmp_path / "Makefile")
+    shutil.copytree(TOOLS, tmp_path / "tools")
+    disp = tmp_path / "dispositions"
+    shutil.copytree(TOOLS.parent / "dispositions", disp)
+    command = [
+        "make",
+        f"PYTHON={sys.executable}",
+        "source/generated/controls_summary_table.inc",
+    ]
+    result = subprocess.run(command, cwd=tmp_path, capture_output=True, text=True, check=False)
+    assert result.returncode == 0, result.stdout + result.stderr
+    result = subprocess.run(command, cwd=tmp_path, capture_output=True, text=True, check=False)
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "Generated" not in result.stdout
+
+    output_time = (tmp_path / "source/generated/controls_summary_table.inc").stat().st_mtime_ns
+    if change == "delete":
+        (disp / "3.2.yml").unlink()
+        expected = "3.2.1: no disposition defined"
+    else:
+        extra = disp / "3.99.yml"
+        extra.write_text(GOOD.replace("3.1.1", "3.99.1"), encoding="utf-8")
+        input_time = (
+            min(path.stat().st_mtime_ns for path in (tmp_path / "source/generated").iterdir()) - 1
+        )
+        os.utime(extra, ns=(input_time, input_time))
+        expected = "3.99.1: disposition defined but control is not a NIST"
+    os.utime(disp, ns=(output_time + 1, output_time + 1))
+
+    result = subprocess.run(command, cwd=tmp_path, capture_output=True, text=True, check=False)
+    assert result.returncode != 0
+    assert "Section 3 generation failed:" in result.stderr
+    assert expected in result.stderr
