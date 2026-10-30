@@ -281,7 +281,7 @@ duties.
 +----------------------------------------------------------------------------------+
 +----------------------------------------------------------------------------------+
 | Integrating organizations can modify which users and groups are permitted to     |
-| perform privileged Hardware Configuration Utility actions by changing the        |
+| perform privileged NI Hardware Manager (NIHM) actions by changing the            |
 | access control values in the ``/etc/nisysapid.conf`` file.                       |
 +----------------------------------------------------------------------------------+
 

@@ -55,7 +55,7 @@ configuration and a working WireGuard connection.
 +----------------------+-------------------+---------------------------+
 | MAX (general use)    | Unsupported       |                           |
 +----------------------+-------------------+---------------------------+
-| HWCU (general use)   | Supported         |                           |
+| NIHM (general use)   | Supported         |                           |
 +----------------------+-------------------+---------------------------+
 | Network Shared       | Supported         | See the *Hosting Network* |
 | Variables            |                   | *Shared Variables*        |

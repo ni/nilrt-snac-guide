@@ -30,7 +30,7 @@ Design Constraints
 In addition to the hardware and software support constraints described in the previous sections, there are additional design constraints that should be considered when deploying a NILRT system in the SNAC configuration.
 
 **Device Configuration Utilities.** The SNAC configuration supports
-device configuration via direct SSH connection or HWCU. Configuration
+device configuration via direct SSH connection or NIHM. Configuration
 via NI MAX or SystemLink is not supported at this time.
 
 **Runtime Software Installation.**
@@ -191,7 +191,7 @@ System and Communications Protection
 
 **Configuration.** NILRT system configuration operations are performed via two remote, encrypted paths and one local path.
 
-#. (Remote) The NI HardWare Configuration Utility (HWCU) can be used for system maintenance and deployment of the NILRT Base System Image.
+#. (Remote) The NI Hardware Manager (NIHM) can be used for system maintenance and deployment of the NILRT Base System Image.
 #. (Remote) The NILRT Base System Image supports Secure SHell (SSH) connections to its OpenSSH server instance, which can be used for subsequent manual configuration.
 #. (Local) System users can connect the NILRT device to a graphical display and gain access to the system shell using a keyboard.
 
@@ -225,7 +225,7 @@ Install necessary configuration software to the Host Machine
 #. Download and install the `NI Package Manager <https://www.ni.com/en/support/downloads/software-products/download.package-manager.html#322516>`__ (NIPM).
 #. Run the NI Package Manager.
 
-#. Install the latest "NI CompactRIO and Drivers" package. Be sure to include the optional components "NI Hardware Configuration Utility" (checked by default) and "NI Linux RT System Image" (not checked by default).
+#. Install the latest "NI CompactRIO and Drivers" package. Be sure to include the optional components "NI Hardware Manager" (checked by default) and "NI Linux RT System Image" (not checked by default).
 
     .. figure:: media/image8.png
         :alt: A screenshot of a computer Description automatically generated
@@ -252,7 +252,7 @@ Deploy the latest Firmware and NILRT Base System Image to the NILRT system
 
 On the host system:
 
-#.  Run HWCU. Connect to the NILRT system.
+#.  Run NIHM. Connect to the NILRT system.
 
     #. Open the 'Edit' menu and select 'Add Hardware'.
     #. Add your hardware by discovery, hostname, or ipv4 address.
@@ -426,7 +426,7 @@ Run the nilrt-snac configuration tool
 
         reboot
 
-#.  Reconnect to the NILRT device in HWCU.
+#.  Reconnect to the NILRT device in NIHM.
 
     #. Click 'Reconnect' or select your device in the drop-down menu.
     #. When prompted, login as ``root`` with the password you previously configured.
