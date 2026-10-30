@@ -71,6 +71,9 @@ Instead, edit the YAML file for the control's family in [/dispositions](/disposi
 The NIST text (requirements, discussion, withdrawn status) comes from the committed [/tools/data/nist_sp_800_171r3.json](/tools/data/nist_sp_800_171r3.json).
 To refresh it from the NIST CPRT, run `make update-nist-data` and commit the reviewed diff.
 Run `make generate-sections` to regenerate only the Section 3 sources.
+Unchanged generated files retain their timestamps for incremental Sphinx builds.
+Make records successful generation in `source/generated/.section3.stamp` so
+input changes that do not affect rendered content do not cause repeated generation.
 
 
 ## Running Tests

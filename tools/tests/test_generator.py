@@ -207,6 +207,32 @@ def test_committed_data_is_consistent():
     dispositions.check_coverage(committed, controls)
 
 
+def test_generate_preserves_unchanged_outputs(tmp_path, data):
+    """Only changed content and obsolete family outputs are modified."""
+    controls = {"3.1.1": {"status": "end_user", "disposition": ["Text."]}}
+    paths = generate_section3.generate(data, controls, tmp_path)
+    for path in paths:
+        os.utime(path, ns=(1_000_000_000, 1_000_000_000))
+    stale = tmp_path / "section_3_99.rst"
+    stale.write_text("obsolete", encoding="utf-8")
+    unrelated = tmp_path / "notes.rst"
+    unrelated.write_text("keep", encoding="utf-8")
+    assert generate_section3.generate(data, controls, tmp_path) == paths
+    assert all(path.stat().st_mtime_ns == 1_000_000_000 for path in paths)
+    assert not stale.exists()
+    assert unrelated.read_text(encoding="utf-8") == "keep"
+
+    controls["3.1.1"]["disposition"] = ["Changed text."]
+    generate_section3.generate(data, controls, tmp_path)
+    assert "Changed text." in paths[0].read_text(encoding="utf-8")
+    assert paths[0].stat().st_mtime_ns != 1_000_000_000
+    assert paths[1].stat().st_mtime_ns == 1_000_000_000
+    controls["3.1.1"]["status"] = "implemented"
+    generate_section3.generate(data, controls, tmp_path)
+    assert "Implemented by vendor" in paths[1].read_text(encoding="utf-8")
+    assert paths[1].stat().st_mtime_ns != 1_000_000_000
+
+
 @pytest.mark.parametrize("change", ["add", "delete"])
 def test_make_disposition_directory_changes(tmp_path, change):
     """Directory changes rerun generation even when no input file is newer."""
@@ -225,7 +251,7 @@ def test_make_disposition_directory_changes(tmp_path, change):
     assert result.returncode == 0, result.stdout + result.stderr
     assert "Generated" not in result.stdout
 
-    output_time = (tmp_path / "source/generated/controls_summary_table.inc").stat().st_mtime_ns
+    output_time = (tmp_path / "source/generated/.section3.stamp").stat().st_mtime_ns
     if change == "delete":
         (disp / "3.2.yml").unlink()
         expected = "3.2.1: no disposition defined"
@@ -265,6 +291,7 @@ def test_make_generate_sections(tmp_path):
     assert {path.name for path in output.iterdir()} == {
         *(f"section_3_{family}.rst" for family in range(1, 18)),
         "controls_summary_table.inc",
+        ".section3.stamp",
     }
     assert not (tmp_path / "source/nilrt-docs").exists()
     assert not (tmp_path / "build").exists()
@@ -272,3 +299,23 @@ def test_make_generate_sections(tmp_path):
     result = subprocess.run(command, cwd=tmp_path, capture_output=True, text=True, check=False)
     assert result.returncode == 0, result.stdout + result.stderr
     assert "Generated" not in result.stdout
+
+    for path in output.iterdir():
+        os.utime(path, ns=(1_000_000_000, 1_000_000_000))
+    result = subprocess.run(command, cwd=tmp_path, capture_output=True, text=True, check=False)
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert result.stdout.count("Generated 18 files") == 1
+    assert all(
+        path.stat().st_mtime_ns == 1_000_000_000
+        for path in output.iterdir()
+        if path.name != ".section3.stamp"
+    )
+    result = subprocess.run(command, cwd=tmp_path, capture_output=True, text=True, check=False)
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "Generated" not in result.stdout
+
+    (output / "section_3_2.rst").unlink()
+    result = subprocess.run(command, cwd=tmp_path, capture_output=True, text=True, check=False)
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert result.stdout.count("Generated 18 files") == 1
+    assert (output / "section_3_2.rst").exists()
