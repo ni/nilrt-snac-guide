@@ -258,6 +258,7 @@ On the host system:
     #. Add your hardware by discovery, hostname, or ipv4 address.
 
 #.  Select your device in the drop-down menu.
+#.  When NI Hardware Manager prompts you to set a ``root`` account password, enter a strong password known only to your system maintainers.
 #.  Update the device's Firmware (Safemode) image.
 
     #. In the 'Configuration' pane » Firmware management, click 'Update firmware...'.
