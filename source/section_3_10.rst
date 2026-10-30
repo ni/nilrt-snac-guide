@@ -44,8 +44,13 @@ accessible.
 +----------------------------------------------------------------------------------+
 | Solution Implementation                                                          |
 +==================================================================================+
-| The system owner is responsible to restrict physical access to the NILRT system  |
-| and the associated devices.                                                      |
+| System Integrators are directed to use physical access control techniques to     |
+| restrict physical access to NILRT systems to only those personnel who are        |
+| authorized as System Maintainers.                                                |
++----------------------------------------------------------------------------------+
+| Appendix 1 provides guidance on the network isolation and physical access        |
+| requirements necessary to securely perform first-time setup of a NILRT device,   |
+| prior to installing it to a production environment.                              |
 +----------------------------------------------------------------------------------+
 
 .. raw:: latex

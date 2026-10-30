@@ -262,7 +262,14 @@ and change windows (i.e., changes occur only during specified times).
 +----------------------------------------------------------------------------------+
 | Solution Implementation                                                          |
 +==================================================================================+
-| The system owner is responsible to ensure restrictions during system changes.    |
+| System Integrators are directed to implement policies which restrict physical    |
+| access to NILRT systems only to authorized System Maintainers for the purpose of |
+| making hardware changes.                                                         |
++----------------------------------------------------------------------------------+
+| Access control to the make software and firmware changes to the system are       |
+| enforced within the NILRT operating system based on which personnel are given    |
+| membership in the OS ``sudo`` group. System Integrators should implement         |
+| which restrict access to this group only to authorized System Administrators.    |
 +----------------------------------------------------------------------------------+
 
 .. raw:: latex
