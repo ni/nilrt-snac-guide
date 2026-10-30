@@ -1,0 +1,42 @@
+3.8.1:
+  status: not_applicable
+  disposition:
+  - NILRT runs on devices with local memory. Letters of Volatility are available
+    from NI for these devices including clearing information for these memory locations.
+    The system owner is responsible to sanitize data from these devices.
+  - NILRT devices have USB ports. It is the responsibility of the system owner to
+    manage access to these ports, either physically or logically.
+3.8.2:
+  status: not_applicable
+  disposition:
+  - NILRT devices have USB ports. It is the responsibility of the system owner to
+    manage access to these ports, either physically or logically.
+3.8.3:
+  status: not_applicable
+  disposition:
+  - NILRT runs on devices with local memory. Letters of Volatility are available
+    from NI for these devices including clearing information for these memory locations.
+    The system owner is responsible to sanitize data from these devices.
+  - 'NI LOVs are located here: https://ni.com/ letters-of-volatility'
+3.8.4:
+  status: not_applicable
+  disposition:
+  - It is the responsibility of the system owner to create a plan for marking and
+    managing media near the system.
+3.8.5:
+  status: not_applicable
+  disposition:
+  - It is the responsibility of the system owner to create a plan for the transport
+    of data from the system.
+3.8.7:
+  status: end_user
+  disposition:
+  - To restrict or prohibit the use of removable media, system owners should develop
+    a media management plan and consider technical controls such as USBGuard. For
+    details on configuring USBGuard, see :ref:`Appendix 5 <appendix-5>`
+3.8.9:
+  status: not_applicable
+  disposition:
+  - NILRT systems do not backup data to additional storage locations. The system
+    owner is responsible to set up any backup storage and to ensure proper encryption
+    in those storage locations.

@@ -1,0 +1,32 @@
+3.16.1:
+  status: implemented
+  disposition:
+  - 'NI has adopted a Secure Development Lifecycle for software development, including
+    the development of NILRT. The NI SDL was developed with input from Micosoft''s
+    Security Development Lifecycle and NIST Secure Software Development Framework.
+    The NI SDL leverages additional material from OWASP and SAFECode. The NI SDL
+    overlays NI''s hardware and software engineering processes. It includes practices
+    related to:'
+  - '- Security Training'
+  - '- Threat Modeling'
+  - '- Penetration Testing'
+  - '- Using Approved Tools'
+  - '- Automated Security Scanning Tools'
+  - '- Incident Response'
+  - '- Secure Policies'
+  - '- Managing Third-Party Components'
+  - These practices are applied to the development of NILRT.
+3.16.2:
+  status: implemented
+  disposition:
+  - NILRT uses third-party components, including open source components. These components
+    are managed and tracked. With each release of a NILRT component, developers
+    review the list of components for support.
+  - When a component is identified to be out of support, the development team creates
+    a plan to replace the component or to take over support of that component directly.
+    The plan is approved by NI managers prior to release.
+3.16.3:
+  status: not_applicable
+  disposition:
+  - NILRT devices are intended for on-premise use and NI provides no data services
+    with the devices. The system owner owns the system and the data.

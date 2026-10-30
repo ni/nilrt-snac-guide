@@ -1,0 +1,79 @@
+3.13.1:
+  status: end_user
+  disposition:
+  - System communication boundaries are defined across fixed-function networking
+    devices like routers and firewalls, and VPNs and related tunnel technologies.
+    Customers retain all responsibility for configuration and maintenance of these
+    devices. NILRT+SNAC devices are equipped with a software firewall - ``firewalld``
+    - that provides protection to the device and the network. Additional configuration
+    of ``firewalld`` can be performed by system administrators using the ``firewall-cmd``
+    utility.
+3.13.4:
+  status: not_implemented
+  disposition:
+  - Shared system resources potentially include data written to temporary locations
+    on permanent storage or RAM-disk, and may provide an exploitable side channel
+    of communication, or disclose sensitive metadata about past system interactions.
+  - Preventing this kind of information transfer requires system software to only
+    store session-bounded ephemera in locations whose existence is also session-bounded.
+    This requires software changes which are unavailable to the end user.
+3.13.6:
+  status: implemented
+  disposition:
+  - Network communications to and from the NILRT+SNAC system are controlled by the
+    'firewalld' firewall daemon. By default, all communications which are not strictly
+    necessary for system configuration and administration or which are legitimate
+    NI software communications, are denied. Runtime reconfiguration of firewalld
+    by system administrators is possible using the 'firewall-cmd' utility.
+3.13.8:
+  status: end_user
+  disposition:
+  - CUI in transit can be secured in LabVIEW over the TLS, SFTP, SSH, and WebDAV+HTTPS
+    protocols without additional software installation. Non-LabVIEW applications
+    should use TLS or DTLS.
+  - CUI in storage should either be stored in encrypted forms and only decrypted
+    into memory using the included ``gnupg`` and ``openssl`` utilities, or stored
+    in a block-encrypted partition or   | removable storage device. For more information
+    about how to setup an encrypted data partition, see the :ref:`Non-Runtime Partition
+    Encryption<non-runtime-partition-encryption>` section in Appendix 1.
+3.13.9:
+  status: implemented
+  disposition:
+  - The SSH daemon is configured to terminate inactive network sessions after a
+    60 second period of inactivity. This value is configurable by system administrators
+    by modifying the 'ClientAlive' settings in the ' /etc/ssh/sshd_config' file.
+  - System owners create programs to connect and send data from the NILRT device.
+    It is the responsibility of the system owner to ensure that all open connections
+    in these programs are terminated properly.
+3.13.10:
+  status: not_applicable
+  disposition:
+  - In general, NI software only permits low-level, manual configuration of public
+    or private keys; higher-level functionality, like key rotation, is generally
+    not provided. The default certificate store is sourced from NSS (via curl) and
+    is manipulated like any other OpenSSL certificate store.
+3.13.11:
+  status: end_user
+  disposition:
+  - NI Linux RT does not presently support the specification of FIPS-validated algorithms,
+    i.e. "FIPS mode" (where the only permitted algorithms are those validated by
+    FIPS). While the algorithms are present, their implementations are not FIPS-validated,
+    and exist alongside unapproved algorithms.
+  - The system owner is responsible to ensure that any CUI handled in the system
+    is encrypted to FIPS standards.
+3.13.12:
+  status: not_applicable
+  disposition:
+  - NILRT devices do not normally support collaborative devices. It is the responsibility
+    of the system owner to review components to ensure none of these devices are
+    in the system.
+3.13.13:
+  status: implemented
+  disposition:
+  - NILRT+SNAC makes no use of, nor supports, mobile code.
+3.13.15:
+  status: end_user
+  disposition:
+  - The authenticity of NILRT configuration session is protected by SSH.
+  - LabVIEW communications should be protected by transmitting to and from the NILRT
+    system using the encrypted Wireguard tunnel.
