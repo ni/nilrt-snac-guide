@@ -243,6 +243,9 @@ NI LinuxRT devices are always configured to expose an SSH server on port 22.
 This service is used by NI hardware configuration tools to securely communicate with the NILRT device, when it is in safemode and runmode.
 The SSH service allows authenticaiton to the ``root`` user account.
 
+This procedure requires NILRT 27.0 or later, including both the Firmware (Safemode) image and the Runmode Base System Image.
+The ``root`` account and automatic password coordination described here require this account model.
+
 From inventory, the device will not have a password configured for the ``root`` account.
 You will be directed to set the password the first time you connect to the device from NI Hardware Manager or directly through SSH.
 
@@ -267,7 +270,7 @@ On the host system:
 #.  Update the device's Firmware (Safemode) image.
 
     #. In the 'Configuration' pane » Firmware management, click 'Update firmware...'.
-    #. Select a firmware image versioned "25.3" or later.
+    #. Select a firmware image versioned "27.0" or later.
     #. Click 'Update'.
 
 
@@ -308,7 +311,7 @@ On the host system:
 #.  Install the latest NILRT Base System Image.
 
     #. In the 'Configuration' pane, click 'Manage software...'.
-    #. When prompted, choose a Linux RT System Image versioned "2025 Q2" and click 'OK'.
+    #. When prompted, choose a Linux RT System Image versioned "2027Q1" or later and click 'OK'.
 
 #.  Install software
 
