@@ -13,20 +13,26 @@ from snac_docs import dispositions, nist, render  # noqa: E402
 SUMMARY_TABLE = "controls_summary_table.inc"
 
 
+def _write_if_changed(path, text):
+    if not path.exists() or path.read_text(encoding="utf-8") != text:
+        path.write_text(text, encoding="utf-8")
+
+
 def generate(nist_data, controls, output):
     """Write one ``section_3_N.rst`` per family and return the paths."""
     dispositions.check_coverage(nist_data, controls)
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
-    for stale in output.glob("section_3_*.rst"):
-        stale.unlink()
     written = []
     for family in nist_data["families"]:
         path = output / f"section_{family['id'].replace('.', '_')}.rst"
-        path.write_text(render.render_family(family, controls), encoding="utf-8")
+        _write_if_changed(path, render.render_family(family, controls))
         written.append(path)
+    for stale in output.glob("section_3_*.rst"):
+        if stale not in written:
+            stale.unlink()
     summary = output / SUMMARY_TABLE
-    summary.write_text(render.render_summary_table(nist_data, controls), encoding="utf-8")
+    _write_if_changed(summary, render.render_summary_table(nist_data, controls))
     written.append(summary)
     return written
 

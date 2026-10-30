@@ -47,13 +47,23 @@ SECTION_FAMILIES = 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17
 SECTION_OUTPUTS = $(addprefix $(generateddir)/section_3_,$(addsuffix .rst,$(SECTION_FAMILIES))) \
 	$(generateddir)/controls_summary_table.inc
 SECTION_INPUTS = $(wildcard dispositions/*.yml tools/data/* tools/*.py tools/snac_docs/*.py) dispositions
+SECTION_STAMP = $(generateddir)/.section3.stamp
 
-# Generate the Section 3 sources from tools/data and dispositions/. Grouped
-# targets ensure this runs once if any generated file is missing or out of date.
+# Record successful generation separately so unchanged outputs keep their mtimes.
 # The directory prerequisite also detects added or deleted disposition files.
 $(SECTION_INPUTS) : ;
-$(SECTION_OUTPUTS) &: $(SECTION_INPUTS)
+$(SECTION_STAMP) : $(SECTION_INPUTS)
 	$(PYTHON) tools/generate_section3.py --output $(generateddir)
+	@touch $@
+
+# Recover missing outputs without treating the newer stamp as a content change.
+$(SECTION_OUTPUTS) &: | $(SECTION_STAMP)
+	@for output in $(SECTION_OUTPUTS); do \
+		if test ! -f "$$output"; then \
+			$(PYTHON) tools/generate_section3.py --output $(generateddir) || exit $$?; \
+			break; \
+		fi; \
+	done
 
 # ==============================================================================
 # PHONY TARGETS
