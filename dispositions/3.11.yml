@@ -1,19 +1,14 @@
 3.11.1:
   status: not_applicable
   disposition:
-  - The system owner is responsible to assess the risk associated with each device
-    and component in the system.
+  - The system owner is responsible to assess the risk associated with each device and component in the system.
 3.11.2:
   status: not_applicable
   disposition:
-  - The system owner is responsible to perform vulnerability scan on the deployed
-    system, as vulnerabilities depend on the full system configuration.
-  - NI performs regular vulnerability scans of products prior to release to the
-    customer.
+  - The system owner is responsible to perform vulnerability scan on the deployed system, as vulnerabilities depend on the full system configuration.
+  - NI performs regular vulnerability scans of products prior to release to the customer.
 3.11.4:
   status: not_applicable
   disposition:
-  - The system owner is responsible to respond to system issues discovered on the
-    system.
-  - If a vulnerability is discovered related to the NILRT system, report the issue
-    to ``security@ni.com``.
+  - The system owner is responsible to respond to system issues discovered on the system.
+  - If a vulnerability is discovered related to the NILRT system, report the issue to ``security@ni.com``.

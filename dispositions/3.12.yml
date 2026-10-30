@@ -1,22 +1,16 @@
 3.12.1:
   status: not_applicable
   disposition:
-  - The system owner is responsible to perform a security review based on the company's
-    security policies.
+  - The system owner is responsible to perform a security review based on the company's security policies.
 3.12.2:
   status: not_applicable
   disposition:
-  - The system owner is responsible to create a POAM for the system based on the
-    security assessment.
+  - The system owner is responsible to create a POAM for the system based on the security assessment.
 3.12.3:
   status: not_applicable
   disposition:
-  - The system owner is responsible to establish and manage a continuous monitoring
-    process for the system.
+  - The system owner is responsible to establish and manage a continuous monitoring process for the system.
 3.12.5:
   status: not_applicable
   disposition:
-  - NILRT collects data from networked test systems and stores data in locations
-    as configured by the system owner. The system owner is responsible to review
-    the system components and determine the appropriate security agreement for each
-    component.
+  - NILRT collects data from networked test systems and stores data in locations as configured by the system owner. The system owner is responsible to review the system components and determine the appropriate security agreement for each component.

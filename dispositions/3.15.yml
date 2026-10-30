@@ -1,13 +1,11 @@
 3.15.1:
   status: not_applicable
   disposition:
-  - The system owner is responsible to create a security policy and plan, and to
-    keep these updated.
+  - The system owner is responsible to create a security policy and plan, and to keep these updated.
 3.15.2:
   status: not_applicable
   disposition:
-  - The system owner is responsible to create a system security plan based on the
-    overall system.
+  - The system owner is responsible to create a system security plan based on the overall system.
 3.15.3:
   status: not_applicable
   disposition:
