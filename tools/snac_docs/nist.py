@@ -47,9 +47,12 @@ def _statement(elements, req_id):
     root = {"text": "", "items": []}
     nodes = {prefix: root}
     parts = sorted(
-        (e for e in elements.values()
-         if e["element_type"] == "security_requirement"
-         and e["element_identifier"].startswith(prefix)),
+        (
+            e
+            for e in elements.values()
+            if e["element_type"] == "security_requirement"
+            and e["element_identifier"].startswith(prefix)
+        ),
         key=lambda e: [_label_key(p) for p in e["element_identifier"].split(".")],
     )
     for element in parts:
@@ -77,9 +80,12 @@ def preprocess(raw):
         fam_id = fam["element_identifier"]
         requirements = []
         for req in sorted(
-            (e for e in raw["elements"]
-             if e["element_type"] == "requirement"
-             and e["element_identifier"].startswith(fam_id + ".")),
+            (
+                e
+                for e in raw["elements"]
+                if e["element_type"] == "requirement"
+                and e["element_identifier"].startswith(fam_id + ".")
+            ),
             key=lambda e: e["element_identifier"],
         ):
             req_id = req["element_identifier"]
@@ -93,7 +99,11 @@ def preprocess(raw):
                 entry["discussion"] = _clean(discussion["text"]) if discussion else ""
             requirements.append(entry)
         families.append(
-            {"id": ".".join(str(int(p)) for p in fam_id.split(".")), "title": fam["title"], "requirements": requirements}
+            {
+                "id": ".".join(str(int(p)) for p in fam_id.split(".")),
+                "title": fam["title"],
+                "requirements": requirements,
+            }
         )
     document = raw["documents"][0]
     return {
@@ -106,10 +116,12 @@ def preprocess(raw):
 
 
 def write_data(data, path=DATA_FILE):
+    """Write preprocessed NIST data as formatted JSON."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def load_data(path=DATA_FILE):
+    """Load preprocessed NIST data from a JSON file."""
     return json.loads(Path(path).read_text(encoding="utf-8"))

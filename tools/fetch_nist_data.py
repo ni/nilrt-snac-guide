@@ -15,6 +15,7 @@ from snac_docs import nist  # noqa: E402
 
 
 def main():
+    """Fetch and store the latest CPRT export."""
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--output", default=nist.DATA_FILE, type=Path)
     args = parser.parse_args()

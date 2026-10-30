@@ -3,7 +3,7 @@
 import re
 import textwrap
 
-from .dispositions import STATUSES
+from snac_docs.dispositions import STATUSES
 
 MIN_TABLE_WIDTH = 82
 WRAP_WIDTH = 76
@@ -29,8 +29,12 @@ def _italic_assignments(text):
 
 def _wrap(text, width=72, initial="", subsequent=""):
     return textwrap.fill(
-        text, width=width, initial_indent=initial, subsequent_indent=subsequent,
-        break_long_words=False, break_on_hyphens=False,
+        text,
+        width=width,
+        initial_indent=initial,
+        subsequent_indent=subsequent,
+        break_long_words=False,
+        break_on_hyphens=False,
     )
 
 
@@ -101,6 +105,7 @@ def _disposition_table(paragraphs):
 
 
 def render_requirement(req, disposition):
+    """Render one NIST requirement and its disposition as reStructuredText."""
     heading_text = f"{req['id']}. {req['title']}"
     if "withdrawn" in req:
         heading_text = f"{req['id']}. Withdrawn: {req['withdrawn']}"
@@ -118,6 +123,7 @@ def render_requirement(req, disposition):
 
 
 def render_family(family, controls):
+    """Render a complete NIST family and its controls as reStructuredText."""
     heading = _heading(f"{family['id']}. {family['title']}", "=", True)
     sections = [heading]
     for req in family["requirements"]:

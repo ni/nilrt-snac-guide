@@ -7,6 +7,24 @@ permissions:
   pull-requests: write
 
 jobs:
+  Lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13'
+
+    - name: Install project Python dependencies
+      run: python -m pip install -r requirements.txt
+
+    - name: Lint Python tooling
+      run: make lint
+
   Build:
     runs-on: ubuntu-latest
 

@@ -40,6 +40,10 @@ CLAMAV_DOC_DEST = $(downloadedsrcdir)/clamav.rst
 all : latexpdf
 .PHONY : all
 
+lint :
+	ni-python-styleguide lint tools/
+.PHONY : lint
+
 $(USBGUARD_DOC_DEST) :
 	@mkdir -p $(downloadedsrcdir)
 	curl -sSL "$(NILRT_DOC_REPO)/raw/$(NILRT_DOC_BRANCH_OR_COMMIT)/$(USBGUARD_DOC_PATH)" -o $(USBGUARD_DOC_DEST)
