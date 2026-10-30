@@ -140,6 +140,9 @@ def test_load_and_coverage(tmp_path, data):
         ),
         ("3.2.1:\n  status: implemented\n  disposition: [x]\n", "does not belong"),
         ("a: [\n", "invalid YAML"),
+        ("[3.1.1]:\n  status: implemented\n  disposition: [x]\n", "unhashable key"),
+        ("{id: 3.1.1}:\n  status: implemented\n  disposition: [x]\n", "unhashable key"),
+        ("3.1.1:\n  [status]: implemented\n  disposition: [x]\n", "unhashable key"),
     ],
 )
 def test_invalid_yaml_reports_file(tmp_path, content, expected):
@@ -181,6 +184,17 @@ def test_cli(tmp_path, data, capsys):
     write(disp, "3.1.yml", "")
     assert generate_section3.main(args) == 1
     assert "3.1.1: no disposition defined" in capsys.readouterr().err
+
+
+def test_cli_unhashable_key(tmp_path, capsys):
+    """Unhashable YAML keys produce a file-specific CLI error, not a traceback."""
+    write(tmp_path, "3.1.yml", "[3.1.1]:\n  status: implemented\n  disposition: [x]\n")
+    assert generate_section3.main(["--dispositions", str(tmp_path)]) == 1
+    error = capsys.readouterr().err
+    assert "Section 3 generation failed:" in error
+    assert f"{tmp_path / '3.1.yml'}: invalid YAML:" in error
+    assert "found unhashable key" in error
+    assert "Traceback" not in error
 
 
 def test_committed_data_is_consistent():
