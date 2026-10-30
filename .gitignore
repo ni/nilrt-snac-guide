@@ -1,3 +1,7 @@
 # Makefile (build) artifacts.
 /build
 /source/nilrt-docs
+/source/generated
+__pycache__/
+.pytest_cache/
+/.venv

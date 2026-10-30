@@ -1,0 +1,30 @@
+3.10.1:
+  status: not_applicable
+  disposition:
+  - System Integrators are directed to use physical access control techniques to
+    restrict physical access to NILRT systems to only those personnel who are authorized
+    as System Maintainers.
+  - Appendix 1 provides guidance on the network isolation and physical access requirements
+    necessary to securely perform first-time setup of a NILRT device, prior to installing
+    it to a production environment.
+3.10.2:
+  status: not_applicable
+  disposition:
+  - NILRT collects data from networked test systems and stores data in locations
+    as configured by the system owner. The system owner is responsible to restrict
+    physical access to these servers and systems and to monitor physical access.
+3.10.6:
+  status: not_applicable
+  disposition:
+  - The system owner is responsible to create policies for alternate work sites
+    relative to the system.
+3.10.7:
+  status: not_applicable
+  disposition:
+  - The system owner is responsible to restrict physical access to the NILRT device
+    and the system.
+3.10.8:
+  status: not_applicable
+  disposition:
+  - The system owner is responsible to restrict physical access to transmission
+    lines to and from the NILRT device and the system.

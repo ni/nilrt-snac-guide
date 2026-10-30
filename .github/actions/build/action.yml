@@ -33,6 +33,11 @@ runs:
         pip install -r requirements.txt
         pip install cyclonedx-bom
 
+    - name: Test Section 3 generator
+      shell: bash
+      run: |
+        make check
+
     - name: Build project
       shell: bash
       run: |

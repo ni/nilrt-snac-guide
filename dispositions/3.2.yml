@@ -1,0 +1,13 @@
+3.2.1:
+  status: not_applicable
+  disposition:
+  - NI LinuxRT does not provide generic security literacy training. Integrating
+    organizations should develop and maintain their own security literacy training
+    that is specific to their application and operating environment.
+3.2.2:
+  status: not_applicable
+  disposition:
+  - NI LinuxRT's SNAC configuration uses generic administrative group accounts to
+    manage access to system resources, but does not define application-specific
+    roles. Integrating organizations should define roles that apply to their deployment
+    and develop and maintain role-based security training for their personnel.

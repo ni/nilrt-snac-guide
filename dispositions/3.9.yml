@@ -1,0 +1,11 @@
+3.9.1:
+  status: not_applicable
+  disposition:
+  - It is the responsibility of the system owner to screen individuals prior to
+    granting access to the system.
+3.9.2:
+  status: not_applicable
+  disposition:
+  - It is the responsibility of the system owner to manage who has access to the
+    system, including removing access when the individual leaves the company or
+    changes responsibilities.

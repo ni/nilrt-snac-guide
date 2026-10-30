@@ -1,0 +1,25 @@
+3.6.1:
+  status: not_applicable
+  disposition:
+  - The system owner is responsible to create an incident response plan for the
+    deployed system.
+3.6.2:
+  status: not_applicable
+  disposition:
+  - The system owner is responsible to track incidents and generate incident reports
+    for the deployed system.
+3.6.3:
+  status: not_applicable
+  disposition:
+  - The system owner is responsible to generate a test plan and periodically test
+    the incident response plan.
+3.6.4:
+  status: not_applicable
+  disposition:
+  - The system owner is responsible to develop and implement incident response training
+    for the system.
+3.6.5:
+  status: not_applicable
+  disposition:
+  - The system owner is responsible to develop and implement an incident response
+    plan for the system.
