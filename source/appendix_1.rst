@@ -447,7 +447,7 @@ Run the nilrt-snac configuration tool
 
     .. note::
 
-        All output is logged to ``/var/log/snac/`` with the filename in the form of
+        All output is logged to ``/var/log/nilrt-snac/`` with the filename in the form of
         ``configure-<timestamp>.log`` or ``verify-<timestamp>.log``.
 
 #.  Reboot the system. Note that after rebooting the system, serial
